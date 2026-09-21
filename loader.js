@@ -1,278 +1,460 @@
 /**
- * HPOK CELEBRATION LOADER - MID-AUTUMN EDITION (TẾT TRUNG THU)
- * Phong cách: Đêm Rằm Trăng Tròn, Đèn Lồng Bay, Vàng Trăng - Đỏ Đội Đèn Chuyên Nghiệp Cao Cấp.
+ * ============================================================================
+ * HPOK CELEBRATION LOADER - ULTIMATE MID-AUTUMN FESTIVAL EDITION (TẾT TRUNG THU)
+ * Style: Đêm Rằm Trăng Tròn, Đèn Lồng Bay, Thỏ Ngọc, Múa Lân & Mưa Sao Băng 2D Canvas
+ * ============================================================================
  */
 
-(function() {
-    // 1. CẤU HÌNH CSS (Tông màu Đêm Rằm & Hiệu ứng Trăng, Đèn Lồng)
+(function () {
+    'use strict';
+
+    // 1. INJECT CSS NỀN NỔI BẬT & GIAO DIỆN CELEBRATION
     const style = document.createElement('style');
+    style.id = 'hpok-midautumn-styles';
     style.innerHTML = `
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&family=Montserrat:wght@800;900&display=swap');
 
         #hpok-global-loader {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, #1a0b2e 0%, #08020f 100%);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 1000000; transition: opacity 0.8s ease;
-            font-family: 'Montserrat', sans-serif; overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(circle at 50% 30%, #2b0840 0%, #0d0414 70%, #05010a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 999999;
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s ease;
+            font-family: 'Lexend', 'Montserrat', sans-serif;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
-        /* Canvas Đèn Lồng Bay Nền */
         #midautumn-canvas {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; pointer-events: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
         }
 
-        .loader-content { 
-            text-align: center; position: relative; z-index: 10; 
-            width: 90%; max-width: 450px; 
+        .loader-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            width: 90%;
+            max-width: 480px;
+            padding: 30px 20px;
+            background: rgba(24, 9, 40, 0.65);
+            border: 2px solid rgba(255, 215, 0, 0.4);
+            border-radius: 28px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 0.25), inset 0 0 20px rgba(255, 215, 0, 0.15);
+            animation: containerGlow 3s infinite alternate;
         }
 
-        /* Banner Khuyến mãi Tết Trung Thu */
-        .celebration-banner {
-            background: linear-gradient(90deg, #d32f2f, #ffb300, #d32f2f);
+        @keyframes containerGlow {
+            0% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.2), inset 0 0 15px rgba(255, 215, 0, 0.1); border-color: rgba(255, 215, 0, 0.3); }
+            100% { box-shadow: 0 0 60px rgba(255, 215, 0, 0.4), inset 0 0 30px rgba(255, 215, 0, 0.25); border-color: rgba(255, 215, 0, 0.8); }
+        }
+
+        /* BANNER HEADER TRUNG THU */
+        .celebration-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, #d32f2f, #ff8f00, #d32f2f);
             background-size: 200% auto;
-            color: #fff; padding: 10px 25px; border-radius: 50px;
-            font-size: 13px; font-weight: 900; letter-spacing: 1px;
-            box-shadow: 0 0 25px rgba(255, 179, 0, 0.6);
-            border: 2px solid #ffe082; margin-bottom: 30px;
-            animation: shine 3s linear infinite, pulse 1.5s ease-in-out infinite;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 900;
+            padding: 6px 18px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid #ffe082;
+            box-shadow: 0 0 15px rgba(255, 143, 0, 0.6);
+            animation: gradientShift 2s linear infinite, bounceSlow 2s infinite;
+            margin-bottom: 15px;
         }
 
-        @keyframes shine { to { background-position: 200% center; } }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+        @keyframes bounceSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
 
-        /* Icon Mặt Trăng Tròn Hào Quang 3D */
-        .main-moon {
-            width: 140px; height: 140px; margin: 0 auto 20px;
-            filter: drop-shadow(0 0 35px #ffca28);
-            animation: moonFloat 4s ease-in-out infinite;
+        .moon-title-wrap {
+            position: relative;
+            margin: 10px 0 20px;
         }
 
-        @keyframes moonFloat {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-10px) scale(1.03); }
-        }
-
-        /* Typography HPOK phong cách chữ Vàng Trăng 3D */
-        .brand-title { 
-            font-size: 65px; font-weight: 900; letter-spacing: 15px; 
-            margin-bottom: 30px; color: #ffe082;
-            text-shadow: 2px 2px 0 #b71c1c, 4px 4px 0 #5f0909, 0 0 35px rgba(255, 224, 130, 0.6);
+        .moon-icon-bg {
+            font-size: 70px;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+            animation: moonPulse 2s infinite alternate;
             display: block;
+            margin: 0 auto 10px;
         }
 
-        /* Thanh tiến trình Trung Thu */
-        .progress-wrapper { width: 100%; margin: 20px 0; }
-        .loading-info { 
-            display: flex; justify-content: space-between; 
-            color: #ffe082; font-size: 12px; font-weight: 700; 
-            text-transform: uppercase; margin-bottom: 8px;
+        @keyframes moonPulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)); }
+            100% { transform: scale(1.08); filter: drop-shadow(0 0 35px rgba(255, 235, 59, 1)); }
         }
 
-        .track-bar {
-            height: 10px; background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px; overflow: hidden; border: 1px solid rgba(255, 224, 130, 0.4);
-        }
-        .fill-bar {
-            width: 0%; height: 100%;
-            background: linear-gradient(90deg, #ffb300, #e64a19);
-            box-shadow: 0 0 15px #ff9800;
-            transition: width 0.4s ease-out;
+        .hpok-title {
+            font-size: 26px;
+            font-weight: 900;
+            background: linear-gradient(180deg, #ffffff 0%, #ffe082 50%, #ffb300 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            letter-spacing: 1px;
+            margin: 0;
+            text-transform: uppercase;
         }
 
-        .footer-tag { color: rgba(255, 224, 130, 0.5); font-size: 9px; margin-top: 25px; letter-spacing: 2px; }
-        .no-scroll { overflow: hidden !important; }
+        .hpok-subtitle {
+            color: #d1c4e9;
+            font-size: 13px;
+            margin-top: 5px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* PROGRESS BAR CAO CẤP */
+        .progress-box {
+            margin: 25px 0 15px;
+            position: relative;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 16px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            padding: 3px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff8f00 0%, #ffd700 50%, #fff59d 100%);
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            transition: width 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
+            position: relative;
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+
+        .progress-text-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .status-msg { color: #ffe082; text-shadow: 0 0 5px rgba(255, 224, 130, 0.5); }
+        .percent-num { color: #00ff88; font-family: 'Montserrat', sans-serif; font-size: 14px; }
+
+        /* DECORATION CORNERS */
+        .decor-corner {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--gold, #ffd700);
+        }
+        .top-left { top: 8px; left: 8px; border-right: none; border-bottom: none; border-top-left-radius: 8px; }
+        .top-right { top: 8px; right: 8px; border-left: none; border-bottom: none; border-top-right-radius: 8px; }
+        .bottom-left { bottom: 8px; left: 8px; border-right: none; border-top: none; border-bottom-left-radius: 8px; }
+        .bottom-right { bottom: 8px; right: 8px; border-left: none; border-top: none; border-bottom-right-radius: 8px; }
+
+        /* FOOTER TIP */
+        .midautumn-footer {
+            margin-top: 15px;
+            font-size: 11px;
+            color: #b39ddb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
     `;
     document.head.appendChild(style);
 
-    // 2. CẤU TRÚC HTML (Mặt Trăng Tròn & Biểu tượng Bánh Trung Thu / Đèn lồng)
-    const loaderHTML = `
-        <div id="hpok-global-loader">
-            <canvas id="midautumn-canvas"></canvas>
-            <div class="loader-content">
-                <div class="celebration-banner">🥮 TƯNG BỪNG TẾT TRUNG THU • RẮM THÁNG TÁM 🥮</div>
-                
-                <div class="main-moon">
-                    <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <radialGradient id="moonGrad" cx="30%" cy="30%" r="70%">
-                                <stop offset="0%" stop-color="#fffde7"/>
-                                <stop offset="50%" stop-color="#ffe082"/>
-                                <stop offset="100%" stop-color="#ffb300"/>
-                            </radialGradient>
-                        </defs>
-                        <!-- Mặt Trăng Tròn -->
-                        <circle cx="256" cy="256" r="230" fill="url(#moonGrad)"/>
-                        <!-- Vết lõm mặt trăng nhẹ nhàng -->
-                        <circle cx="180" cy="150" r="30" fill="#fbc02d" opacity="0.25"/>
-                        <circle cx="320" cy="220" r="45" fill="#fbc02d" opacity="0.2"/>
-                        <circle cx="220" cy="340" r="35" fill="#fbc02d" opacity="0.2"/>
-                    </svg>
+    // 2. KHỞI TẠO DOM LOADER
+    const loaderContainer = document.createElement('div');
+    loaderContainer.id = 'hpok-global-loader';
+    loaderContainer.innerHTML = `
+        <canvas id="midautumn-canvas"></canvas>
+        <div class="loader-content">
+            <div class="decor-corner top-left"></div>
+            <div class="decor-corner top-right"></div>
+            <div class="decor-corner bottom-left"></div>
+            <div class="decor-corner bottom-right"></div>
+
+            <div class="celebration-badge">🌕 Đêm Hội Rước Đèn 2026 🏮</div>
+            
+            <div class="moon-title-wrap">
+                <span class="moon-icon-bg">🌕</span>
+                <h1 class="hpok-title">HPOK VIP MID-AUTUMN</h1>
+                <div class="hpok-subtitle">Hệ Thống Trò Chơi Giải Trí Cao Cấp</div>
+            </div>
+
+            <div class="progress-box">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="hpok-progress-fill"></div>
                 </div>
-
-                <div class="brand-title">HPOK</div>
-
-                <div class="progress-wrapper">
-                    <div class="loading-info">
-                        <span id="status-text">Đang thắp đèn trông trăng...</span>
-                        <span id="load-pct">0%</span>
-                    </div>
-                    <div class="track-bar">
-                        <div class="fill-bar" id="load-bar"></div>
-                    </div>
+                <div class="progress-text-wrap">
+                    <span class="status-msg" id="hpok-status-text">Đang tải tài nguyên Đêm Rằm...</span>
+                    <span class="percent-num" id="hpok-percent-text">0%</span>
                 </div>
+            </div>
 
-                <div class="footer-tag">PHIÊN BẢN ĐÊM RẰM TẾT TRUNG THU • HPOK 2026</div>
+            <div class="midautumn-footer">
+                <span>🥮 Chúc Quý Khách Vui Tết Trung Thu - Rước Lộc Nổ Hũ! 🐇</span>
             </div>
         </div>
     `;
+    document.body.appendChild(loaderContainer);
 
-    // 3. LOGIC HIỆU ỨNG ĐÈN LỒNG BAY (Floating Lanterns) & SAO ĐÊM
-    function initMidAutumnEffects() {
-        const canvas = document.getElementById('midautumn-canvas');
-        const ctx = canvas.getContext('2d');
-        let lanterns = [];
-        let stars = [];
+    // 3. CANVAS ENGINE: HIỆU ỨNG ĐÈN LỒNG, TRĂNG, SAO BĂNG & PHÁO HOÀNG GIA
+    const canvas = document.getElementById('midautumn-canvas');
+    const ctx = canvas.getContext('2d');
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
 
-        // Khởi tạo sao đêm
-        for (let i = 0; i < 60; i++) {
-            stars.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 2,
-                alpha: Math.random(),
-                speed: Math.random() * 0.02 + 0.005
-            });
+    window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    });
+
+    // Mảng lưu trữ các hạt hiệu ứng
+    const lanterns = [];
+    const stars = [];
+    const shootingStars = [];
+    const rabbits = [];
+
+    // Tạo sao nền
+    for (let i = 0; i < 120; i++) {
+        stars.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            size: Math.random() * 2,
+            alpha: Math.random(),
+            speed: Math.random() * 0.02 + 0.005
+        });
+    }
+
+    // Lớp Đèn Lồng (Lantern)
+    class Lantern {
+        constructor() {
+            this.reset();
         }
 
-        // Lớp Đèn Lồng
-        class Lantern {
-            constructor() {
+        reset() {
+            this.x = Math.random() * width;
+            this.y = height + Math.random() * 100 + 50;
+            this.speedY = Math.random() * 0.8 + 0.4;
+            this.speedX = Math.sin(Math.random() * Math.PI) * 0.5;
+            this.size = Math.random() * 14 + 18;
+            this.swing = Math.random() * 0.05;
+            this.swingAngle = Math.random() * Math.PI * 2;
+            this.alpha = Math.random() * 0.5 + 0.5;
+            this.hue = Math.floor(Math.random() * 30) + 10; // Tông màu đỏ vàng trung thu
+        }
+
+        update() {
+            this.y -= this.speedY;
+            this.swingAngle += this.swing;
+            this.x += Math.sin(this.swingAngle) * 0.4 + this.speedX;
+
+            if (this.y < -60) {
                 this.reset();
-                this.y = Math.random() * canvas.height; // Phân bổ đều ban đầu
-            }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = canvas.height + Math.random() * 100 + 20;
-                this.speed = Math.random() * 0.8 + 0.4;
-                this.size = Math.random() * 12 + 10;
-                this.swing = Math.random() * 0.02;
-                this.swingAngle = Math.random() * Math.PI * 2;
-                this.alpha = Math.random() * 0.5 + 0.5;
-            }
-            update() {
-                this.y -= this.speed;
-                this.swingAngle += this.swing;
-                this.x += Math.sin(this.swingAngle) * 0.5;
-                if (this.y < -30) this.reset();
-            }
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                
-                // Ánh sáng tỏa ra từ đèn lồng
-                const glow = ctx.createRadialGradient(this.x, this.y, 2, this.x, this.y, this.size * 1.8);
-                glow.addColorStop(0, 'rgba(255, 179, 0, 0.8)');
-                glow.addColorStop(1, 'rgba(255, 87, 34, 0)');
-                ctx.fillStyle = glow;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size * 1.8, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Thân đèn lồng
-                ctx.fillStyle = '#ff3d00';
-                ctx.beginPath();
-                ctx.ellipse(this.x, this.y, this.size * 0.7, this.size, 0, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Lõi sáng bên trong
-                ctx.fillStyle = '#fff59d';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size * 0.3, 0, Math.PI * 2);
-                ctx.fill();
-
-                ctx.restore();
             }
         }
 
-        for (let i = 0; i < 25; i++) lanterns.push(new Lantern());
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Tỏa sáng bao quanh đèn lồng
+            const radialGlow = ctx.createRadialGradient(0, 0, 2, 0, 0, this.size * 1.8);
+            radialGlow.addColorStop(0, `hsla(${this.hue}, 100%, 60%, ${this.alpha * 0.8})`);
+            radialGlow.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = radialGlow;
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size * 1.8, 0, Math.PI * 2);
+            ctx.fill();
 
-            // Vẽ sao lấp lánh
-            stars.forEach(s => {
-                s.alpha += s.speed;
-                if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
-                ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(s.alpha)})`;
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
+            // Thân Đèn Lồng
+            ctx.fillStyle = `hsla(${this.hue}, 90%, 50%, ${this.alpha})`;
+            ctx.beginPath();
+            ctx.ellipse(0, 0, this.size * 0.8, this.size, 0, 0, Math.PI * 2);
+            ctx.fill();
 
-            // Vẽ đèn lồng bay
-            lanterns.forEach(l => {
-                l.update();
-                l.draw();
-            });
+            // Viền vàng trên & dưới
+            ctx.fillStyle = '#ffd700';
+            ctx.fillRect(-this.size * 0.5, -this.size - 2, this.size, 3);
+            ctx.fillRect(-this.size * 0.5, this.size - 1, this.size, 3);
 
-            requestAnimationFrame(animate);
+            // Tua rua treo dưới
+            ctx.strokeStyle = '#ffd700';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(0, this.size);
+            ctx.lineTo(0, this.size + 12);
+            ctx.stroke();
+
+            ctx.restore();
         }
-        animate();
     }
 
-    // 4. KHỞI CHẠY HỆ THỐNG
-    function startLoading() {
-        const div = document.createElement('div');
-        div.innerHTML = loaderHTML;
-        document.body.appendChild(div.firstElementChild);
-        document.body.classList.add('no-scroll');
+    // Lớp Mưa Sao Băng (Shooting Star)
+    class ShootingStar {
+        constructor() {
+            this.reset();
+        }
 
-        initMidAutumnEffects();
+        reset() {
+            this.x = Math.random() * width * 1.5 - width * 0.5;
+            this.y = -50;
+            this.length = Math.random() * 80 + 40;
+            this.speed = Math.random() * 10 + 6;
+            this.alpha = 1;
+            this.active = false;
+        }
 
-        const bar = document.getElementById('load-bar');
-        const pctTxt = document.getElementById('load-pct');
-        const statusTxt = document.getElementById('status-text');
-        let progress = 0;
+        update() {
+            if (!this.active) {
+                if (Math.random() < 0.005) this.active = true;
+                return;
+            }
+            this.x += this.speed;
+            this.y += this.speed * 0.6;
+            this.alpha -= 0.015;
 
-        const messages = [
-            "Pha trà ngắm trăng...", 
-            "Thắp đèn lồng Rằm...", 
-            "Nhận quà Trung Thu X3...", 
-            "Rước đèn vào Game ngay!"
-        ];
+            if (this.alpha <= 0 || this.y > height || this.x > width) {
+                this.reset();
+            }
+        }
 
-        const interval = setInterval(() => {
-            progress += Math.floor(Math.random() * 5) + 2;
-            
-            if (progress < 25) statusTxt.innerText = messages[0];
-            else if (progress < 60) statusTxt.innerText = messages[1];
-            else if (progress < 90) statusTxt.innerText = messages[2];
-            else statusTxt.innerText = messages[3];
+        draw() {
+            if (!this.active) return;
+            ctx.save();
+            const grad = ctx.createLinearGradient(this.x, this.y, this.x - this.length, this.y - this.length * 0.6);
+            grad.addColorStop(0, `rgba(255, 235, 59, ${this.alpha})`);
+            grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(this.x, this.y);
+            ctx.lineTo(this.x - this.length, this.y - this.length * 0.6);
+            ctx.stroke();
+            ctx.restore();
+        }
+    }
 
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(interval);
+    // Khởi tạo các đối tượng
+    for (let i = 0; i < 25; i++) lanterns.push(new Lantern());
+    for (let i = 0; i < 4; i++) shootingStars.push(new ShootingStar());
+
+    // Loop Animation
+    function renderCanvas() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Vẽ Sao Đêm Lấp Lánh
+        stars.forEach(s => {
+            s.alpha += s.speed;
+            if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
+            ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(s.alpha)})`;
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+        // Vẽ Mưa Sao Băng
+        shootingStars.forEach(ss => {
+            ss.update();
+            ss.draw();
+        });
+
+        // Vẽ Đèn Lồng
+        lanterns.forEach(l => {
+            l.update();
+            l.draw();
+        });
+
+        requestAnimationFrame(renderCanvas);
+    }
+    renderCanvas();
+
+    // 4. TIẾN TRÌNH LOADER & GIẢ LẬP TẢI DỮ LIỆU BẮT MẮT
+    const fillEl = document.getElementById('hpok-progress-fill');
+    const percentEl = document.getElementById('hpok-percent-text');
+    const statusEl = document.getElementById('hpok-status-text');
+
+    const statusMessages = [
+        "Đang kết nối máy chủ Đêm Rằm...",
+        "Tải dữ liệu Game Nổ Hũ & Bắn Cá...",
+        "Chuẩn bị quà tặng Trung Thu +88K...",
+        "Khởi tạo hiệu ứng Live Casino...",
+        "Hoàn tất! Đang vào sảnh HPOK..."
+    ];
+
+    let currentPercent = 0;
+
+    const progressInterval = setInterval(() => {
+        // Tăng phần trăm thông minh
+        const increment = Math.floor(Math.random() * 8) + 3;
+        currentPercent += increment;
+
+        if (currentPercent > 100) currentPercent = 100;
+
+        fillEl.style.width = currentPercent + '%';
+        percentEl.innerText = currentPercent + '%';
+
+        // Đổi thông báo theo tiến trình
+        if (currentPercent < 25) {
+            statusEl.innerText = statusMessages[0];
+        } else if (currentPercent < 55) {
+            statusEl.innerText = statusMessages[1];
+        } else if (currentPercent < 80) {
+            statusEl.innerText = statusMessages[2];
+        } else if (currentPercent < 95) {
+            statusEl.innerText = statusMessages[3];
+        } else {
+            statusEl.innerText = statusMessages[4];
+        }
+
+        // Khi tải xong 100%
+        if (currentPercent >= 100) {
+            clearInterval(progressInterval);
+            setTimeout(() => {
+                loaderContainer.style.opacity = '0';
+                loaderContainer.style.transform = 'scale(1.05)';
                 setTimeout(() => {
-                    const overlay = document.getElementById('hpok-global-loader');
-                    overlay.style.opacity = '0';
-                    document.body.classList.remove('no-scroll');
-                    setTimeout(() => overlay.remove(), 800);
-                }, 800);
-            }
+                    loaderContainer.remove();
+                }, 1000);
+            }, 500);
+        }
+    }, 120);
 
-            if (bar) bar.style.width = progress + '%';
-            if (pctTxt) pctTxt.innerText = progress + '%';
-        }, 120);
-    }
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', startLoading);
-    } else {
-        startLoading();
-    }
 })();
