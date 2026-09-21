@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>HPOK OFFICIAL VIP - PREMIUM</title>
+    <script src="config.js?v=25"></script> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">   
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TP2FSVQZ');</script>
+
+    <style>
+        :root {
+            --primary: #ff2d55;
+            --gold: #ffd700;
+            --bg: #080808;
+            --card: #151515;
+            --glass: rgba(255, 255, 255, 0.08);
+            --shadow: 0 0 20px rgba(255, 45, 85, 0.4);
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body {
+            margin: 0; font-family: 'Lexend', sans-serif;
+            background: var(--bg); color: #fff;
+            overflow-x: hidden; padding-bottom: 110px;
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 18px; background: rgba(0,0,0,0.9);
+            position: sticky; top: 0; z-index: 1000;
+            border-bottom: 1px solid rgba(255, 45, 85, 0.3);
+            backdrop-filter: blur(15px);
+        }
+        .logo {
+            font-size: 24px; font-weight: 900; letter-spacing: -0.5px;
+            background: linear-gradient(90deg, #fff, var(--primary), #fff);
+            background-size: 200%; -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; animation: shine 3s linear infinite;
+        }
+        .btn-app {
+            background: var(--primary); padding: 7px 15px; border-radius: 50px;
+            font-size: 11px; font-weight: 800; color: #fff; text-decoration: none;
+            box-shadow: var(--shadow);
+        }
+
+        /* --- BANNER --- */
+        .slider { width: 100%; height: 190px; overflow: hidden; position: relative; }
+        .slides { display: flex; transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1); height: 100%; }
+        .slides img { width: 100%; flex-shrink: 0; object-fit: cover; }
+
+        /* --- NEWS --- */
+        .news {
+            background: #111; padding: 10px 15px; display: flex; align-items: center;
+            font-size: 12px; color: var(--gold); border-bottom: 1px solid #222;
+        }
+        .news marquee { margin-left: 10px; color: #eee; }
+
+        /* --- AUTH BAR --- */
+        .auth-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 20px 15px; position: relative; }
+        .auth-btn {
+            padding: 14px; border-radius: 12px; text-align: center; text-decoration: none;
+            font-weight: 800; font-size: 14px; text-transform: uppercase;
+        }
+        .btn-reg { background: linear-gradient(45deg, #ff1a1a, var(--primary)); color: #fff; box-shadow: var(--shadow); }
+        .btn-login { border: 1px solid var(--gold); color: var(--gold); background: var(--glass); }
+        
+        /* Hiển thị khi đã login */
+        .user-logged {
+            grid-column: span 2; background: var(--glass); padding: 15px; 
+            border-radius: 15px; border: 1px dashed var(--gold); text-align: center; display: none;
+        }
+
+        .bonus-tag {
+            position: absolute; top: 2px; left: 25px; background: #ff9800;
+            color: #000; font-size: 9px; font-weight: 900; padding: 2px 8px; border-radius: 5px;
+            border: 1px solid #fff; animation: bounce 2s infinite; z-index: 10;
+        }
+
+        /* --- TOP TABS (CATEGORY) --- */
+        .top-tabs {
+            display: flex; overflow-x: auto; gap: 18px; padding: 10px 15px 20px;
+            scrollbar-width: none;
+        }
+        .top-tabs::-webkit-scrollbar { display: none; }
+        .tab-item { flex: 0 0 auto; text-align: center; text-decoration: none; }
+        .tab-icon {
+            width: 58px; height: 58px; background: var(--card); border-radius: 18px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+            margin-bottom: 8px; border: 1px solid rgba(255,255,255,0.05); transition: 0.3s;
+        }
+        .tab-item span { font-size: 10px; font-weight: 700; color: #999; }
+
+        /* --- SECTION HEADER --- */
+        .section-header {
+            display: flex; align-items: center; justify-content: center;
+            margin: 20px 0; text-align: center;
+        }
+        .section-header::before, .section-header::after {
+            content: ""; flex: 1; height: 1px;
+            background: linear-gradient(to right, transparent, #333, transparent);
+            margin: 0 15px;
+        }
+        .section-title {
+            font-size: 17px; font-weight: 900; color: var(--gold);
+            text-transform: uppercase; letter-spacing: 1.5px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+
+       /* --- 7. TAB DANH MỤC GAME (CĂN GIỮA) --- */
+        .game-tabs {
+            background: #0a0a0a; padding: 15px 0;
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            position: sticky; top: 52px; z-index: 100;
+        }
+        .tab-scroll { 
+            display: flex; overflow-x: auto; padding: 0 15px; gap: 15px; 
+            scroll-behavior: smooth; justify-content: flex-start;
+        }
+        @media (min-width: 500px) { .tab-scroll { justify-content: center; } }
+        .tab-scroll::-webkit-scrollbar { display: none; }
+        .tab-item { flex: 0 0 72px; display: flex; flex-direction: column; align-items: center; text-decoration: none; }
+        .tab-square {
+            width: 58px; height: 58px; border-radius: 16px;
+            background: #1a1a1a; border: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; margin-bottom: 8px; transition: 0.3s; color: #666;
+        }
+        .tab-item.active .tab-square { background: var(--primary); color: #fff !important; box-shadow: 0 0 10px var(--primary); }
+        .tab-item.active span { color: var(--primary); font-weight: 900; }
+        .tab-item span { font-size: 10px; font-weight: 800; color: #666; }
+
+        /* --- 8. GAME SECTIONS & TICKER --- */
+        .game-section { padding-bottom: 10px; background: #050505; }
+        .section-title { 
+            font-size: 16px; font-weight: 800; text-align: center; color: #fff;
+            padding: 20px 15px 5px; display: flex; align-items: center; justify-content: center; gap: 10px;
+            text-transform: uppercase;
+        }
+        .section-title::before, .section-title::after {
+            content: ''; width: 20px; height: 2px; background: var(--primary);
+            border-radius: 10px; box-shadow: 0 0 5px var(--primary);
+        }
+        /* --- Bắn Cá --- */
+    .game-section .game-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Chia 2 cột bằng nhau */
+        gap: 10px; /* Khoảng cách giữa các game */
+        padding: 10px;
+    }
+    .game-card img {
+        width: 100%;
+        border-radius: 8px;
+        display: block;
+    }
+
+        /* THÔNG BÁO DƯỚI TIÊU ĐỀ */
+        .section-win-ticker {
+            margin: 5px 15px 15px; background: rgba(255, 255, 255, 0.03);
+            border-radius: 50px; padding: 4px 15px; border: 1px solid rgba(255, 215, 0, 0.1);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .section-win-ticker i { color: var(--gold); font-size: 12px; }
+        .section-win-ticker marquee { font-size: 11px; color: #aaa; font-weight: 600; }
+        .section-win-ticker b { color: #00ff88; }
+
+        .game-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 5px 15px 20px; }
+        .game-card { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); background: #1a1a1a; }
+        .game-card img { width: 100%; display: block; object-fit: cover; }
+
+        /* --- 9. FOOTER --- */
+        .footer {
+            position: fixed; bottom: 0; width: 100%; height: 70px;
+            background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex; justify-content: space-around; align-items: center; z-index: 2000;
+        }
+        .f-btn { text-decoration: none; color: #666; display: flex; flex-direction: column; align-items: center; flex: 1; gap: 4px; }
+        .f-btn i { font-size: 20px; }
+        .f-btn span { font-size: 10px; font-weight: 600; }
+        .f-btn.active { color: var(--primary); }
+        .f-btn.center-btn { margin-top: -38px; }
+        .f-btn.center-btn .icon-circle {
+            width: 58px; height: 58px; background: linear-gradient(135deg, #ff2d55 0%, #8e0e27 100%);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: #fff; box-shadow: 0 8px 20px rgba(255, 45, 85, 0.4); border: 4px solid #050505;
+        }
+       /* --- WINNER LIST PREMIUM STYLE --- */
+.winner-box {
+    margin: 20px 10px;
+    background: #111111;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.winner-title {
+    padding: 15px;
+    text-align: center;
+    font-weight: 800;
+    color: #ffd700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    background: linear-gradient(to bottom, #1a1a1a, #111);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Chia cột theo tỷ lệ % cố định */
+.row-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.col-sanh { width: 25%; display: flex; align-items: center; gap: 8px; }
+.col-game { width: 30%; text-align: left; }
+.col-user { width: 25%; text-align: center; color: #888 !important; }
+.col-money { width: 20%; text-align: right; font-weight: 900; }
+
+.header-row {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+}
+
+.header-text {
+    font-size: 10px;
+    color: #555;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Style ảnh sảnh nhỏ gọn như ảnh mẫu */
+.lobby-icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    background: #000;
+    border-radius: 5px;
+    padding: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lobby-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #ffd700;
+}
+
+.game-label {
+    font-size: 11px;
+    color: #ccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-label { font-size: 11px; }
+
+.money-label { font-size: 12px; color: #00ff88; }
+.money-label.hot { color: #ff2d55; text-shadow: 0 0 8px rgba(255, 45, 85, 0.4); }
+
+/* Cuộn mượt */
+.scroll-container { height: 350px; overflow: hidden; position: relative; }
+.scroll-track { animation: scrollLoop 20s linear infinite; }
+.scroll-track:hover { animation-play-state: paused; }
+
+@keyframes scrollLoop {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+ 
+    /* Đảm bảo chia 2 cột đều nhau sảnh bài */
+    .game-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+    .game-card img {
+        width: 100%;
+        border-radius: 10px;
+        display: block;
+        cursor: pointer;
+    }
+      /* Grid Layout cho 2 sảnh */
+    .sports-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+    
+    .game-card-sports { 
+        position: relative; 
+        border-radius: 12px; 
+        overflow: hidden; 
+        background: #fff; 
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        cursor: pointer; 
+        transition: transform 0.2s ease;
+        border: 1px solid #ddd;
+    }
+
+    .game-card-sports:active { transform: scale(0.97); }
+
+    .game-card-sports img { 
+        width: 100%; 
+        display: block; 
+        object-fit: cover;
+    }
+
+    /* GRID LAYOUT 2 CỘT */
+    .game-grid-3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .game-featured { grid-column: span 2; }
+    
+    .game-card-3 { position: relative; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.15); border: 1px solid #ddd; cursor: pointer; }
+    .game-card-3 img { width: 100%; display: block; transition: 0.3s; }
+    .game-card-3:hover img { transform: scale(1.05); }
+    .hot-badge { position: absolute; top: 0; right: 0; background: #ff0000; color: #fff; padding: 2px 10px; font-size: 11px; font-weight: bold; border-bottom-left-radius: 10px; z-index: 5; }
+    .access-label { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: #ffcc00; text-align: center; padding: 8px 0; font-size: 12px; font-weight: bold; }
+    
+     #n8.game-section { background: #fff5f5; padding: 15px; border-radius: 15px; font-family: 'Arial', sans-serif; }
+    #n8 .section-title { color: #c62828; text-align: center; font-weight: 900; font-size: 22px; margin-bottom: 15px; text-transform: uppercase; }
+    #n8 .section-win-ticker { background: #fff; padding: 10px; border-radius: 50px; display: flex; align-items: center; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(198, 40, 40, 0.1); }
+    
+    .game-grid-3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .game-card-3 { position: relative; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer; transition: 0.2s; border: 1px solid #eee; }
+    .game-card-3:active { transform: scale(0.96); }
+    .game-card-3 img { width: 100%; display: block; object-fit: cover; }
+
+        /* --- BOTTOM DOCK BAR --- */
+        .bottom-nav {
+            position: fixed; bottom: 15px; left: 15px; right: 15px;
+            background: rgba(20, 20, 20, 0.95); height: 70px;
+            border-radius: 25px; display: flex; justify-content: space-around;
+            align-items: center; border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px); z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+        .nav-link {
+            text-decoration: none; color: #666; text-align: center;
+            display: flex; flex-direction: column; align-items: center; gap: 4px;
+        }
+        .nav-link i { font-size: 20px; }
+        .nav-link span { font-size: 10px; font-weight: 700; }
+        .nav-link.active { color: var(--primary); }
+
+        @keyframes shine { 0%{background-position:-200%} 100%{background-position:200%} }
+        @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+   /* Chống chọn text và tương tác lạ */
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/* Badge máy chủ tại Hải Phòng */
+.server-badge {
+    border-left: 3px solid #e60000; /* Màu đỏ Hải Phòng */
+}
+
+.server-badge .city {
+    color: #fff;
+    content: "HAI PHONG, VIET NAM";
+}
+
+/* Watermark chìm của HPOK HP */
+body::after {
+    content: "HPOK GLOBAL - HAI PHONG LEGACY SYSTEM";
+    color: rgba(230, 0, 0, 0.05); /* Đỏ mờ cực sang */
+}
+/* --- MODAL HPOK STYLE --- */
+.modal-hpok {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px);
+    z-index: 9999; justify-content: center; align-items: center; padding: 20px;
+}
+.modal-hpok-content {
+    background: linear-gradient(145deg, #1a1a1a, #080808);
+    width: 100%; max-width: 350px; border-radius: 24px;
+    border: 1px solid rgba(255, 45, 85, 0.3);
+    padding: 30px 20px; text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    animation: modalShow 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+@keyframes modalShow {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.modal-hpok-content h3 { color: var(--gold); margin: 0 0 15px; font-size: 20px; font-weight: 900; }
+.modal-hpok-content p { color: #ccc; font-size: 14px; margin-bottom: 25px; line-height: 1.5; }
+
+.modal-hpok-btns { display: flex; flex-direction: column; gap: 12px; }
+.m-btn {
+    padding: 14px; border-radius: 12px; border: none; font-weight: 800;
+    font-size: 14px; cursor: pointer; transition: 0.3s; text-transform: uppercase;
+}
+.m-btn-yes { background: var(--primary); color: #fff; box-shadow: var(--shadow); }
+.m-btn-no { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+.m-btn:active { transform: scale(0.95); }
+/* --- HPOK PREMIUM MODAL UPGRADE --- */
+.modal-hpok-content {
+    background: linear-gradient(145deg, #0d0d0d, #1a1a1a);
+    border: 2px solid var(--primary);
+    box-shadow: 0 0 30px rgba(255, 45, 85, 0.5), inset 0 0 15px rgba(255, 215, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hiệu ứng tia sáng quét ngang Modal */
+.modal-hpok-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: modalShine 4s infinite;
+}
+
+@keyframes modalShine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+/* Icon chính động */
+.modal-hpok-content .main-icon {
+    font-size: 55px;
+    background: linear-gradient(to bottom, var(--gold), #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+    display: block;
+    animation: iconPulse 1.5s infinite;
+}
+
+@keyframes iconPulse {
+    0% { transform: scale(1); filter: drop-shadow(0 0 5px var(--gold)); }
+    50% { transform: scale(1.1); filter: drop-shadow(0 0 15px var(--gold)); }
+    100% { transform: scale(1); filter: drop-shadow(0 0 5px var(--gold)); }
+}
+
+/* Nút bấm Premium */
+.modal-hpok-btns { gap: 15px; margin-top: 20px; }
+
+.m-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: 55px;
+    border-radius: 16px;
+    font-size: 15px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.m-btn-yes {
+    background: linear-gradient(90deg, #ff2d55, #ff00cc);
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(255, 45, 85, 0.4);
+    animation: btnShake 5s infinite;
+}
+
+.m-btn-no {
+    background: rgba(255, 215, 0, 0.05);
+    border: 1.5px solid var(--gold) !important;
+    color: var(--gold);
+}
+
+@keyframes btnShake {
+    0%, 90%, 100% { transform: scale(1); }
+    92% { transform: scale(1.03) rotate(1deg); }
+    94% { transform: scale(1.03) rotate(-1deg); }
+}
+
+.m-btn i { font-size: 18px; animation: iconFloat 2s infinite ease-in-out; }
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+    </style>
+</head>
+ 
+<body>
+
+<header>
+    <a href="home.html" style="color:var(--primary); font-size:22px;"><i class="fa-solid fa-bars-staggered"></i></a>
+    <div class="logo">HPOK VIP</div>
+    <a href="#" class="btn-app">TẢI APP</a>
+</header>
+
+<div class="slider">
+    <div class="slides" id="slides">
+        <img src="https://i.postimg.cc/TY72yWyk/IMG-3695.png">
+        <img src="https://i.postimg.cc/QNn1DVXy/IMG-3697.png">
+    </div>
+</div>
+
+<div class="news">
+    <i class="fa-solid fa-bullhorn"></i>
+    <marquee>Hệ thống nạp rút tự động 24/7 đã sẵn sàng. Chúc quý khách trải nghiệm vui vẻ tại HPOK!</marquee>
+</div>
+
+<div class="auth-bar" id="authBar">
+    <div class="bonus-tag" id="bonusTag">FREE +88K</div>
+    <a href="register.html" class="auth-btn btn-reg">Đăng Ký</a>
+    <a href="login.html" class="auth-btn btn-login">Đăng Nhập</a>
+    
+    <div class="user-logged" id="userLogged">
+        <span style="color:#aaa">Xin chào,</span> <b id="displayUser" style="color:var(--gold)">--</b>
+        <div style="margin-top:10px;">
+            <a href="home.html" style="color:var(--primary); text-decoration:none; font-weight:bold; font-size:14px;">VÀO SẢNH GAME <i class="fa-solid fa-circle-play"></i></a>
+        </div>
+    </div>
+</div>
+
+<div class="top-tabs">
+    <a href="login.html" class="tab-item"><div class="tab-icon" style="color:#ff4e50"><i class="fa-solid fa-clover"></i></div><span>NỔ HŨ</span></a>
+    <a href="login.html" class="tab-item"><div class="tab-icon" style="color:#0072ff"><i class="fa-solid fa-fish-fins"></i></div><span>BẮN CÁ</span></a>
+    <a href="login.html" class="tab-item"><div class="tab-icon" style="color:#e91e63"><i class="fa-solid fa-dice"></i></div><span>TÀI XỈU</span></a>
+    <a href="home.html" class="tab-item"><div class="tab-icon" style="color:#fff"><i class="fa-solid fa-circle-dot"></i></div><span>XÓC ĐĨA</span></a>
+    <a href="home.html" class="tab-item"><div class="tab-icon" style="color:#ffd700"><i class="fa-solid fa-futbol"></i></div><span>BÓNG ĐÁ</span></a>
+    <a href="home.html" class="tab-item"><div class="tab-icon" style="color:#f5576c"><i class="fa-solid fa-id-card"></i></div><span>BÀI</span></a>
+</div>
+
+<section id="n1" class="game-section">
+        <div class="section-title">✨ Nổ Hũ ✨</div>
+        <div class="section-win-ticker">
+            <i class="fa-solid fa-trophy"></i>
+            <marquee>Chúc mừng <b>Văn Tú***</b> thắng <b>+2,400,000₫</b> • <b>LộcPhát***</b> nổ hũ <b>+10,500,000₫</b></marquee>
+        </div>
+     <div class="game-grid">
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mythicalguardians')">
+        <img src="https://drive.google.com/thumbnail?id=1RULcgo3OiRgq3-nEqqdQVyy0GsRPDZVi&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mahjongwins2')">
+        <img src="https://drive.google.com/thumbnail?id=13VI0CJzWdRkK9YETb4oOEQUEjJXZWnrs&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/sugarrush')">
+        <img src="https://drive.google.com/thumbnail?id=1xco-2Lf8AD6o9gsT-DR0bMinXDransbH&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mahjongways')">
+        <img src="https://drive.google.com/thumbnail?id=17Yeaf-mcBIaWZi2VNg6nMsdNSSdUR-0-&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/treasuresofaztec')">
+        <img src="https://drive.google.com/thumbnail?id=10pkvs_IbdqmprzgIhRObUteHKYaRmAXb&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/luckyneko')">
+        <img src="https://drive.google.com/thumbnail?id=1L44JEYCaDpj_avYPeEok4oyFuNkDmb-Y&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/fortunerabbit')">
+        <img src="https://drive.google.com/thumbnail?id=11upSq5AZD8__-dD8S9tiGJqgrEC068Zc&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/fortunetiger')">
+        <img src="https://drive.google.com/thumbnail?id=1j7TU3afS_jd0ZVTKmVrFD_mbgHGomsFk&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/caishenwins')">
+        <img src="https://drive.google.com/thumbnail?id=13MM0fIMqonGWX0jYKU7hXJWDnxAHW1GQ&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/songkransplash')">
+        <img src="https://drive.google.com/thumbnail?id=1aB3f8qwzzJC0Z-AMpbCO06p5txSm0K-W&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mythicalsand')">
+        <img src="https://drive.google.com/thumbnail?id=1PhnzOLzPvSJTQAL_tl4kt7im9rNI9uha&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/zeusvstyphon')">
+        <img src="https://drive.google.com/thumbnail?id=1BLK3DVo_a8hwDgzO6jomEz9UenLVvtlI&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/gatesofolympus1000')">
+        <img src="https://drive.google.com/thumbnail?id=1hL3OEUrnOaGfMlDRJyl1G2WwXfovPL44&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mahjongwinsgongxifacai')">
+        <img src="https://drive.google.com/thumbnail?id=1FjM7jh7EJ0q2RP4jc22d8fOtJfDLDJNC&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/supergolfdrive')">
+        <img src="https://drive.google.com/thumbnail?id=11rBe_tZxJaKE4NAbezeHIkQR9ogpvnB3&sz=w1000">
+    </div>
+
+    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/knockoutriches')">
+        <img src="https://drive.google.com/thumbnail?id=1Bqxzp2n5qbj5rgvjhc0a1CUbhds1J-d8&sz=w1000">
+    </div>
+</div>
+
+    </section>
+
+    <section id="n2" class="game-section">
+    <div class="section-title">🃏 Game Bài 🃏</div>
+    <div class="section-win-ticker">
+        <i class="fa-solid fa-crown"></i>
+        <marquee><b>Cao Thủ***</b> ăn sập bàn Poker <b>+5,200,000₫</b> • <b>Hải Đăng***</b> thắng <b>+1,500,000₫</b></marquee>
+    </div>
+    
+    <div class="game-grid">
+        <div class="game-card" onclick="playGame('URL_GAME_BACCARAT')">
+            <img src="https://drive.google.com/thumbnail?id=1241BBakUGFrhciJmeXCtsN5tt0qTkKPN&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('URL_GAME_CHAN')">
+            <img src="https://drive.google.com/thumbnail?id=168RoN9fjG-Xorct_Nw8mWMSMKc8Asfda&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('URL_GAME_3_CAY')">
+            <img src="https://drive.google.com/thumbnail?id=162K3FsZzBQEq0RRRWVB7OdMHptuaDtEr&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('URL_GAME_SAM_LOC')">
+            <img src="https://drive.google.com/thumbnail?id=1Xe1OVPTgN3rOeOxPuYAkTxqgrGcD-O-7&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('URL_GAME_XI_TO')">
+            <img src="https://drive.google.com/thumbnail?id=1mwVHtrjhN7oUr0Rba9Nhi5Qtsaw7nbfy&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('URL_GAME_LIENG')">
+            <img src="https://drive.google.com/thumbnail?id=1PeErIBHpwnRrxG39AkrEVp4GpbH9DOfM&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('URL_GAME_PHOM')">
+            <img src="https://drive.google.com/thumbnail?id=1zgGKeZKLdWNdjJc81GbaQp5qxGoRNRv4&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('URL_GAME_TLMB')">
+            <img src="https://drive.google.com/thumbnail?id=1AxZgXvrB9QsCvDM5QBToVPu91euhP9hU&sz=w1000">
+        </div>
+    </div>
+
+   </section>
+
+    <section id="n3" class="game-section">
+    <div class="section-title">🌊 Bắn Cá 🌊</div>
+    <div class="section-win-ticker">
+        <i class="fa-solid fa-fish"></i>
+        <marquee>Sát thủ <b>Jack***</b> vừa hạ Boss nhận ngay <b>+8,800,000₫</b></marquee>
+    </div>
+
+    <div class="game-grid">
+        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/32?showGame=true')">
+            <img src="https://drive.google.com/thumbnail?id=1yD8qREamml3v5wIDSTUG9D0acDflzvtL&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/42?showGame=true')">
+            <img src="https://drive.google.com/thumbnail?id=1uMrLbVFU4MwgGc4uk6Y5SepGKA2CzqpG&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/43?showGame=true')">
+            <img src="https://drive.google.com/thumbnail?id=1hiob2oqorErNU97IbQzE2C2w2XKizQ3b&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/38?showGame=true')">
+            <img src="https://drive.google.com/thumbnail?id=1QPkWkzf6ptz2Ex6OsJJvm1HEbuBiZUbv&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/41?showGame=true')">
+            <img src="https://drive.google.com/thumbnail?id=1F1DJ4RNZGBKLp-6AAb_jHc7Qm8SxKa0t&sz=w1000">
+        </div>
+
+        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/57?showGame=true')">
+            <img src="https://drive.google.com/thumbnail?id=1lINx2saMsrh2mF_7E1fRgixYPF_Ma-sI&sz=w1000">
+        </div>
+    </div>
+ </section>
+
+    <section id="n4" class="game-section">
+    <div class="section-title">💃 Live Casino 💃</div>
+    
+    <div class="section-win-ticker">
+        <i class="fa-solid fa-clover"></i>
+        <marquee scrollamount="5"><b>Thành viên VIP***</b> vừa thắng sảnh AE Sexy <b>+45,000,000₫</b> • Hệ thống nạp rút tự động 30s</marquee>
+    </div>
+
+    <div class="game-grid-3">
+        <div class="game-card-3 game-featured" onclick="launchLiveGame('https://m.livecasinodemo.com', 'Sảnh Casino AE Sexy')">
+            <div class="hot-badge">HOT</div>
+            <img src="https://drive.google.com/thumbnail?id=13vnLU70SB11AjHtnfx134AE2T0HJCcf_&sz=w1000">
+        </div>
+
+        <div class="game-card-3" onclick="launchLiveGame('https://www.evolution.com/our-games/live-casino/', 'Sảnh Evolution')">
+            <img src="https://drive.google.com/thumbnail?id=16ZwFi7MBNXTWYWi3SPVIL4NSTgMfgZdf&sz=w1000">
+        </div>
+
+        <div class="game-card-3" onclick="launchLiveGame('https://www.pragmaticplay.com/en/games/live-casino/', 'Sảnh Pragmatic Play')">
+            <img src="https://drive.google.com/thumbnail?id=1ADcbgrw1_WJFkCrU9wC0be_961OAFYMy&sz=w1000">
+        </div>
+
+        <div class="game-card-3" onclick="launchLiveGame('https://www.dg99.com', 'Sảnh Dream Gaming')">
+            <img src="https://drive.google.com/thumbnail?id=1GPehAVWz4TcimN9d6SeGiTXqMflBEvdT&sz=w1000">
+        </div>
+
+        <div class="game-card-3" onclick="launchLiveGame('https://wm-casino.com', 'Sảnh WM Casino')">
+            <img src="https://drive.google.com/thumbnail?id=1-wbl5OH0tkAk_V7UyQ6pd8vZZ9cAWwPk&sz=w1000">
+        </div>
+
+        <div class="game-card-3" onclick="launchLiveGame('https://www.sa-gaming.com/games', 'Sảnh SA Gaming')">
+            <img src="https://drive.google.com/thumbnail?id=1FOLzszwdMlfcDl4TKCmr2dffII-ZUb7q&sz=w1000">
+        </div>
+
+        <div class="game-card-3" onclick="launchLiveGame('https://www.microgaming.co.uk/games', 'Sảnh Microgaming')">
+            <img src="https://drive.google.com/thumbnail?id=18ywDK9XFumA_S3toJvVldmwoj-gJINcL&sz=w1000">
+        </div>
+
+        <div class="game-card-3" onclick="launchLiveGame('https://www.playtech.com/products/live-casino', 'Sảnh Playtech')">
+            <img src="https://drive.google.com/thumbnail?id=1g4l6-HqeXHtzwwMMGZiyzEn6ofLrUBdZ&sz=w1000">
+        </div>
+
+        <div class="game-card-3" onclick="launchLiveGame('https://www.bbin-global.com/casino', 'Sảnh BBIN')">
+            <img src="https://drive.google.com/thumbnail?id=1MZ3WKWEFFFP914h1e6wE5-C5t0umzvkF&sz=w1000">
+        </div>
+    </div>
+ 
+    </section>
+
+<section id="n7" class="game-section">
+    <div class="section-title">⚽ Bóng Đá ⚽</div>
+    
+    <div class="section-win-ticker">
+        <i class="fa-solid fa-trophy"></i>
+        <marquee scrollamount="5"><b>FanMU***</b> thắng kèo xiên nhận <b>+15,000,000₫</b> • <b>BétThủ***</b> vừa nổ kèo góc <b>+8,200,000₫</b> • Trực tiếp tất cả các giải đấu hàng đầu</marquee>
+    </div>
+
+    <div class="sports-grid">
+        <div class="game-card-sports" onclick="launchSportsGame('https://m.SABA-SPORTS-DEMO.com', 'Sảnh Thể Thao SABA')">
+            <img src="https://drive.google.com/thumbnail?id=1UdtHgYMLYNSp-OpGcRoskHeBsL1VQMhs&sz=w1000" alt="SABA Sports">
+        </div>
+
+        <div class="game-card-sports" onclick="launchSportsGame('https://m.CMD-SPORTS-DEMO.com', 'Sảnh Thể Thao CMD')">
+            <img src="https://drive.google.com/thumbnail?id=1BFe2k_KozgIzQN_27t5gzldMT_0n9jlK&sz=w1000" alt="CMD Sports">
+        </div>
+    </div>
+    </section>
+
+    <section id="n8" class="game-section">
+    <div class="section-title">🎟️ Xổ Số 🎟️</div>
+    
+    <div class="section-win-ticker">
+        <i class="fa-solid fa-ticket"></i>
+        <marquee scrollamount="5"><b>ThầnSố***</b> vừa trúng lô xiên cực lớn <b>+5,000,000₫</b> • <b>LôĐềHọc***</b> nổ đề đặc biệt <b>+12,400,000₫</b> • Tỷ lệ ăn cao nhất thị trường 1 ăn 99</marquee>
+    </div>
+
+    <div class="game-grid-3">
+        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_0', 'Sảnh Xổ Số 1')">
+            <img src="https://drive.google.com/thumbnail?id=1ZSPgvySGq25W2oEg70vhYczKJzprhdkR&sz=w1000" alt="Xổ Số 0">
+        </div>
+
+        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_1', 'Sảnh Xổ Số 2')">
+            <img src="https://drive.google.com/thumbnail?id=1TnlnzftUmSIzE9s3hvU3YuTmaQEJaoSJ&sz=w1000" alt="Xổ Số 1">
+        </div>
+
+        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_2', 'Sảnh Xổ Số 3')">
+            <img src="https://drive.google.com/thumbnail?id=1Xe4ztvE54JIF0U1m9Zt6wPPFI9cG_vQY&sz=w1000" alt="Xổ Số 2">
+        </div>
+
+        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_3', 'Sảnh Xổ Số 4')">
+            <img src="https://drive.google.com/thumbnail?id=1wFllSUIF5fdRBN6y9uT0r--Q7CXq5zi7&sz=w1000" alt="Xổ Số 3">
+        </div>
+
+        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_4', 'Sảnh Xổ Số 5')">
+            <img src="https://drive.google.com/thumbnail?id=1ngbDVd5XQXYntVEsmNcQnPI8ciRaBsB2&sz=w1000" alt="Xổ Số 4">
+        </div>
+
+        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_5', 'Sảnh Xổ Số 6')">
+            <img src="https://drive.google.com/thumbnail?id=1GkT6QqDP0R2_O7hPiTes34D8jhlJj9kU&sz=w1000" alt="Xổ Số 5">
+        </div>
+    </div> 
+      </section>
+
+    <section id="n9" class="game-section">
+    <div class="section-title">🐓 Đá Gà Trực Tiếp 🐓</div>
+    
+    <div class="section-win-ticker">
+        <i class="fa-solid fa-fire-flame-curved"></i>
+        <marquee scrollamount="5"><b>KêThủ99***</b> vừa thắng cược Meron <b>+18,500,000₫</b> • <b>SátThủBồ67***</b> nổ kèo Wala <b>+9,200,000₫</b> • Trực tiếp Thomo hôm nay</marquee>
+    </div>
+
+    <div class="game-grid-3">
+        <div class="game-card-3" onclick="launchCockGame('URL_DA_GA_0', 'Sảnh Đá Gà Thomo')">
+            <div class="hot-badge">LIVE</div>
+            <img src="https://drive.google.com/thumbnail?id=1TooMwE67oUc_um_ZmKIIZpvlkRCTgibT&sz=w1000" alt="Đá Gà 0">
+        </div>
+
+        <div class="game-card-3" onclick="launchCockGame('URL_DA_GA_1', 'Sảnh Đá Gà Philippines')">
+            <img src="https://drive.google.com/thumbnail?id=13Yki5iek0RsI8OAtseUy1gKSipF6F1d7&sz=w1000" alt="Đá Gà 1">
+        </div>
+
+        <div class="game-card-3" onclick="launchCockGame('URL_DA_GA_2', 'Sảnh Đá Gà SV388')">
+            <img src="https://drive.google.com/thumbnail?id=1ut6ciqEkI3v-vVg7ZrQ2RvkXSEdR724b&sz=w1000" alt="Đá Gà 2">
+        </div>
+
+        <div class="game-card-3" onclick="launchCockGame('URL_DA_GA_3', 'Sảnh Đá Gà Quốc Tế')">
+            <img src="https://drive.google.com/thumbnail?id=1AnfsSmYcMPXKjEgSfEYahdAlWs_EOMXA&sz=w1000" alt="Đá Gà 3">
+        </div>
+    </div>  
+  <div class="winner-box">
+    <div class="winner-title">BẢNG VÀNG CHIẾN THẮNG</div>
+    
+    <div class="row-item header-row">
+        <div class="col-sanh"><span class="header-text">SẢNH</span></div>
+        <div class="col-game"><span class="header-text">TRÒ CHƠI</span></div>
+        <div class="col-user"><span class="header-text">TÀI KHOẢN</span></div>
+        <div class="col-money"><span class="header-text">THẮNG</span></div>
+    </div>
+
+    <div class="scroll-container">
+        <div class="scroll-track">
+            <div class="row-item">
+                <div class="col-sanh">
+                    <img src="https://i.postimg.cc/yY3DmPFT/IMG-3725.png" class="lobby-icon">
+                    <span class="lobby-label">EVO</span>
+                </div>
+                <div class="col-game"><span class="game-label">Crazy Time</span></div>
+                <div class="col-user"><span class="user-label">ho***an</span></div>
+                <div class="col-money"><span class="money-label hot">1.520.000</span></div>
+            </div>
+
+            <div class="row-item">
+                <div class="col-sanh">
+                    <img src="https://i.postimg.cc/7YJ53Vgn/IMG-3724.png" class="lobby-icon">
+                    <span class="lobby-label">PP</span>
+                </div>
+                <div class="col-game"><span class="game-label">Gates of Olympus</span></div>
+                <div class="col-user"><span class="user-label">an***77</span></div>
+                <div class="col-money"><span class="money-label">432.900</span></div>
+            </div>
+
+            <div class="row-item">
+                <div class="col-sanh">
+                    <img src="https://i.postimg.cc/htFfpdry/IMG-3730.png" class="lobby-icon">
+                    <span class="lobby-label">JILI</span>
+                </div>
+                <div class="col-game"><span class="game-label">Quyền Vương</span></div>
+                <div class="col-user"><span class="user-label">lo***88</span></div>
+                <div class="col-money"><span class="money-label hot">2.310.500</span></div>
+            </div>
+
+            <div class="row-item">
+                <div class="col-sanh">
+                    <img src="https://i.postimg.cc/yY3DmPFT/IMG-3725.png" class="lobby-icon">
+                    <span class="lobby-label">EVO</span>
+                </div>
+                <div class="col-game"><span class="game-label">Crazy Time</span></div>
+                <div class="col-user"><span class="user-label">ho***an</span></div>
+                <div class="col-money"><span class="money-label hot">1.520.000</span></div>
+            </div>
+        </div>
+    </div>
+<div id="hpokAccountModal" class="modal-hpok">
+    <div class="modal-hpok-content">
+        <i class="fa-solid fa-shield-crown main-icon"></i>
+        
+        <h3 style="letter-spacing: 2px;">HPOK XÁC THỰC</h3>
+        <p>Chào mừng quý khách! Bạn đã có tài khoản thành viên tại <b>HPOK GLOBAL</b> chưa?</p>
+        
+        <div class="modal-hpok-btns">
+            <button class="m-btn m-btn-yes" onclick="checkAuth(true)">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                <b>ĐÃ CÓ TÀI KHOẢN</b>
+            </button>
+            
+            <button class="m-btn m-btn-no" onclick="checkAuth(false)">
+                <i class="fa-solid fa-user-plus"></i>
+                <b>TÔI MUỐN ĐĂNG KÝ</b>
+            </button>
+        </div>
+        
+        <p style="font-size: 10px; color: #555; margin-top: 20px;">Hệ thống bảo mật bởi HPOK SSL Encryption</p>
+    </div>
+</div>
+
+<nav class="bottom-nav">
+    <a href="index.html" class="nav-link active"><i class="fa-solid fa-house-chimney"></i><span>TRANG CHỦ</span></a>
+    <a href="home.html" class="nav-link"><i class="fa-solid fa-wallet"></i><span>NẠP TIỀN</span></a>
+    <a href="home.html" class="nav-link"><i class="fa-solid fa-gift"></i><span>ƯU ĐÃI</span></a>
+    <a href="cskh.html" class="nav-link"><i class="fa-solid fa-headset"></i><span>CSKH</span></a>
+    <a href="taikhoan.html" class="nav-link"><i class="fa-solid fa-circle-user"></i><span>CÁ NHÂN</span></a>
+    </nav>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+    (function() {
+        // Kiểm tra đăng nhập
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+            window.location.replace("login.html");
+        }
+
+        // Hàm điều hướng Game sử dụng tên miền từ config.js
+        window.go = function(url) {
+            // Nếu url không bắt đầu bằng http, tự động nối với tên miền mã hóa
+            const finalURL = url.startsWith('http') ? url : (window.HPOK_DOMAIN + '/' + url);
+            sessionStorage.setItem('pendingGameURL', finalURL);
+            
+            const modal = document.getElementById('hpokAccountModal');
+            if (modal) modal.style.display = 'flex';
+        };
+
+        // Gán các alias cho đồng bộ
+        window.playGame = window.launchLiveGame = window.launchSportsGame = 
+        window.launchLotteryGame = window.launchCockGame = (u) => window.go(u);
+
+        // Xử lý đóng modal
+        window.onclick = function(e) {
+            let m = document.getElementById('hpokAccountModal');
+            if (e.target == m) m.style.display = "none";
+        };
+    })();
+
+    // Hàm kiểm tra nút Đăng nhập/Đăng ký trong modal
+    function checkAuth(hasAccount) {
+        window.location.href = hasAccount ? "login.html" : "register.html";
+    }
+    </script>
+
+    <script src="loader.js"></script>
+    <script src="music.js"></script>
+    <script src="beauty-link.js"></script> <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TP2FSVQZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+</body>
+</html>
