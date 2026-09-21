@@ -441,123 +441,168 @@ input:focus {
     <header>
         <div class="header-left">
             <i class="fa-solid fa-bars-staggered menu-toggle" onclick="toggleSidebar()"></i>
-            <a href="#" class="logo">HPOK <span>ADMIN V16</span></a>
+            <a href="#" class="logo">HPOK <span>ADMIN V20</span></a>
         </div>
-        <div id="clock" style="font-family: monospace; color: var(--gold); font-weight: 800; letter-spacing: 1px;">00:00:00</div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div id="ai-quantum-status" style="font-size: 10px; background: rgba(0,234,255,0.12); color: var(--blue); padding: 4px 10px; border-radius: 20px; font-weight: 700; display: flex; align-items: center; gap: 6px; border: 1px solid rgba(0,234,255,0.2);">
+                <i class="fa-solid fa-microchip" style="font-size: 9px; animation: pulse 1.2s infinite;"></i> QUANTUM V20
+            </div>
+            <div id="clock" style="font-family: monospace; color: var(--gold); font-weight: 800; letter-spacing: 1px;">00:00:00</div>
+        </div>
     </header>
 
     <div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="logo">OMNI <span>DASHBOARD</span></div>
-            <i class="fa-solid fa-circle-xmark" style="font-size: 24px; cursor: pointer; color: #222;" onclick="toggleSidebar()"></i>
+            <div class="logo">OMNI <span>V20 ULTIMATE</span></div>
+            <i class="fa-solid fa-circle-xmark" style="font-size: 24px; cursor: pointer; color: #333;" onclick="toggleSidebar()"></i>
         </div>
         
         <div class="menu-list">
-            <div class="menu-label">Tổng Quan</div>
+            <!-- 1. TỔNG QUAN HỆ THỐNG V20 -->
+            <div class="menu-label">Tổng Quan V20</div>
             <a href="javascript:void(0)" class="menu-btn active ic-p" onclick="tab('p-user', 'nav-user'); toggleSidebar();">
-                <i class="fa-solid fa-house-chimney"></i> Trang chủ Admin
+                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-house-chimney"></i></div>
+                <span class="menu-text">Trang chủ Admin V20</span>
             </a>
             <a href="javascript:void(0)" class="menu-btn ic-b" onclick="tab('p-user', 'nav-user'); toggleSidebar();">
-                <i class="fa-solid fa-users-gear"></i> Thành viên hệ thống <span class="badge-side" id="sb_u">0</span>
+                <div class="menu-icon-bg" style="color:var(--blue); background:rgba(0,234,255,0.15)"><i class="fa-solid fa-users-gear"></i></div>
+                <span class="menu-text">Thành viên hệ thống</span> <span class="badge-side" id="sb_u">0</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-btn ic-y" onclick="tab('p-analytics', 'nav-analytics'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--gold); background:rgba(255,204,0,0.15)"><i class="fa-solid fa-chart-pie"></i></div>
+                <span class="menu-text">Thống kê Doanh Thu VIP</span> <span class="badge-side" style="background:var(--gold); color:#000">V20</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-btn ic-g" onclick="tab('p-traffic', 'nav-traffic'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-solid fa-chart-line"></i></div>
+                <span class="menu-text">Bản đồ Lưu lượng truy cập Live</span>
             </a>
 
-       <div class="menu-label">Kinh Doanh</div>
+            <!-- 2. KINH DOANH & GIAO DỊCH TỰ ĐỘNG -->
+            <div class="menu-label">Kinh Doanh & Giao Dịch</div>
+            <a href="javascript:void(0)" class="menu-btn ic-y" onclick="tab('p-card', 'nav-card'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--gold); background:rgba(255,204,0,0.15)"><i class="fa-solid fa-receipt"></i></div>
+                <span class="menu-text">Duyệt thẻ cào tự động 24/7</span>
+                <span class="badge-side" style="background:var(--gold); color:#000" id="sb_c">0</span>
+            </a>
 
-<a href="javascript:void(0)" class="menu-btn ic-y" onclick="tab('p-card', 'nav-card'); toggleSidebar();">
-    <div class="menu-icon-bg" style="color:var(--gold); background:rgba(255,204,0,0.1)">
-        <i class="fa-solid fa-receipt"></i>
-    </div>
-    <span class="menu-text">Duyệt thẻ tự động</span>
-    <span class="badge-side" style="background:var(--gold); color:#000" id="sb_c">0</span>
-</a>
+            <a href="javascript:void(0)" class="menu-btn ic-g" onclick="tab('p-bank', 'nav-bank'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-solid fa-building-columns"></i></div>
+                <span class="menu-text">Lịch sử nạp Bank Auto</span>
+                <span class="badge-side" style="background:var(--green); color:#000" id="sb_n">0</span>
+            </a>
 
-<a href="javascript:void(0)" class="menu-btn ic-g" onclick="tab('p-bank', 'nav-bank'); toggleSidebar();">
-    <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.1)">
-        <i class="fa-solid fa-building-columns"></i>
-    </div>
-    <span class="menu-text">Lịch sử nạp Bank</span>
-    <span class="badge-side" style="background:var(--green); color:#000" id="sb_n">0</span>
-</a>
+            <a href="javascript:void(0)" class="menu-btn ic-b" onclick="tab('p-bank', 'nav-bank'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-money-bill-transfer"></i></div>
+                <span class="menu-text">Yêu cầu rút tiền tự động</span>
+                <span id="sb_withdraw_badge" class="badge-vibe" style="display: none;">0</span>
+            </a>
 
-<a href="javascript:void(0)" class="menu-btn ic-b" onclick="tab('p-bank', 'nav-bank'); toggleSidebar();">
-    <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.1)">
-        <i class="fa-solid fa-money-bill-transfer"></i>
-    </div>
-    <span class="menu-text">Yêu cầu rút tiền</span>
-    <span id="sb_withdraw_badge" class="badge-vibe" style="display: none;">0</span>
-</a>
+            <a href="javascript:void(0)" class="menu-btn ic-p" onclick="tab('p-vouchers', 'nav-promo'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-ticket"></i></div>
+                <span class="menu-text">Mã Giảm Giá & Voucher VIP</span>
+            </a>
 
-<div class="menu-label">Google System</div>
+            <a href="javascript:void(0)" class="menu-btn ic-y" onclick="tab('p-orders', 'nav-orders'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--gold); background:rgba(255,204,0,0.15)"><i class="fa-solid fa-cart-shopping"></i></div>
+                <span class="menu-text">Quản lý Đơn hàng hệ thống</span>
+            </a>
 
-<a class="menu-btn ic-g" onclick="tab('p-google-auth','nav-google')">
-    <i class="fa-brands fa-google"></i> OAuth
-</a>
+            <!-- 3. GOOGLE ECOSYSTEM & AI ENGINE -->
+            <div class="menu-label">Google Ecosystem & AI Engine</div>
+            <a class="menu-btn ic-g" onclick="tab('p-google-auth','nav-google'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-brands fa-google"></i></div>
+                <span class="menu-text">Google OAuth 2.0 Security</span>
+            </a>
+            <a class="menu-btn ic-b" onclick="tab('p-google-analytics','nav-google'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--blue); background:rgba(0,234,255,0.15)"><i class="fa-solid fa-chart-line"></i></div>
+                <span class="menu-text">Google Analytics v4 Pro</span>
+            </a>
+            <a class="menu-btn ic-c" onclick="tab('p-google-script','nav-google'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--gold); background:rgba(255,204,0,0.15)"><i class="fa-solid fa-code"></i></div>
+                <span class="menu-text">Google Apps Script Webhooks</span>
+            </a>
+            <a class="menu-btn ic-p" onclick="tab('p-gmail','nav-google'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-envelope"></i></div>
+                <span class="menu-text">Gmail API & SMTP Relay</span>
+            </a>
+            <a class="menu-btn ic-g" onclick="tab('p-fcm','nav-google'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-solid fa-bell"></i></div>
+                <span class="menu-text">Firebase Push Notifications</span>
+            </a>
+            <a class="menu-btn ic-b" onclick="tab('p-gcp','nav-google'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--blue); background:rgba(0,234,255,0.15)"><i class="fa-solid fa-cloud"></i></div>
+                <span class="menu-text">Google Cloud Storage / Bucket</span>
+            </a>
+            <a class="menu-btn ic-p" onclick="tab('p-gemini','nav-google'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-brain"></i></div>
+                <span class="menu-text">Gemini 1.5 Pro / Flash Scanner</span>
+            </a>
 
-<a class="menu-btn ic-b" onclick="tab('p-google-analytics','nav-google')">
-    <i class="fa-solid fa-chart-line"></i> Analytics
-</a>
-
-<a class="menu-btn ic-c" onclick="tab('p-google-script','nav-google')">
-    <i class="fa-solid fa-code"></i> Apps Script
-</a>
-
-<a class="menu-btn ic-p" onclick="tab('p-gmail','nav-google')">
-    <i class="fa-solid fa-envelope"></i> Gmail API
-</a>
-
-<a class="menu-btn ic-g" onclick="tab('p-fcm','nav-google')">
-    <i class="fa-solid fa-bell"></i> Push Notification
-</a>
-
-<a class="menu-btn ic-b" onclick="tab('p-gcp','nav-google')">
-    <i class="fa-solid fa-cloud"></i> Google Cloud
-</a>
-
-<a class="menu-btn ic-p" onclick="tab('p-gemini','nav-google')">
-    <i class="fa-solid fa-brain"></i> Gemini AI
-</a>
-
-            <div class="menu-label">Hệ Thống</div>
+            <!-- 4. HỆ THỐNG VÀ BẢO MẬT NÂNG CAO -->
+            <div class="menu-label">Hệ Thống & Tường Lửa</div>
             <a href="javascript:void(0)" class="menu-btn ic-p" onclick="tab('p-set', 'nav-set'); toggleSidebar();">
-                <i class="fa-solid fa-sliders"></i> Cài đặt website
+                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-sliders"></i></div>
+                <span class="menu-text">Cài đặt chung Website</span>
             </a>
-            <a href="javascript:void(0)" class="menu-btn ic-b" onclick="tab('p-set', 'nav-set'); toggleSidebar();">
-                <i class="fa-solid fa-shield-halved"></i> API & Bảo mật
+            <a href="javascript:void(0)" class="menu-btn ic-b" onclick="tab('p-security', 'nav-set'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--blue); background:rgba(0,234,255,0.15)"><i class="fa-solid fa-shield-halved"></i></div>
+                <span class="menu-text">Tường lửa & API Security WAF</span>
             </a>
-            <a href="javascript:void(0)" class="menu-btn ic-r" onclick="tab('p-set', 'nav-set'); toggleSidebar();">
-                <i class="fa-solid fa-terminal"></i> Nhật ký hệ thống
+            <a href="javascript:void(0)" class="menu-btn ic-r" onclick="tab('p-sys-log', 'nav-set'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--red); background:rgba(255,62,62,0.15)"><i class="fa-solid fa-terminal"></i></div>
+                <span class="menu-text">Nhật ký hệ thống (SysLog Realtime)</span>
             </a>
-            <div class="menu-label">Hệ Thống Thông Minh</div>
+            <a href="javascript:void(0)" class="menu-btn ic-y" onclick="tab('p-ssl', 'nav-set'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--gold); background:rgba(255,204,0,0.15)"><i class="fa-solid fa-lock"></i></div>
+                <span class="menu-text">Quản lý Chứng chỉ SSL & Domain</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-btn ic-g" onclick="tab('p-seo', 'nav-set'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-solid fa-globe"></i></div>
+                <span class="menu-text">Tối ưu SEO & Open Graph Meta</span>
+            </a>
 
-<a href="javascript:void(0)" class="menu-btn ic-y" onclick="tab('p-auto-pilot', 'nav-set'); toggleSidebar();">
-    <i class="fa-solid fa-robot"></i> Trình quản trị Auto-Pilot
-    <span class="badge-side" style="background:var(--primary); color:#fff">AI</span>
-</a>
+            <!-- 5. TỰ ĐỘNG HÓA THÔNG MINH (AUTO-PILOT AI) -->
+            <div class="menu-label">Tự Động Hóa (Auto-Pilot)</div>
+            <a href="javascript:void(0)" class="menu-btn ic-y" onclick="tab('p-auto-pilot', 'nav-set'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--gold); background:rgba(255,204,0,0.15)"><i class="fa-solid fa-robot"></i></div>
+                <span class="menu-text">Trình quản trị Auto-Pilot AI</span>
+                <span class="badge-side" style="background:var(--p); color:#fff">V20</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-btn ic-p" onclick="tab('p-manual-update', 'nav-set'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-pen-to-square"></i></div>
+                <span class="menu-text">Cập nhật Thủ công (Code Editor)</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-btn ic-g" onclick="runHealthCheck(); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-solid fa-microscope"></i></div>
+                <span class="menu-text">Quét & Sửa lỗi hệ thống tự động</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-btn ic-b" onclick="tab('p-backup', 'nav-set'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--blue); background:rgba(0,234,255,0.15)"><i class="fa-solid fa-database"></i></div>
+                <span class="menu-text">Sao lưu đám mây & Phục hồi DB</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-btn ic-r" onclick="tab('p-chatbot', 'nav-set'); toggleSidebar();">
+                <div class="menu-icon-bg" style="color:var(--red); background:rgba(255,62,62,0.15)"><i class="fa-solid fa-comments"></i></div>
+                <span class="menu-text">Trợ lý CSKH & Phản hồi Tự động</span>
+            </a>
 
-<a href="javascript:void(0)" class="menu-btn ic-p" onclick="tab('p-manual-update', 'nav-set'); toggleSidebar();">
-    <i class="fa-solid fa-pen-to-square"></i> Cập nhật Thủ công (Editor)
-</a>
-
-<a href="javascript:void(0)" class="menu-btn ic-g" onclick="runHealthCheck(); toggleSidebar();">
-    <i class="fa-solid fa-microscope"></i> Quét & Sửa link lỗi
-</a>
-
-<div class="menu-label" style="margin-top: 15px;">Cài Đặt Gốc</div>
-
-<a href="javascript:void(0)" class="menu-btn ic-b" onclick="tab('p-set', 'nav-set'); toggleSidebar();">
-    <i class="fa-solid fa-sliders"></i> Cài đặt website
-</a>
-<a href="javascript:void(0)" class="menu-btn ic-r" onclick="tab('p-sys-log', 'nav-set'); toggleSidebar();">
-    <i class="fa-solid fa-terminal"></i> Nhật ký hệ thống
-</a>
-
-            <div class="menu-label">Hành động</div>
+            <!-- 6. CÔNG CỤ QUẢN TRỊ VIÊN CAO CẤP -->
+            <div class="menu-label">Công Cụ Quản Trị V20</div>
             <a href="javascript:void(0)" class="menu-btn ic-g" onclick="location.reload()">
-                <i class="fa-solid fa-rotate"></i> Làm mới trang
+                <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-solid fa-rotate"></i></div>
+                <span class="menu-text">Làm mới trang & Clear Cache</span>
             </a>
-            <a href="javascript:void(0)" class="menu-btn ic-r" onclick="alert('Đã đăng xuất!')">
-                <i class="fa-solid fa-power-off"></i> Đăng xuất
+            <a href="javascript:void(0)" class="menu-btn ic-b" onclick="alert('Đã dọn dẹp hệ thống đệm và tối ưu RAM thành công!')">
+                <div class="menu-icon-bg" style="color:var(--blue); background:rgba(0,234,255,0.15)"><i class="fa-solid fa-broom"></i></div>
+                <span class="menu-text">Dọn dẹp Rác Server & Cache</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-btn ic-p" onclick="alert('Đã xuất báo cáo dữ liệu quản trị toàn hệ thống thành công!')">
+                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-file-excel"></i></div>
+                <span class="menu-text">Xuất Báo Cáo Thống Kê (Excel)</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-btn ic-r" onclick="alert('Đã đóng phiên làm việc an toàn. Hẹn gặp lại!')">
+                <div class="menu-icon-bg" style="color:var(--red); background:rgba(255,62,62,0.15)"><i class="fa-solid fa-power-off"></i></div>
+                <span class="menu-text">Đăng xuất phiên quản trị</span>
             </a>
         </div>
     </div>
