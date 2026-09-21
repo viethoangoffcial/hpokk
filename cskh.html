@@ -5,163 +5,190 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
     <title>HPOK - HỆ THỐNG CSKH SIÊU CẤP</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+   <style>
         :root {
-            --gold: linear-gradient(135deg, #FFD700 0%, #FDB931 50%, #8A6E2F 100%);
-            --gold-solid: #FDB931;
-            --teal: #00bfa5; --bg: #0b0b0b; --card: #1c1c1c; --border: #2a2a2a;
+            --gold-gradient: linear-gradient(135deg, #FFE873 0%, #F5B041 50%, #B7950B 100%);
+            --gold-solid: #F5B041;
+            --teal-primary: #00c6ff;
+            --bg-deep: #06090f;
+            --card-glass: rgba(26, 31, 44, 0.75);
+            --border-glass: rgba(255, 255, 255, 0.08);
+            --shadow-card: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
+
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+        
         body {
-            margin: 0; font-family: 'Inter', sans-serif; background: var(--bg);
-            color: #fff; overflow: hidden; height: 100vh; display: flex; flex-direction: column;
+            margin: 0; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 198, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(245, 176, 65, 0.05) 0%, transparent 40%);
+            color: #fff; 
+            overflow: hidden; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column;
         }
         
-        #loadingBar { position: fixed; top: 0; left: 0; height: 6px; width: 0; background: var(--gold); z-index: 9999; transition: width 0.4s ease; }
+        #loadingBar { 
+            position: fixed; top: 0; left: 0; height: 4px; width: 0; 
+            background: var(--gold-gradient); z-index: 9999; 
+            transition: width 0.4s cubic-bezier(0.1, 1, 0.1, 1); 
+            box-shadow: 0 0 10px var(--gold-solid);
+        }
 
-        .screen { display: none; height: 100vh; flex-direction: column; background: var(--bg); flex: 1; overflow: hidden; }
-        .active { display: flex; animation: fadeIn 0.3s ease; }
+        .screen { display: none; height: 100vh; flex-direction: column; background: transparent; flex: 1; overflow: hidden; }
+        .active { display: flex; animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         
-        .branding { padding: 25px 20px 10px; text-align: center; flex-shrink: 0; }
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .branding { padding: 22px 20px 12px; text-align: center; flex-shrink: 0; }
         .hpok-logo { 
-            font-family: 'Lexend', sans-serif; font-size: 45px; font-weight: 900; 
-            background: linear-gradient(90deg, #FFD700, #fff, #FDB931, #8A6E2F, #FFD700);
-            background-size: 200% auto;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin: 0; filter: drop-shadow(0 0 10px rgba(253, 185, 49, 0.3));
-            animation: shine 3s linear infinite;
+            font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; letter-spacing: 1px;
+            background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin: 0; filter: drop-shadow(0 4px 15px rgba(245, 176, 65, 0.25));
+            animation: logoGlow 4s ease-in-out infinite alternate;
         }
-        @keyframes shine { to { background-position: 200% center; } }
+        @keyframes logoGlow {
+            from { filter: drop-shadow(0 2px 10px rgba(245, 176, 65, 0.2)); }
+            to { filter: drop-shadow(0 4px 20px rgba(245, 176, 65, 0.4)); }
+        }
         
-        .sub-text { font-size: 10px; font-weight: 700; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-top: 5px; }
+        .sub-text { 
+            font-size: 11px; font-weight: 700; color: var(--teal-primary); 
+            letter-spacing: 3px; text-transform: uppercase; margin-top: 6px; 
+            text-shadow: 0 0 10px rgba(0, 198, 255, 0.3);
+        }
 
-        .grid-container { padding: 10px 15px 180px; overflow-y: auto; flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-        .detail-list-container { padding: 10px 15px 180px; overflow-y: auto; flex: 1; }
+        .grid-container { padding: 10px 16px 190px; overflow-y: auto; flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .detail-list-container { padding: 10px 16px 190px; overflow-y: auto; flex: 1; }
+
+        /* HIỆU ỨNG ĐỘNG TRÔI NỔI CHO CARD MENU */
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+        }
 
         .menu-item { 
-            background: var(--card); padding: 22px 10px; border-radius: 18px;
-            display: flex; flex-direction: column; align-items: center; gap: 12px;
-            border: 1px solid var(--border); transition: 0.3s; cursor: pointer;
+            background: var(--card-glass); backdrop-filter: blur(16px);
+            padding: 24px 12px; border-radius: 20px;
+            display: flex; flex-direction: column; align-items: center; gap: 14px;
+            border: 1px solid var(--border-glass); box-shadow: var(--shadow-card);
+            cursor: pointer; position: relative; overflow: hidden;
+            animation: floatCard 4s ease-in-out infinite;
         }
-        .menu-item:active { transform: scale(0.92); border-color: var(--teal); }
-        .menu-item i { font-size: 28px; }
-        .menu-item b { font-size: 11.5px; text-transform: uppercase; color: #eee; text-align: center; }
+        .menu-item:nth-child(even) { animation-delay: 2s; }
+        .menu-item:active { transform: scale(0.95); border-color: var(--teal-primary); }
+        .menu-item i { font-size: 30px; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .menu-item b { font-size: 12px; font-weight: 600; text-transform: uppercase; color: #f1f5f9; text-align: center; }
         
-        .lead-box { background: rgba(0, 191, 165, 0.1); border-radius: 12px; padding: 10px; margin: 10px 20px; border-left: 4px solid var(--teal); flex-shrink: 0; }
-        .lead-box span { font-size: 11.5px; color: #eee; font-weight: 600; display: flex; align-items: center; gap: 8px; }
+        .lead-box { 
+            background: linear-gradient(135deg, rgba(0, 198, 255, 0.08), rgba(0, 242, 254, 0.03)); 
+            border-radius: 14px; padding: 12px 16px; margin: 10px 20px; 
+            border: 1px solid rgba(0, 198, 255, 0.2); backdrop-filter: blur(10px); flex-shrink: 0; 
+        }
+        .lead-box span { font-size: 12px; color: #e2e8f0; font-weight: 600; display: flex; align-items: center; gap: 10px; }
 
         .footer-dashboard {
             position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(15px);
-            padding: 8px 10px; border-top: 2px solid #222; z-index: 100;
+            background: rgba(10, 14, 23, 0.85); backdrop-filter: blur(20px);
+            padding: 12px 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); z-index: 100;
         }
-        .stats-row { display: flex; justify-content: space-around; margin-bottom: 15px; }
+        .stats-row { display: flex; justify-content: space-around; margin-bottom: 12px; }
         .stat-item { 
-            background: #1a1a1a; padding: 10px 18px; border-radius: 30px; 
-            display: flex; align-items: center; gap: 10px; border: 1px solid #333;
+            background: rgba(255, 255, 255, 0.04); padding: 8px 16px; border-radius: 30px; 
+            display: flex; align-items: center; gap: 10px; border: 1px solid rgba(255, 255, 255, 0.06);
         }
-        .stat-item b { font-size: 16px; color: var(--gold-solid); font-weight: 800; min-width: 35px; text-align: center; }
-        .dot-blink { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; animation: blink 1.2s infinite; box-shadow: 0 0 8px #2ecc71; }
+        .stat-item b { font-size: 15px; color: var(--gold-solid); font-weight: 800; min-width: 35px; text-align: center; }
+        .dot-blink { width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; animation: blink 1.5s infinite; box-shadow: 0 0 10px #2ecc71; }
 
         .animated-text {
-            background: linear-gradient(90deg, #888, #fff, #FDB931, #00bfa5, #888);
-            background-size: 200% auto;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: flowText 4s linear infinite;
-            font-weight: 700; font-size: 10px; text-align: center; letter-spacing: 0.5px;
+            background: linear-gradient(90deg, #94a3b8, #fff, #F5B041, #00c6ff, #94a3b8);
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: flowText 5s linear infinite; font-weight: 600; font-size: 11px; text-align: center;
         }
-        .copyright-text { margin-top: 8px; font-size: 9px; letter-spacing: 1.5px; text-align: center; color: #555; animation: pulseText 3s infinite; }
+        .copyright-text { margin-top: 6px; font-size: 9.5px; letter-spacing: 2px; text-align: center; color: #64748b; font-weight: 600; }
 
-        /* MÀN HÌNH CHAT */
-        #screen3 {
-            height: 100svh;
-            display: none;
-            flex-direction: column;
-            background: #080808;
+        /* MÀN HÌNH CHAT VÀ HIỆU ỨNG VIỀN NEON */
+        @keyframes borderGlow {
+            0% { border-color: rgba(0, 198, 255, 0.1); }
+            50% { border-color: rgba(245, 176, 65, 0.3); }
+            100% { border-color: rgba(0, 198, 255, 0.1); }
         }
+        #screen3 { height: 100svh; display: none; flex-direction: column; background: var(--bg-deep); animation: borderGlow 6s infinite; }
 
         #chatHeader {
-            background: #111;
-            padding: 12px 15px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #222;
-            flex-shrink: 0;
-            z-index: 10;
+            background: rgba(13, 18, 28, 0.95); backdrop-filter: blur(15px);
+            padding: 14px 18px; display: flex; align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08); flex-shrink: 0; z-index: 10; position: relative;
         }
 
         #chatBody {
-            flex: 1;
-            padding: 15px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 30px; 
+            flex: 1; padding: 18px; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; padding-bottom: 40px; 
         }
 
         .chat-input-area {
-            background: #111;
-            padding: 10px 15px;
-            padding-bottom: calc(10px + env(safe-area-inset-bottom));
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-top: 1px solid #222;
-            flex-shrink: 0;
+            background: rgba(13, 18, 28, 0.95); backdrop-filter: blur(15px);
+            padding: 12px 18px; padding-bottom: calc(12px + env(safe-area-inset-bottom));
+            display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255, 255, 255, 0.08); flex-shrink: 0;
+        }
+
+        @keyframes msgPopUp {
+            0% { opacity: 0; transform: translateY(15px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         .msg {
-            max-width: 88%;
-            padding: 14px 18px;
-            font-size: 13.5px;
-            border-radius: 15px;
-            line-height: 1.7;
-            word-wrap: break-word;
-            animation: msgSlide 0.3s ease-out;
-            white-space: pre-line; /* Trình bày định dạng đoạn dài cực kỳ rõ ràng */
-        }
-
-        @keyframes msgSlide {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            max-width: 85%; padding: 14px 18px; font-size: 14px; border-radius: 18px;
+            line-height: 1.6; word-wrap: break-word; animation: msgPopUp 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            white-space: pre-line; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .msg-bot { 
-            background: #1a1a1a; 
-            align-self: flex-start; 
-            border-bottom-left-radius: 2px;
-            border: 1px solid #333;
-            color: #ececec;
+            background: rgba(30, 41, 59, 0.85); backdrop-filter: blur(10px);
+            align-self: flex-start; border-bottom-left-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.06); color: #f8fafc;
         }
 
         .msg-user { 
-            background: var(--teal); 
-            align-self: flex-end; 
-            border-bottom-right-radius: 2px;
-            font-weight: 500;
+            background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%); 
+            align-self: flex-end; border-bottom-right-radius: 4px; font-weight: 500; color: #fff;
         }
         
-        .detail-card { 
-            background: linear-gradient(145deg, #1f1f1f, #151515); padding: 20px; border-radius: 15px; margin-bottom: 12px;
-            border: 1px solid #2a2a2a; display: flex; justify-content: space-between; align-items: center; animation: slideUp 0.4s ease forwards; cursor: pointer;
+        .typing-bubble span {
+            display: inline-block; animation: typingBounce 1.4s infinite ease-in-out both;
         }
-        .detail-card::before { content: ''; width: 4px; height: 20px; background: var(--gold-solid); border-radius: 2px; margin-right: 10px; }
-        .chevron-circle { width: 26px; height: 26px; background: rgba(0, 191, 165, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--teal); font-size: 10px; }
+        .typing-bubble span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-bubble span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
+        .detail-card { 
+            background: var(--card-glass); backdrop-filter: blur(16px);
+            padding: 20px 22px; border-radius: 18px; margin-bottom: 14px;
+            border: 1px solid var(--border-glass); display: flex; justify-content: space-between; align-items: center; 
+            cursor: pointer; transition: 0.25s;
+        }
+        .detail-card:active { transform: scale(0.98); border-color: var(--teal-primary); }
+        .detail-card::before { content: ''; width: 4px; height: 22px; background: var(--gold-gradient); border-radius: 4px; margin-right: 12px; }
+        .chevron-circle { width: 30px; height: 30px; background: rgba(0, 198, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--teal-primary); font-size: 11px; }
 
         @keyframes flowText { to { background-position: 200% center; } }
-        @keyframes pulseText { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
-        @keyframes blink { 0%, 100% { opacity: 0.4; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.1); } }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes blink { 0%, 100% { opacity: 0.3; transform: scale(0.85); } 50% { opacity: 1; transform: scale(1.15); } }
     </style>
 </head>
 <body>
 
 <div id="loadingBar"></div>
 
+<!-- MÀN HÌNH 1: TRANG CHỦ & DANH MỤC -->
 <div id="screen1" class="screen active">
     <div class="branding">
         <h1 class="hpok-logo">HPOK</h1>
