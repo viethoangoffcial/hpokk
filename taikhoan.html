@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>Hồ Sơ Master - HPOK OFFICIAL</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root { 
+            --p: #ff007f; --glow: rgba(255, 0, 127, 0.4);
+            --bg: #000; --card: #0d0d0d; --border: #1a1a1a;
+            --gold: #ffcc00; --blue: #00eaff;
+        }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+        body { 
+            margin: 0; font-family: 'Lexend', sans-serif; background: var(--bg); 
+            color: #fff; padding-bottom: 130px; overflow-x: hidden;
+        }
+
+        /* --- HEADER & AVATAR NEON --- */
+        .header-vip {
+            background: radial-gradient(circle at top, #1a1a1a 0%, #000 100%);
+            padding: 60px 20px 50px; text-align: center; border-bottom: 1px solid var(--border);
+        }
+        .avatar-wrapper { position: relative; width: 125px; height: 125px; margin: 0 auto; }
+        .avatar-ring {
+            position: absolute; top: -12px; left: -12px; right: -12px; bottom: -12px;
+            border: 2px solid transparent; border-top: 2px solid var(--p);
+            border-bottom: 2px solid var(--blue); border-radius: 50%;
+            animation: spinRing 3s linear infinite; z-index: 1;
+        }
+        @keyframes spinRing { to { transform: rotate(360deg); } }
+
+        .avatar-main {
+            width: 125px; height: 125px; border-radius: 50%;
+            border: 4px solid #000; box-shadow: 0 0 35px var(--glow);
+            object-fit: cover; position: relative; z-index: 2;
+        }
+        .level-badge {
+            position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%);
+            background: linear-gradient(90deg, var(--gold), #fff); color: #000;
+            font-size: 10px; font-weight: 900; padding: 5px 18px; border-radius: 25px;
+            z-index: 10; box-shadow: 0 8px 15px rgba(0,0,0,0.8);
+        }
+
+        /* --- NEON MARQUEE --- */
+        .title-marquee {
+            width: 85%; margin: 30px auto 10px; overflow: hidden; white-space: nowrap;
+            background: rgba(255,255,255,0.03); border-radius: 50px; padding: 8px 0; border: 1px solid #111;
+        }
+        .title-badge {
+            display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase;
+            letter-spacing: 2px; color: #fff; text-shadow: 0 0 10px var(--p);
+            animation: marquee 18s linear infinite; padding-left: 100%;
+        }
+        @keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-100%); } }
+
+        /* --- THANH LOADING MASTER --- */
+        .loading-area { width: 75%; margin: 25px auto 0; }
+        .loading-label { display: flex; justify-content: space-between; font-size: 9px; font-weight: 900; color: #555; margin-bottom: 10px; }
+        .loading-bg { height: 14px; background: #0a0a0a; border-radius: 20px; border: 1px solid #1a1a1a; overflow: hidden; position: relative; }
+        .loading-fill { 
+            width: 0%; height: 100%; background: linear-gradient(90deg, var(--p), var(--blue), var(--p));
+            background-size: 200% 100%; box-shadow: 0 0 15px var(--p); transition: width 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; animation: moveGrad 3s linear infinite;
+        }
+        @keyframes moveGrad { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+
+        /* --- WALLET CARD --- */
+        .wallet-card {
+            background: linear-gradient(145deg, #1a1a1a, #000);
+            margin: -35px 15px 30px; padding: 30px; border-radius: 35px;
+            border: 1px solid #222; text-align: center; position: relative; z-index: 10;
+            box-shadow: 0 30px 60px rgba(0,0,0,1);
+        }
+        .wallet-balance { font-size: 36px; font-weight: 900; color: #fff; margin: 10px 0; letter-spacing: 1px; }
+
+        /* --- GRID TIỆN ÍCH (8 NÚT) --- */
+        .quick-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 15px; }
+        .quick-item { text-align: center; text-decoration: none; transition: 0.3s; }
+        .quick-item:active { transform: scale(0.85); }
+        .quick-icon {
+            width: 58px; height: 58px; background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 10px; font-size: 24px; color: var(--p);
+            box-shadow: inset 0 0 10px rgba(255, 0, 127, 0.05);
+        }
+        .quick-item span { font-size: 10px; color: #666; font-weight: 800; display: block; }
+
+        /* --- MENU BOX --- */
+        .section-label { margin: 35px 25px 15px; font-size: 11px; color: #444; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; }
+        .menu-box { margin: 0 15px; background: var(--card); border-radius: 28px; overflow: hidden; border: 1px solid var(--border); }
+        .menu-btn { display: flex; align-items: center; padding: 22px 25px; text-decoration: none; color: #ddd; border-bottom: 1px solid #151515; }
+        .menu-btn:last-child { border-bottom: none; }
+        .menu-btn i:first-child { width: 35px; font-size: 20px; color: var(--p); margin-right: 15px; text-align: center; }
+        .menu-btn span { flex: 1; font-size: 14px; font-weight: 600; }
+
+        /* --- SPECIAL FEATURE --- */
+        .special-feature {
+            margin: 0 15px 15px; background: #0a0a0a; border: 1px solid var(--border);
+            border-radius: 25px; padding: 25px; display: flex; align-items: center;
+            justify-content: space-between; text-decoration: none; border-left: 6px solid var(--blue);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        .special-feature b { color: #fff; font-size: 16px; display: block; margin-bottom: 4px; }
+        .special-feature span { color: #555; font-size: 11px; font-weight: 700; }
+        .special-feature i { color: var(--blue); font-size: 28px; text-shadow: 0 0 20px var(--blue); }
+
+        /* --- LOGOUT --- */
+        .logout-btn {
+            width: calc(100% - 30px); margin: 30px 15px 60px; padding: 22px; 
+            border-radius: 25px; border: 1px solid #1a1a1a; background: #000; 
+            color: #ff3e3e; font-weight: 900; font-size: 14px; letter-spacing: 2px;
+        }
+
+        /* --- BOTTOM NAV --- */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; width: 100%; height: 100px;
+            background: rgba(0,0,0,0.98); backdrop-filter: blur(30px);
+            display: flex; justify-content: space-around; align-items: center;
+            border-top: 1px solid #1a1a1a; z-index: 9999; padding-bottom: 25px;
+        }
+        .nav-link { text-decoration: none; color: #444; text-align: center; position: relative; width: 20%; transition: 0.3s; }
+        .nav-link i { font-size: 22px; display: block; margin-bottom: 8px; transition: 0.4s; }
+        .nav-link span { font-size: 10px; font-weight: 800; text-transform: uppercase; }
+        
+        .nav-link.active { color: var(--p); }
+        .nav-link.active i { transform: translateY(-8px); text-shadow: 0 0 20px var(--p); color: var(--p); }
+        .nav-link.active::after {
+            content: ''; position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            width: 40px; height: 4px; background: var(--p); border-radius: 10px;
+            box-shadow: 0 0 20px var(--p);
+        }
+        .nav-center { transform: translateY(-15px); }
+        .nav-center .center-bg {
+            width: 65px; height: 65px; background: var(--p); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 10px 25px var(--glow); border: 5px solid #000;
+        }
+        .nav-center i { color: #fff !important; font-size: 28px !important; margin: 0 !important; }
+    </style>
+</head>
+<body>
+
+    <div class="header-vip">
+        <div class="avatar-wrapper">
+            <div class="avatar-ring"></div>
+            <img src="" id="avatar-img" class="avatar-main" alt="Avatar">
+            <div class="level-badge" id="vip-txt">VIP 1 MEMBER</div>
+        </div>
+        <h2 id="name-txt" style="margin: 30px 0 0; font-weight: 900; font-size: 28px; text-transform: uppercase; letter-spacing: 1px;">MASTER</h2>
+        
+        <div class="title-marquee">
+            <div id="title-txt" class="title-badge">HPOK OFFICIAL SYSTEM • PREMIUM SERVER • HẢI PHÒNG MASTER ACCESS • SECURED SESSION</div>
+        </div>
+
+        <div class="loading-area">
+            <div class="loading-label"><span>TIẾN TRÌNH VIP MASTER</span><span id="pct-txt">0%</span></div>
+            <div class="loading-bg"><div class="loading-fill" id="vip-bar"></div></div>
+        </div>
+    </div>
+
+    <div class="wallet-card">
+        <div style="font-size: 10px; color: #555; font-weight: 900; letter-spacing: 2.5px;">SỐ DƯ KHẢ DỤNG</div>
+        <div class="wallet-balance" id="balance-txt">0 đ</div>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; margin-top:25px;">
+            <a href="naptien.html" style="background:var(--p); color:#fff; text-decoration:none; padding:16px; border-radius:20px; font-size:13px; font-weight:900; box-shadow: 0 10px 30px var(--glow);">NẠP TIỀN</a>
+            <a href="ruttien.html" style="background:#111; color:var(--gold); text-decoration:none; padding:16px; border-radius:20px; font-size:13px; font-weight:900; border: 1px solid #222;">RÚT TIỀN</a>
+        </div>
+    </div>
+
+    <div class="quick-grid">
+        <a href="diemdanh.html" class="quick-item"><div class="quick-icon"><i class="fas fa-calendar-check"></i></div><span>Điểm danh</span></a>
+        <a href="vongquay.html" class="quick-item"><div class="quick-icon" style="color:var(--blue)"><i class="fas fa-sync-alt"></i></div><span>Vòng quay</span></a>
+        <a href="nhiemvu.html" class="quick-item"><div class="quick-icon" style="color:var(--gold)"><i class="fas fa-tasks"></i></div><span>Nhiệm vụ</span></a>
+        <a href="thongbao.html" class="quick-item"><div class="quick-icon" style="color: #00ff88;"><i class="fas fa-envelope"></i></div><span>Tin nhắn</span></a>
+        <a href="giftcode.html" class="quick-item"><div class="quick-icon" style="color: #a100ff;"><i class="fas fa-gift"></i></div><span>Giftcode</span></a>
+        <a href="lichsu_cuoc.html" class="quick-item"><div class="quick-icon"><i class="fas fa-history"></i></div><span>Lịch sử</span></a>
+        <a href="baomat.html" class="quick-item"><div class="quick-icon"><i class="fas fa-shield-heart"></i></div><span>Bảo mật</span></a>
+        <a href="hotro.html" class="quick-item"><div class="quick-icon"><i class="fas fa-headset"></i></div><span>Hỗ trợ</span></a>
+    </div>
+
+    <div class="section-label">TÀI CHÍNH & GIAO DỊCH</div>
+    <div class="menu-box">
+        <a href="nganhang.html" class="menu-btn"><i class="fas fa-university"></i><span>Liên kết ngân hàng</span><i class="fas fa-angle-right"></i></a>
+        <a href="lichsu_giaodich.html" class="menu-btn"><i class="fas fa-receipt"></i><span>Biến động số dư</span><i class="fas fa-angle-right"></i></a>
+        <a href="chuyentien.html" class="menu-btn"><i class="fas fa-paper-plane"></i><span>Chuyển tiền Master</span><i class="fas fa-angle-right"></i></a>
+    </div>
+
+    <div class="section-label">CÀI ĐẶT TÀI KHOẢN</div>
+    <div class="menu-box">
+        <a href="profile_edit.html" class="menu-btn"><i class="fas fa-user-cog"></i><span>Chỉnh sửa hồ sơ</span><i class="fas fa-angle-right"></i></a>
+        <a href="settings.html" class="menu-btn"><i class="fas fa-cog"></i><span>Cài đặt ứng dụng</span><i class="fas fa-angle-right"></i></a>
+    </div>
+
+    <div class="section-label">HỆ THỐNG ĐẶC QUYỀN</div>
+    <a href="ai_master.html" class="special-feature">
+        <div><b>HPOK AI ANALYTICS</b><span>Dữ liệu thời gian thực v3.0</span></div>
+        <i class="fas fa-microchip"></i>
+    </a>
+
+    <button onclick="logout()" class="logout-btn">ĐĂNG XUẤT TÀI KHOẢN</button>
+
+    <nav class="bottom-nav">
+        <a href="home.html" class="nav-link"><i class="fas fa-home"></i><span>Trang chủ</span></a>
+        <a href="vongquay.html" class="nav-link"><i class="fas fa-gamepad"></i><span>Trò chơi</span></a>
+        <a href="naptien.html" class="nav-link nav-center"><div class="center-bg"><i class="fas fa-plus"></i></div></a>
+        <a href="taikhoan.html" class="nav-link active"><i class="fas fa-user-circle"></i><span>Cá nhân</span></a>
+        <a href="settings.html" class="nav-link"><i class="fas fa-sliders-h"></i><span>Cài đặt</span></a>
+    </nav>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBD27MYenkjWOEjqj0hCisbh_61F_6bhSE",
+        databaseURL: "https://hpok-d355c-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "hpok-d355c"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+    const user = localStorage.getItem("username");
+
+    if (!user) window.location.href = "login.html";
+
+    onValue(ref(db, 'users/' + user), (snap) => {
+        if (snap.exists()) {
+            const d = snap.val();
+            document.getElementById('avatar-img').src = (d.gender === "Nữ") ? "https://api.dicebear.com/7.x/adventurer/svg?seed=Aneka" : "https://api.dicebear.com/7.x/adventurer/svg?seed=Felix";
+            document.getElementById('name-txt').innerText = d.fullName || user;
+            document.getElementById('balance-txt').innerText = new Intl.NumberFormat('vi-VN').format(d.balance || 0) + " đ";
+
+            const lv = d.level || 1;
+            const target = lv * 10000;
+            const pct = Math.min(((d.exp || 0) / target) * 100, 100);
+            document.getElementById('vip-txt').innerText = "VIP " + lv + " MEMBER";
+            document.getElementById('pct-txt').innerText = Math.floor(pct) + "%";
+            document.getElementById('vip-bar').style.width = pct + "%";
+        }
+    });
+
+    window.logout = () => { if(confirm("Xác nhận đăng xuất?")) { localStorage.removeItem("username"); window.location.href = "login.html"; } };
+</script>
+    <script src="loader.js"></script>
+    <script src="music.js"></script>
+</body>
+</html>

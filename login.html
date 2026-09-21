@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <title>HPOK - QUANTUM TITAN V25.0</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Lexend:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root { 
+            --pink: #ff2d55; 
+            --gold: linear-gradient(135deg, #ffe1a8, #d4af37 50%, #b8860b 100%);
+            --glass: rgba(255, 255, 255, 0.08);
+            --bg-dark: #050505;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+        body { margin: 0; font-family: 'Lexend', sans-serif; background: var(--bg-dark); color: #fff; display: flex; justify-content: center; }
+        
+        .bg-aura { position: fixed; width: 100%; height: 100%; z-index: -1; background: radial-gradient(circle at 50% 110%, #4a152b 0%, #050505 100%); }
+        .container { width: 100%; max-width: 450px; min-height: 100vh; padding: 20px; display: flex; flex-direction: column; }
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffd700;
+    margin: 20px 0;
+}
+
+/* PARTNER */
+.partner {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.partner h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #ff4d00;
+}
+
+.partner b {
+    display: block;
+    margin-top: 15px;
+}
+        /* --- Logo Animation --- */
+        .intro-header { text-align: center; padding: 30px 0 10px; }
+        .logo-main {
+            font-family: 'Syncopate', sans-serif; font-size: 75px; font-weight: 900; margin: 0; line-height: 1; letter-spacing: -6px; text-transform: uppercase;
+            background: linear-gradient(to bottom, #fff 0%, #ffd700 20%, #ff2d55 45%, #00f2ff 80%, #fff 100%);
+            background-size: 100% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(255, 45, 85, 0.5));
+            animation: logo-flow 4s ease-in-out infinite;
+        }
+        @keyframes logo-flow { 0%, 100% { background-position: 50% 0%; } 50% { background-position: 50% 100%; transform: scale(1.05); } }
+
+        /* --- Hiệu ứng Shimmer cho Sub-msg --- */
+        .sub-msg span {
+            background: linear-gradient(90deg, #ff9eb5 0%, #fff 50%, #ff9eb5 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+            font-weight: 800;
+        }
+        @keyframes shimmer { to { background-position: 200% center; } }
+
+        /* --- Auth Card --- */
+        .tabs { display: flex; background: rgba(0,0,0,0.5); border-radius: 20px; padding: 5px; margin-bottom: 25px; border: 1px solid #222; }
+        .tab { flex: 1; text-align: center; padding: 14px; border-radius: 15px; font-weight: 800; color: #555; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
+        .tab.active { background: var(--gold); color: #000; box-shadow: 0 10px 20px rgba(212,175,55,0.3); }
+
+        /* --- FIX CĂN GIỮA TIÊU ĐỀ --- */
+        .dynamic-title {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 5px;
+            animation: title-pulse 2s ease-in-out infinite;
+        }
+        .dynamic-title i {
+            font-size: 20px;
+            color: #d4af37; /* Màu gold khớp với text */
+        }
+        .dynamic-title span {
+            font-size: 22px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            background: var(--gold); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            white-space: nowrap;
+        }
+
+        @keyframes title-pulse { 0%, 100% { transform: scale(1); filter: brightness(1); } 50% { transform: scale(1.02); filter: brightness(1.2); } }
+
+        /* --- Engine Scanning --- */
+        .engine-text {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            color: var(--pink);
+            font-size: 11px;
+            font-weight: 800;
+        }
+        .engine-text::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,45,85,0.4), transparent);
+            animation: scan 2s infinite;
+        }
+        @keyframes scan { 0% { left: -100%; } 100% { left: 100%; } }
+
+        /* --- Icon Dynamic --- */
+        @keyframes rotate-gear { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes shake-robot { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(10deg); } 75% { transform: rotate(-10deg); } }
+        @keyframes pulse-icon { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        @keyframes heart-beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+
+                /* --- Tabs --- */
+        .tabs { display: flex; background: rgba(0,0,0,0.5); border-radius: 20px; padding: 5px; margin-bottom: 25px; border: 1px solid #222; }
+        .tab { flex: 1; text-align: center; padding: 14px; border-radius: 15px; font-weight: 800; color: #555; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
+        .tab.active { background: var(--gold); color: #000; box-shadow: 0 10px 20px rgba(212,175,55,0.3); }
+
+       /* --- Fields --- */
+        .field-group { margin-bottom: 20px; }
+        .field-label { font-size: 10px; color: #aaa; font-weight: 800; margin-left: 15px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; text-transform: uppercase; }
+        .field-label i { color: var(--pink); }
+        
+        .input-box { background: rgba(0,0,0,0.6); border: 1.5px solid #222; border-radius: 20px; display: flex; align-items: center; padding: 0 20px; height: 60px; transition: 0.4s; }
+        .input-box:focus-within { border-color: var(--pink); box-shadow: 0 0 20px rgba(255,45,85,0.3); }
+        .input-box i.main-icon { color: var(--pink); font-size: 18px; width: 25px; text-align: center; }
+        .input-box input { background: none; border: none; color: #fff; width: 100%; font-size: 16px; padding-left: 15px; }
+        .input-box { background: rgba(0,0,0,0.6); border: 1.5px solid #222; border-radius: 20px; display: flex; align-items: center; padding: 0 20px; height: 60px; transition: 0.4s; }
+        .input-box:focus-within { border-color: var(--pink); box-shadow: 0 0 20px rgba(255,45,85,0.3); }
+        .input-box i.main-icon { color: var(--pink); font-size: 18px; width: 25px; text-align: center; animation: pulse-icon 2s infinite; }
+        .input-box input { background: none; border: none; color: #fff; width: 100%; font-size: 16px; padding-left: 15px; }
+
+        .btn-login { 
+            width: 100%; padding: 20px; border-radius: 22px; border: none; 
+            background: var(--gold); color: #000; font-weight: 900; font-size: 17px; 
+            text-transform: uppercase; cursor: pointer; transition: 0.3s;
+            display: flex; align-items: center; justify-content: center; gap: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4); margin-top: 10px;
+        }
+        .btn-login i.fa-crown { animation: heart-beat 1s infinite; }
+        .fa-circle-right { animation: move-right 1s infinite; }
+        @keyframes move-right { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+
+        .captcha-display { background: rgba(255,255,255,0.05); border-radius: 18px; height: 60px; display: flex; align-items: center; padding: 0 20px; border: 1px solid #333; }
+        #captchaText { font-weight: 900; color: #ff2d55; font-size: 22px; letter-spacing: 3px; text-shadow: 0 0 10px var(--pink); }
+
+        .cskh-wrapper { margin-top: 25px; text-decoration: none; display: flex; align-items: center; gap: 15px; background: rgba(255,255,255,0.03); padding: 18px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); }
+        .cskh-pulse { width: 45px; height: 45px; background: var(--pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; color: #fff; }
+        .cskh-pulse::after { content: ""; position: absolute; inset: 0; background: var(--pink); border-radius: 50%; animation: pulse-cskh 2s infinite; }
+        @keyframes pulse-cskh { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(1.8); opacity: 0; } }
+      /* Animations phụ trợ */
+        .fa-rotate { animation: rotate-gear 2s infinite linear; }
+        @keyframes rotate-gear { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+      /* ============================================================
+   HPOK ULTRA-DYNAMIC SYSTEM - QUANTUM TITAN V25.0
+   COMPONENTS: MARQUEE, SOCIAL LOGIN, GLITCH TEXT
+   ============================================================ */
+
+/* --- 1. THÔNG BÁO CHẠY NGANG (MARQUEE LUXURY) --- */
+.hpok-marquee-container {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    border-top: 1px solid rgba(255, 45, 85, 0.3);
+    border-bottom: 1px solid rgba(255, 45, 85, 0.3);
+    padding: 12px 0;
+    margin: 20px 0;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    box-shadow: 0 0 20px rgba(255, 45, 85, 0.1);
+}
+
+/* Hiệu ứng làm mờ 2 đầu dải chạy */
+.hpok-marquee-container::before,
+.hpok-marquee-container::after {
+    content: "";
+    position: absolute;
+    top: 0; 
+    width: 80px; 
+    height: 100%;
+    z-index: 2;
+}
+.hpok-marquee-container::before { left: 0; background: linear-gradient(to right, var(--bg-dark), transparent); }
+.hpok-marquee-container::after { right: 0; background: linear-gradient(to left, var(--bg-dark), transparent); }
+
+.marquee-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee-flow 30s linear infinite;
+}
+
+.marquee-content span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #bbb;
+    margin-right: 60px;
+    letter-spacing: 0.5px;
+}
+
+.marquee-content b {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+.marquee-content i {
+    margin-right: 12px;
+    filter: drop-shadow(0 0 5px currentColor);
+}
+
+@keyframes marquee-flow {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Dừng khi hover để khách dễ đọc */
+.hpok-marquee-container:hover .marquee-content {
+    animation-play-state: paused;
+}
+
+/* --- 2. HỆ SINH THÁI MẠNG XÃ HỘI (SOCIAL ECOSYSTEM) --- */
+.hpok-social-ecosystem {
+    margin-top: 35px;
+    width: 100%;
+}
+
+.luxury-divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.luxury-divider .line {
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+}
+
+.luxury-divider span {
+    font-size: 10px;
+    font-weight: 900;
+    color: #777;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.icon-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+/* Khung icon với tia sét quét qua */
+.node-inner {
+    width: 62px;
+    height: 62px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.node-inner::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 60%;
+    height: 200%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(30deg);
+    animation: light-sweep 5s infinite;
+}
+
+@keyframes light-sweep {
+    20%, 100% { left: 150%; }
+}
+
+/* --- 3. CHỮ ĐỘNG GLITCH & NEON --- */
+.node-name {
+    font-size: 10px;
+    font-weight: 900;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+    position: relative;
+    animation: neon-flicker-all 4s infinite;
+}
+
+@keyframes neon-flicker-all {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; filter: brightness(1); }
+    20%, 24%, 55% { opacity: 0.5; filter: brightness(0.7); }
+}
+
+/* Hiệu ứng Glitch khi Hover */
+@keyframes glitch-red {
+    0% { text-shadow: 1px 0 #ea4335, -1px 0 #00f2ff; transform: translate(0); }
+    25% { transform: translate(-1px, 1px); }
+    50% { text-shadow: -1px 0 #ea4335, 1px 0 #00f2ff; }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch-blue {
+    0% { text-shadow: 1px 0 #1877f2, -1px 0 #ff2d55; transform: translate(0); }
+    25% { transform: translate(-1px, 1px); }
+    50% { text-shadow: -1px 0 #1877f2, 1px 0 #ff2d55; }
+    100% { transform: translate(0); }
+}
+
+@keyframes glitch-white {
+    0% { text-shadow: 1px 0 #fff, -1px 0 #ff2d55; transform: translate(0); }
+    25% { transform: translate(-1px, 1px); }
+    50% { text-shadow: -1px 0 #fff, 1px 0 #ff2d55; }
+    100% { transform: translate(0); }
+}
+
+/* --- TÙY CHỈNH RIÊNG TỪNG NÚT --- */
+
+/* Google */
+.g-node .node-inner { color: #ea4335; }
+.g-node:hover .node-inner {
+    background: rgba(234, 67, 53, 0.15);
+    border-color: #ea4335;
+    box-shadow: 0 0 30px rgba(234, 67, 53, 0.4);
+    transform: translateY(-8px) rotateX(15deg);
+}
+.g-node:hover .node-name {
+    color: #fff;
+    text-shadow: 0 0 10px #ea4335, 0 0 20px #ea4335;
+    animation: glitch-red 0.3s linear infinite;
+}
+
+/* Facebook */
+.f-node .node-inner { color: #1877f2; }
+.f-node:hover .node-inner {
+    background: rgba(24, 119, 242, 0.15);
+    border-color: #1877f2;
+    box-shadow: 0 0 30px rgba(24, 119, 242, 0.4);
+    transform: translateY(-8px) rotateX(15deg);
+}
+.f-node:hover .node-name {
+    color: #fff;
+    text-shadow: 0 0 10px #1877f2, 0 0 20px #1877f2;
+    animation: glitch-blue 0.3s linear infinite;
+}
+
+/* TikTok */
+.t-node .node-inner { color: #fff; }
+.t-node:hover .node-inner {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+    transform: translateY(-8px) rotateX(15deg);
+}
+.t-node:hover .node-name {
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+    animation: glitch-white 0.3s linear infinite;
+}
+
+/* Phản hồi khi nhấn */
+.node:active .node-inner {
+    transform: scale(0.9);
+    filter: brightness(1.4);
+}
+
+.node:hover i {
+    animation: icon-jump 0.4s infinite alternate;
+}
+
+@keyframes icon-jump {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+}
+/* FORGOT PASSWORD LINK PREMIUM - IT HOÀNG */
+.forgot-link-box {
+    margin: 20px 0;
+    text-align: center;
+    width: 100%;
+}
+
+.forgot-link {
+    font-size: 13px; /* To rõ cho Master dễ thao tác */
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding: 5px 0;
+    display: inline-block;
+         .download-wrapper {
+    display: flex;
+    position: relative;
+    padding: 20px 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+    </style>
+</head>
+<body>
+    <div class="bg-aura"></div>
+    <div class="container">
+        <header class="intro-header">
+            <h1 class="logo-main">HPOK</h1> 
+            <div class="sub-msg">
+                <i class="fa-solid fa-gem" style="color:var(--pink);"></i> 
+                <span>Cổng game CASINO HẢI PHÒNG CITY</span>
+            </div>
+       <div class="hpok-marquee-container">
+    <div class="marquee-content">
+        <i class="fa-solid fa-crown" style="color: #ffd700;"></i> 
+        <span>Chào mừng quý khách đến với <b>CASINO HPOK HẢI PHÒNG</b> - Sòng bài trực tuyến <b>Thượng Lưu</b> đẳng cấp nhất Đất Cảng. </span>
+        
+        <i class="fa-solid fa-bolt-lightning" style="color: #00f2ff;"></i>
+        <span>Hệ thống vận hành trên nền tảng <b>V16.0 Quantum</b> - Cam kết tốc độ xử lý lệnh <b>< 0.1s</b>, không giật lag. </span>
+        
+        <i class="fa-solid fa-shield-halved" style="color: #00ffa5;"></i>
+        <span>Bảo mật <b>Blockchain 5.0</b> đa tầng - Minh bạch tuyệt đối, nạp rút <b>Siêu Tốc 24/24</b> bất kể ngày lễ. </span>
+        
+        <i class="fa-solid fa-gift" style="color: #ff2d55;"></i>
+        <span>Sự kiện <b>Độc Quyền</b>: Thưởng nạp <b>100%</b> cho Tân Thủ và hoàn trả lên đến <b>3.5%</b> mỗi ngày cho VIP. </span>
+        
+        <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+        <span>Hệ thống máy chủ đặt tại <b>HẢI PHÒNG CITY</b> - Kết nối trực tiếp đường truyền cáp quang quốc tế. </span>
+    </div>
+</div>
+        </header>
+
+        <div class="auth-card">
+            <h2 class="dynamic-title">
+                <i class="fa-solid fa-shield-heart"></i>
+                <span>ĐĂNG NHẬP HỆ THỐNG</span>
+            </h2>
+            <div style="text-align: center; margin-top: 5px;">
+                <div class="engine-text">
+                    <i class="fa-solid fa-microchip"></i> Quà Tặng Tân Thủ mới 88k 🎁
+                </div>
+            </div>
+
+            <div class="tabs">
+    <div class="tab" id="tabRegister"><i class="fa-solid fa-user-plus"></i> ĐĂNG KÝ</div>
+    <div class="tab active" id="tabLogin"><i class="fa-solid fa-door-open"></i> ĐĂNG NHẬP</div>
+</div>
+
+            <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-user-gear"></i><span>Tài khoản Master ID</span></span>
+                <div class="input-box">
+                    <i class="fa-solid fa-circle-user main-icon"></i>
+                    <input type="text" id="logUser" placeholder="Tên đăng nhập của bạn...">
+                    <i id="statusIcon" class="fa-solid" style="font-size: 16px;"></i>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-lock main-icon"></i><span>Mã bảo mật cá nhân</span></span>
+                <div class="input-box">
+                    <i class="fa-solid fa-lock main-icon"></i> 
+                    <input type="password" id="logPass" placeholder="Mật khẩu truy cập...">
+                    <i class="fa-solid fa-eye-low-vision" onclick="togglePassword()" style="color:#555; cursor:pointer; font-size: 18px;"></i>
+                </div>
+            </div>
+
+            <div class="field-group">
+                <span class="field-label"><i class="fa-solid fa-robot"></i><span>Xác minh con người</span></span>
+                <div style="display:flex; gap:12px;">
+                    <div class="input-box" style="flex: 1.2;">
+                        <i class="fa-solid fa-fingerprint main-icon"></i>
+                        <input type="text" id="captchaInput" placeholder="Mã 4 số">
+                    </div>
+                    <div class="captcha-display">
+                        <span id="captchaText">7137</span>
+                        <i class="fa-solid fa-rotate" onclick="refreshCaptcha()" style="margin-left: 12px; color: var(--pink); cursor: pointer; animation: rotate-gear 2s infinite linear;"></i>
+                    </div>
+                </div>
+            </div>
+        
+            <button class="btn-login" id="btnLogin">
+                <i class="fa-solid fa-crown"></i>
+                <span>ĐĂNG NHẬP TÀI KHOẢN</span>
+                <i class="fa-solid fa-circle-right"></i>
+            </button>
+        <div class="forgot-link-box">
+                <a href="forgot-password.html" class="forgot-link">Quên mật khẩu ? Click xác minh</a>
+            </div>
+
+        </div>
+
+         <div class="hpok-social-ecosystem">
+    <div class="luxury-divider">
+        <div class="line"></div>
+        <span>ĐĂNG NHẬP NHANH</span>
+        <div class="line"></div>
+    </div>
+    <div class="icon-grid">
+        <div class="node g-node" onclick="maintenance('Google')">
+            <div class="node-inner"><i class="fa-brands fa-google"></i></div>
+            <span class="node-name">Google</span>
+        </div>
+        <div class="node f-node" onclick="maintenance('Facebook')">
+            <div class="node-inner"><i class="fa-brands fa-facebook-f"></i></div>
+            <span class="node-name">Facebook</span>
+        </div>
+        <div class="node t-node" onclick="maintenance('TikTok')">
+            <div class="node-inner"><i class="fa-brands fa-tiktok"></i></div>
+            <span class="node-name">TikTok</span>
+        </div>
+    </div>
+</div>
+
+        <a href="cskh.html" class="cskh-wrapper">
+            <div class="cskh-pulse"><i class="fa-solid fa-headset"></i></div>
+            <div class="cskh-info">
+                <b style="font-size: 13px; color: #fff;">TRUNG TÂM CSKH 24/7</b>
+                <span style="font-size: 10px; color: #777; display:block;">Hệ thống phản hồi < 30s</span>
+            </div>
+        </a>
+    </div>
+
+       <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+        // 1. Firebase Config
+        const firebaseConfig = { 
+            apiKey: "AIzaSyBD27MYenkjWOEjqj0hCisbh_61F_6bhSE", 
+            authDomain: "hpok-d355c.firebaseapp.com", 
+            databaseURL: "https://hpok-d355c-default-rtdb.asia-southeast1.firebasedatabase.app", 
+            projectId: "hpok-d355c" 
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // 2. Kiểm tra trạng thái đã đăng nhập chưa
+        if (localStorage.getItem("isLoggedIn") === "true") {
+            window.location.replace("home.html");
+        }
+
+        // 3. Khai báo các hàm tiện ích cho Hệ thống
+        window.showToast = (msg, color) => {
+            Toastify({ 
+                text: msg, 
+                gravity: "top", 
+                position: "center", 
+                style: { background: color, borderRadius: "15px", fontWeight: "600" } 
+            }).showToast();
+        };
+
+        window.refreshCaptcha = () => {
+            const code = Math.floor(1000 + Math.random() * 9000);
+            document.getElementById('captchaText').innerText = code;
+            document.getElementById('captchaInput').value = "";
+        };
+
+        window.togglePassword = () => {
+            const input = document.getElementById('logPass');
+            input.type = input.type === "password" ? "text" : "password";
+        };
+
+        // Khởi tạo Captcha lần đầu khi load trang
+        window.refreshCaptcha();
+
+        const logUser = document.getElementById('logUser');
+        const statusIcon = document.getElementById('statusIcon');
+
+        // 4. Kiểm tra tài khoản khi Master rời khỏi ô input
+        logUser.addEventListener('blur', async () => {
+            const user = logUser.value.trim();
+            if (!user) return;
+            statusIcon.className = "fa-solid fa-spinner fa-spin";
+            statusIcon.style.color = "#ffd700";
+            try {
+                const snapshot = await get(child(ref(db), `users/${user}`));
+                if (snapshot.exists()) {
+                    statusIcon.className = "fa-solid fa-circle-check";
+                    statusIcon.style.color = "#00ff88";
+                } else {
+                    statusIcon.className = "fa-solid fa-circle-xmark";
+                    statusIcon.style.color = "#ff2d55";
+                    showToast("Tài khoản không tồn tại trên hệ thống!", "#ff2d55");
+                }
+            } catch (e) { console.error(e); }
+        });
+
+        // 5. LOGIC ĐĂNG NHẬP CHÍNH
+        document.getElementById('btnLogin').onclick = async () => {
+            const user = logUser.value.trim();
+            const pass = document.getElementById('logPass').value;
+            const cap = document.getElementById('captchaInput').value;
+            const captchaReal = document.getElementById('captchaText').innerText;
+
+            if(!user || !pass) {
+                showToast("Vui lòng nhập Master ID & Mật khẩu!", "#ff2d55");
+                return;
+            }
+
+            if(cap !== captchaReal) {
+                showToast("Mã xác minh Quantum không khớp!", "#ff2d55");
+                window.refreshCaptcha();
+                return;
+            }
+
+            try {
+                const snapshot = await get(child(ref(db), `users/${user}`));
+                
+                if(snapshot.exists() && snapshot.val().password === pass) {
+                    // Lưu Token đăng nhập
+                    localStorage.setItem("isLoggedIn", "true");
+                    localStorage.setItem("currentUser", user);
+
+                    showToast("XÁC MINH DANH TÍNH THÀNH CÔNG! ĐANG VÀO SẢNH...", "#00ff88");
+
+                    setTimeout(() => {
+                        window.location.replace("home.html");
+                    }, 1500);
+                } else { 
+                    showToast("Mật khẩu hoặc Master ID không chính xác!", "#ff2d55"); 
+                }
+            } catch (error) {
+                console.error("Lỗi đăng nhập:", error);
+                showToast("Mất kết nối với máy chủ HPOK!", "#ff2d55");
+            }
+        };
+
+        // Các hàm phụ trợ khác
+        window.maintenance = (platform) => {
+            showToast(`⚠️ Cổng ${platform} đang bảo trì nâng cấp. Hãy dùng Master ID!`, "linear-gradient(135deg, #ff2d55 0%, #b81d3b 100%)");
+        };
+
+        document.getElementById('tabRegister').onclick = () => {
+            showToast("ĐANG KẾT NỐI ĐẾN CỔNG ĐĂNG KÝ...", "#ffd700");
+            setTimeout(() => { window.location.href = "register.html"; }, 800);
+        };
+    </script>
+     <script src="loader.js"></script>
+<script src="music.js"></script>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TP2FSVQZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+</body>
+</html>
