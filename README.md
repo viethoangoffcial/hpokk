@@ -1,6 +1,6 @@
 # 💎 HPOK ELITE - IOS & ANDROID DEPLOYMENT SYSTEM 💎
 
-![Version](https://img.shields.io/badge/Version-16.0_PRO-ff007f?style=for-the-badge)
+![Version](https://img.shields.io/badge/Version-20.0_PRO-ff007f?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/Platform-iOS%20%7C%20Android-00d2ff?style=for-the-badge)
 ![Status](https://img.shields.io/badge/Status-Stable-00ff88?style=for-the-badge)
 ![Developer](https://img.shields.io/badge/Developer-Mai%20Viet%20Hoang-gold?style=for-the-badge)
