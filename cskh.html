@@ -23,7 +23,6 @@
         .screen { display: none; height: 100vh; flex-direction: column; background: var(--bg); flex: 1; overflow: hidden; }
         .active { display: flex; animation: fadeIn 0.3s ease; }
         
-        /* HIỆU ỨNG LOGO ÁNH KIM CHẠY */
         .branding { padding: 25px 20px 10px; text-align: center; flex-shrink: 0; }
         .hpok-logo { 
             font-family: 'Lexend', sans-serif; font-size: 45px; font-weight: 900; 
@@ -37,14 +36,13 @@
         
         .sub-text { font-size: 10px; font-weight: 700; color: var(--teal); letter-spacing: 2px; text-transform: uppercase; margin-top: 5px; }
 
-        /* FIX LỖI CUỘN KHÔNG BỊ CHE */
         .grid-container { padding: 10px 15px 180px; overflow-y: auto; flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .detail-list-container { padding: 10px 15px 180px; overflow-y: auto; flex: 1; }
 
         .menu-item { 
             background: var(--card); padding: 22px 10px; border-radius: 18px;
             display: flex; flex-direction: column; align-items: center; gap: 12px;
-            border: 1px solid var(--border); transition: 0.3s;
+            border: 1px solid var(--border); transition: 0.3s; cursor: pointer;
         }
         .menu-item:active { transform: scale(0.92); border-color: var(--teal); }
         .menu-item i { font-size: 28px; }
@@ -56,7 +54,7 @@
         .footer-dashboard {
             position: fixed; bottom: 0; left: 0; width: 100%;
             background: rgba(10, 10, 10, 0.98); backdrop-filter: blur(15px);
-            padding: 8px 10px 8px; border-top: 2px solid #222; z-index: 100;
+            padding: 8px 10px; border-top: 2px solid #222; z-index: 100;
         }
         .stats-row { display: flex; justify-content: space-around; margin-bottom: 15px; }
         .stat-item { 
@@ -76,16 +74,79 @@
         .copyright-text { margin-top: 8px; font-size: 9px; letter-spacing: 1.5px; text-align: center; color: #555; animation: pulseText 3s infinite; }
 
         /* MÀN HÌNH CHAT */
-        #chatBody { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #080808; padding-bottom: 50px; }
-        .msg { max-width: 85%; padding: 12px 16px; font-size: 14px; border-radius: 18px; line-height: 1.4; }
-        .msg-bot { background: #222; align-self: flex-start; color: #ddd; border: 1px solid #333; }
-        .msg-user { background: var(--teal); align-self: flex-end; color: #fff; font-weight: 600; }
-        .chat-input-area { background: #111; padding: 10px 15px 35px; display: flex; align-items: center; gap: 10px; border-top: 1px solid #222; }
+        #screen3 {
+            height: 100svh;
+            display: none;
+            flex-direction: column;
+            background: #080808;
+        }
 
-        /* CHI TIẾT CARD */
+        #chatHeader {
+            background: #111;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #222;
+            flex-shrink: 0;
+            z-index: 10;
+        }
+
+        #chatBody {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 30px; 
+        }
+
+        .chat-input-area {
+            background: #111;
+            padding: 10px 15px;
+            padding-bottom: calc(10px + env(safe-area-inset-bottom));
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-top: 1px solid #222;
+            flex-shrink: 0;
+        }
+
+        .msg {
+            max-width: 88%;
+            padding: 14px 18px;
+            font-size: 13.5px;
+            border-radius: 15px;
+            line-height: 1.7;
+            word-wrap: break-word;
+            animation: msgSlide 0.3s ease-out;
+            white-space: pre-line; /* Trình bày định dạng đoạn dài cực kỳ rõ ràng */
+        }
+
+        @keyframes msgSlide {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .msg-bot { 
+            background: #1a1a1a; 
+            align-self: flex-start; 
+            border-bottom-left-radius: 2px;
+            border: 1px solid #333;
+            color: #ececec;
+        }
+
+        .msg-user { 
+            background: var(--teal); 
+            align-self: flex-end; 
+            border-bottom-right-radius: 2px;
+            font-weight: 500;
+        }
+        
         .detail-card { 
             background: linear-gradient(145deg, #1f1f1f, #151515); padding: 20px; border-radius: 15px; margin-bottom: 12px;
-            border: 1px solid #2a2a2a; display: flex; justify-content: space-between; align-items: center; animation: slideUp 0.4s ease forwards;
+            border: 1px solid #2a2a2a; display: flex; justify-content: space-between; align-items: center; animation: slideUp 0.4s ease forwards; cursor: pointer;
         }
         .detail-card::before { content: ''; width: 4px; height: 20px; background: var(--gold-solid); border-radius: 2px; margin-right: 10px; }
         .chevron-circle { width: 26px; height: 26px; background: rgba(0, 191, 165, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--teal); font-size: 10px; }
@@ -95,77 +156,6 @@
         @keyframes blink { 0%, 100% { opacity: 0.4; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.1); } }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-      /* TỐI ƯU RIÊNG CHO MÀN HÌNH CHAT */
-    #screen3 {
-        height: 100svh; /* Sử dụng svh để khớp chính xác trên mobile */
-        display: none;
-        flex-direction: column;
-        background: #080808;
-    }
-
-    #chatHeader {
-        background: #111;
-        padding: 12px 15px;
-        display: flex;
-        align-items: center;
-        border-bottom: 1px solid #222;
-        flex-shrink: 0; /* Không cho phép header bị co lại */
-        z-index: 10;
-    }
-
-    #chatBody {
-        flex: 1;
-        padding: 15px;
-        overflow-y: auto;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        -webkit-overflow-scrolling: touch;
-        /* Tạo khoảng trống cuối để không bị sát input */
-        padding-bottom: 30px; 
-    }
-
-    .chat-input-area {
-        background: #111;
-        padding: 10px 15px;
-        /* Quan trọng: Padding bottom cho các dòng máy có tai thỏ/nút home */
-        padding-bottom: calc(10px + env(safe-area-inset-bottom));
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        border-top: 1px solid #222;
-        flex-shrink: 0;
-    }
-
-    /* Hiệu ứng bong bóng tin nhắn mới */
-    .msg {
-        max-width: 80%;
-        padding: 10px 14px;
-        font-size: 14px;
-        border-radius: 15px;
-        line-height: 1.5;
-        word-wrap: break-word;
-        animation: msgSlide 0.3s ease-out;
-    }
-
-    @keyframes msgSlide {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .msg-bot { 
-        background: #222; 
-        align-self: flex-start; 
-        border-bottom-left-radius: 2px;
-        border: 1px solid #333;
-    }
-
-    .msg-user { 
-        background: var(--teal); 
-        align-self: flex-end; 
-        border-bottom-right-radius: 2px;
-        font-weight: 500;
-    }
     </style>
 </head>
 <body>
@@ -180,7 +170,7 @@
     <div class="lead-box">
         <span><i class="fa-solid fa-hand-point-down"></i> Chọn vấn đề Anh/Chị đang gặp phải:</span>
     </div>
-       <div class="grid-container">
+    <div class="grid-container">
         <div class="menu-item" onclick="startLoad('nap')"><i class="fa-solid fa-wallet" style="color:#FFD700"></i><b>Nạp Tiền</b></div>
         <div class="menu-item" onclick="startLoad('rut')"><i class="fa-solid fa-building-columns" style="color:#00bfa5"></i><b>Rút Tiền</b></div>
         <div class="menu-item" onclick="startLoad('tk')"><i class="fa-solid fa-user-shield" style="color:#ff4444"></i><b>Tài Khoản</b></div>
@@ -200,7 +190,7 @@
 
 <div id="screen2" class="screen">
     <div style="background: #111; padding: 15px; display: flex; align-items: center; border-bottom: 1px solid #222; flex-shrink:0;">
-        <i class="fa-solid fa-arrow-left" onclick="backTo(1)" style="color:var(--gold-solid); font-size: 20px;"></i>
+        <i class="fa-solid fa-arrow-left" onclick="backTo(1)" style="color:var(--gold-solid); font-size: 20px; cursor:pointer;"></i>
         <div id="s2-title" style="flex:1; text-align:center; font-weight:800; font-size:14px; text-transform: uppercase;">CHI TIẾT HỖ TRỢ</div>
     </div>
     <div id="s2-list" class="detail-list-container"></div>
@@ -208,7 +198,7 @@
 
 <div id="screen3" class="screen">
     <div id="chatHeader">
-        <i class="fa-solid fa-chevron-left" onclick="backTo(2)" style="color:var(--gold-solid); font-size: 22px; padding-right: 10px;"></i>
+        <i class="fa-solid fa-chevron-left" onclick="backTo(2)" style="color:var(--gold-solid); font-size: 22px; padding-right: 10px; cursor:pointer;"></i>
         <img id="staffImg" src="" style="width:38px; height:38px; border-radius:50%; border: 2px solid var(--teal);">
         <div style="flex:1; margin-left: 12px;">
             <div id="staffName" style="font-weight:800; font-size:14px; color: #fff;">Chuyên Viên</div>
@@ -223,13 +213,15 @@
     <div class="chat-input-area">
         <div style="flex:1; background:#222; border-radius:25px; padding:8px 15px; border: 1px solid #333;">
             <input type="text" id="chatInput" placeholder="Nhập câu hỏi tại đây..." 
-                   style="width:100%; border:none; background:transparent; color:#fff; font-size: 14px; outline: none;">
+                   style="width:100%; border:none; background:transparent; color:#fff; font-size: 14px; outline: none;"
+                   onkeypress="if(event.key === 'Enter') sendMsg()">
         </div>
         <button onclick="sendMsg()" style="width:42px; height:42px; background:var(--gold); border:none; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#000; cursor:pointer;">
             <i class="fa-solid fa-paper-plane"></i>
         </button>
     </div>
 </div>
+
 <div class="footer-dashboard" id="mainFooter">
     <div class="stats-row">
         <div class="stat-item">
@@ -253,65 +245,229 @@
 
 <script>
     let currentStaff = 156; 
-// DỮ LIỆU ĐẦY ĐỦ CẢ 14 NHÓM
+
+    // KỊCH BẢN PHẢN HỒI SIÊU DÀI, CHI TIẾT & CHUYÊN SÂU TỐI ĐA (V6.0 - ENTERPRISE ULTIMATE)
     const fullData = {
         nap: [
-            { t: "Nạp chậm (Quá 5p)", m: "Dạ Anh/Chị gửi Bill chuyển khoản để em kiểm tra ngay ạ!" },
-            { t: "Quên nội dung nạp", m: "Anh/Chị cung cấp ID và STK nạp để em đối soát thủ công ạ." },
-            { t: "Lỗi QR Bank", m: "Dạ Anh/Chị hãy nhập tay STK nếu mã QR không quét được ạ." },
-            { t: "Nạp sai số tiền", m: "Anh/Chị gửi Bill, em cộng đúng số tiền thực tế cho mình ạ." }
+            { 
+                t: "Nạp chậm (Quá 5p)", 
+                kw: ["nạp chậm", "quá 5p", "chưa vào tiền", "lâu thế", "chưa nhận được tiền", "nạp tiền chưa vào", "treo tiền nạp", "chờ tiền nạp", "tiền chưa nổi", "nạp tiền bị kẹt"], 
+                m: "Dạ em rất thấu hiểu sự sốt ruột của Anh/Chị khi giao dịch nạp tiền bị chậm trễ so với thời gian định mức. Hệ thống HPOK vô cùng xin lỗi vì sự bất tiện này.\n\nĐể hệ thống tài chính tiến hành kiểm tra chuyên sâu và tra soát thủ công ngay lập tức, Anh/Chị vui lòng cung cấp đầy đủ cho chuyên viên các thông tin sau:\n\n1. Hình chụp biên lai / bill chuyển khoản thành công từ ứng dụng ngân hàng (bắt buộc nhìn rõ mã giao dịch, số tiền, thời gian và số tài khoản nhận).\n2. Tên tài khoản hoặc ID đăng ký chính xác tại hệ thống HPOK.\n3. Số tiền cụ thể Anh/Chị đã thực hiện giao dịch.\n\n⚙️ QUY TRÌNH XỬ LÝ ĐẶC BIỆT:\n• Bước 1: Tiếp nhận thông tin và chuyển ngay sang phòng ban Ngân hàng trung gian.\n• Bước 2: Đối soát mã định danh và số dư thực tế trên cổng thanh toán trong vòng 2 - 5 phút.\n• Bước 3: Cộng bù tiền trực tiếp vào ví chính của hội viên kèm theo thông báo xác nhận qua hộp thư hệ thống.\n\n📌 Lưu ý: Trong khung giờ cao điểm hoặc khi ngân hàng bảo trì định kỳ, thời gian đối soát có thể kéo dài hơn một chút, rất mong Anh/Chị thông cảm và kiên nhẫn chờ đợi ạ!" 
+            },
+            { 
+                t: "Quên nội dung nạp", 
+                kw: ["quên nội dung", "nhầm nội dung", "thiếu nội dung", "không ghi nội dung", "sai cú pháp nạp", "quên ghi cú pháp", "nhập sai lời nhắn"], 
+                m: "Dạ việc quên hoặc nhập sai, thiếu nội dung chuyển khoản thỉnh thoảng vẫn xảy ra do thao tác vội, Anh/Chị đừng quá lo lắng nhé!\n\n📋 HƯỚNG DẪN KHẮC PHỤC CHI TIẾT:\n• Bước 1: Chụp lại toàn bộ màn hình giao dịch chuyển tiền thành công từ app ngân hàng cá nhân của Anh/Chị (phải hiển thị rõ số tài khoản đích và mã giao dịch).\n• Bước 2: Cung cấp chính xác mã giao dịch (mã Ref / mã tham chiếu), số tiền thực chuyển và tên tài khoản / ID tại HPOK.\n• Bước 3: Gửi trực tiếp các thông tin trên vào khung chat này.\n\n⚠️ Chuyên viên tài chính sẽ trực tiếp liên hệ với ngân hàng đối tác để xác minh nguồn tiền và thực hiện cộng điểm thủ công cho Anh/Chị trong thời gian sớm nhất. Lần sau Anh/Chị nhớ chú ý nhập đúng nội dung cú pháp hệ thống yêu cầu để tiền tự động vào siêu tốc nhé ạ!" 
+            },
+            { 
+                t: "Lỗi QR Bank", 
+                kw: ["lỗi qr", "mã qr", "không quét được", "quét mã lỗi", "qr thanh toán lỗi", "mã qr không chạy", "quét mã không ăn"], 
+                m: "Dạ đôi khi do kết nối mạng không ổn định, lỗi máy chủ ngân hàng hoặc phiên bản app ngân hàng trên điện thoại quá cũ dẫn đến việc quét mã QR thanh toán bị lỗi.\n\n💡 CÁCH GIẢI QUYẾT TỐI ƯU:\n1. Anh/Chị vui lòng chụp lại màn hình giao diện nạp tiền hiện tại (có hiển thị đầy đủ Số tài khoản nhận, Tên chủ thẻ và Ngân hàng thụ hưởng).\n2. Thay vì dùng tính năng quét mã QR, Anh/Chị hãy chuyển sang thao tác nhập thủ công số tài khoản.\n3. Điền đúng số tiền và sao chép chính xác nội dung chuyển khoản do hệ thống cung cấp.\n\nNếu app ngân hàng tiếp tục báo lỗi, Anh/Chị hãy nhắn lại ngay để em cập nhật và cung cấp một STK dự phòng khác cho mình thực hiện nhé!" 
+            },
+            { 
+                t: "Nạp sai số tiền", 
+                kw: ["sai số tiền", "nạp thiếu", "nạp thừa", "chuyển nhầm tiền", "lệch tiền nạp", "chuyển dư tiền", "nhập sai số tiền nạp"], 
+                m: "Dạ trường hợp Anh/Chị nạp sai số tiền thực tế so với lệnh tạo trên hệ thống (ví dụ tạo lệnh 500k nhưng chuyển 550k hoặc ngược lại), xin hãy bình tĩnh thực hiện theo hướng dẫn sau:\n\n• Gửi ngay ảnh chụp biên lai chuyển tiền thành công qua khung chat này.\n• Chuyên viên kiểm toán sẽ tiến hành đối chiếu số tiền thực tế nổi trên hệ thống tài chính.\n• Sau khi xác thực chính xác, hệ thống sẽ tiến hành điều chỉnh cộng bù phần còn thiếu hoặc khớp lệnh hoàn toàn cho Anh/Chị ngay lập tức ạ!" 
+            },
+            {
+                t: "Nạp tiền qua ví điện tử / thẻ cào",
+                kw: ["thẻ cào", "viettelpay", "momo", "zalopay", "thẻ điện thoại", "nạp ví điện tử", "gạch thẻ", "nạp momo lỗi"],
+                m: "💳 HƯỚNG DẪN NẠP TIỀN QUA KÊNH TRỰC TUYẾN THỨ TỰ:\n\n• Bước 1: Truy cập mục Nạp Tiền tại trang chủ và chọn phương thức tương ứng (Momo, ZaloPay hoặc Thẻ cào Viettel/Mobifone/Vinaphone).\n• Bước 2: Điền đầy đủ các thông số yêu cầu (Mã thẻ, số seri đối với thẻ cào hoặc quét mã chuyển khoản ví điện tử).\n• Bước 3: Xác nhận hoàn tất.\n\n⚠️ Lưu ý đối với thẻ cào: Phí chiết khấu sẽ tuân theo biểu phí hiện hành của nhà mạng. Hãy đảm bảo nhập chính xác mệnh giá thẻ để tránh việc hệ thống từ chối giao dịch nhé ạ!"
+            },
+            {
+                t: "Hạn mức nạp tối thiểu/tối đa",
+                kw: ["hạn mức nạp", "nạp tối thiểu", "nạp tối đa", "nạp ít nhất bao nhiêu", "giới hạn nạp", "nạp nhiều nhất bao nhiêu"],
+                m: "📊 QUY ĐỊNH HẠN MỨC GIAO DỊCH NẠP TIỀN:\n\n• Mức nạp tối thiểu cho mỗi lần giao dịch: 50.000 VNĐ.\n• Mức nạp tối đa cho mỗi lần giao dịch: 500.000.000 VNĐ (Không giới hạn số lần nạp trong ngày).\n\nNếu Anh/Chị có nhu cầu giao dịch số lượng lớn vượt hạn mức tiêu chuẩn, vui lòng liên hệ trực tiếp chuyên viên VIP để được hỗ trợ cổng thanh khoản riêng biệt và nhanh chóng nhất ạ!"
+            }
         ],
         rut: [
-            { t: "Đơn rút chờ duyệt", m: "Dạ đơn rút đang được kiểm toán, Anh/Chị vui lòng đợi ạ." },
-            { t: "Ngân hàng bảo trì", m: "Dạ ngân hàng bảo trì, mình vui lòng rút qua thẻ khác ạ." }
+            { 
+                t: "Đơn rút chờ duyệt", 
+                kw: ["rút tiền chậm", "chờ duyệt", "đơn rút", "chưa thấy về", "rút tiền lâu thế", "tiền chưa về tài khoản", "treo lệnh rút", "rút tiền bị kẹt"], 
+                m: "Dạ đơn rút tiền của Anh/Chị đang nằm trong hàng đợi kiểm toán bảo mật của hệ thống quản lý rủi ro.\n\n📊 THÔNG TIN CHI TIẾT QUY TRÌNH:\n- Thời gian xử lý tiêu chuẩn cho một giao dịch rút tiền hợp lệ: Từ 3 đến 10 phút.\n- Đối với các trường hợp đặc biệt: Lần rút tiền đầu tiên trong ngày, rút số tiền lớn, hoặc tài khoản có thay đổi thông tin gần đây, hệ thống sẽ tiến hành thêm bước kiểm tra bảo mật nhằm đảm bảo an toàn tuyệt đối cho tài sản của hội viên.\n\n🛡 Cam kết từ hệ thống: Tiền sẽ được chuyển thẳng về tài khoản ngân hàng liên kết chính chủ của Anh/Chị ngay khi hoàn tất khâu kiểm duyệt. Xin vui lòng giữ kết nối ổn định và theo dõi số dư tài khoản ngân hàng nhé ạ!" 
+            },
+            { 
+                t: "Ngân hàng bảo trì", 
+                kw: ["bảo trì ngân hàng", "lỗi ngân hàng", "rút ko được", "ngân hàng lỗi", "bank bảo trì", "hệ thống ngân hàng bảo trì", "bank sập"], 
+                m: "Dạ hiện tại ngân hàng nhận tiền của Anh/Chị đang nằm trong khung giờ bảo trì hệ thống định kỳ, dẫn đến việc chuyển tiền tự động bị gián đoạn tạm thời.\n\n💡 GIẢI PHÁP TỐI ƯU CHO ANH/CHỊ:\n• Bước 1: Tiến hành hủy lệnh rút tiền hiện tại đang bị treo trên hệ thống.\n• Bước 2: Tạo lại một lệnh rút tiền mới và thay đổi liên kết sang một trong các ngân hàng lớn khác đang hoạt động ổn định (như Vietcombank, Techcombank, ACB, BIDV, MB Bank,...).\n• Bước 3: Xác nhận lệnh rút và chờ tiền về tài khoản chỉ trong vài phút.\n\nNếu cần hỗ trợ thêm về việc liên kết thẻ ngân hàng mới, Anh/Chị cứ nhắn cho em biết nhé!" 
+            },
+            {
+                t: "Sai tên chủ thẻ khi rút",
+                kw: ["sai tên", "lệch tên ngân hàng", "không rút được do tên", "tên không khớp", "sai tên thụ hưởng", "tên tài khoản không trùng"],
+                m: "⚠️ LƯU Ý QUAN TRỌNG VỀ TÊN TÀI KHOẢN RÚT TIỀN:\n\n• Theo quy định bảo mật chống rửa tiền, tên chủ tài khoản ngân hàng nhận tiền **bắt buộc phải trùng khớp hoàn toàn** với họ tên thật đã đăng ký ban đầu tại hệ thống HPOK.\n• Nếu Anh/Chị điền sai hoặc cố tình dùng tài khoản của người khác, lệnh rút sẽ bị hệ thống tự động từ chối.\n\n🛠 Khắc phục: Vui lòng liên hệ trực tiếp với chuyên viên CSKH để được hướng dẫn cập nhật hoặc xác thực lại thông tin chính chủ một cách an toàn nhất!"
+            },
+            {
+                t: "Chưa hoàn thành vòng cược",
+                kw: ["vòng cược", "chưa đủ vòng cược", "lệnh rút bị từ chối do vòng cược", "điều kiện rút tiền", "chưa hoàn thành doanh thu cược"],
+                m: "🔒 ĐIỀU KIỆN HOÀN THÀNH VÒNG CƯỢC KHI RÚT TIỀN:\n\nĐể thực hiện lệnh rút tiền thành công, tài khoản của Anh/Chị cần hoàn thành đủ số vòng cược yêu cầu tương ứng với từng sảnh chơi hoặc chương trình khuyến mãi đã tham gia:\n\n• Đối với số tiền nạp thông thường: Yêu cầu hoàn thành 01 vòng cược tổng tiền nạp.\n• Đối với các gói ưu đãi / khuyến mãi: Cần hoàn thành đủ số vòng cược theo thể lệ riêng của sự kiện đó.\n\nAnh/Chị có thể kiểm tra chi tiết số vòng cược còn thiếu tại mục 'Lịch sử cược' hoặc nhắn trực tiếp cho em để chuyên viên kiểm tra trạng thái dòng tiền hiện tại nhé!"
+            }
         ],
         tk: [
-            { t: "Quên mật khẩu", m: "Anh/Chị cung cấp SĐT đăng ký để em lấy lại mật khẩu ạ." },
-            { t: "Khóa tài khoản", m: "Anh/Chị cung cấp ID để em kiểm tra lý do khóa ạ." }
+            { 
+                t: "Quên mật khẩu", 
+                kw: ["quên mật khẩu", "mk", "đổi mật khẩu", "lấy lại pass", "quên pass", "mật khẩu đăng nhập", "không nhớ mật khẩu", "cần reset mật khẩu"], 
+                m: "Dạ để lấy lại mật khẩu tài khoản một cách an toàn và bảo mật tuyệt đối, tránh tình trạng kẻ gian chiếm đoạt, Anh/Chị vui lòng thực hiện tuần tự các bước sau:\n\n1. Cung cấp số điện thoại chính chủ hoặc địa chỉ Email đã dùng để đăng ký tài khoản tại hệ thống HPOK.\n2. Chuyên viên bảo mật sẽ gửi mã xác thực OTP một lần (có hiệu lực trong 5 phút) qua tin nhắn SMS hoặc Email cho mình.\n3. Sau khi xác thực thành công mã OTP, hệ thống sẽ cấp quyền để Anh/Chị tiến hành thiết lập mật khẩu mới.\n\n⚠️ LƯU Ý BẢO MẬT QUAN TRỌNG:\n• Tuyệt đối không chia sẻ mật khẩu mới hoặc mã OTP cho bất kỳ ai, kể cả nhân viên tự xưng là CSKH.\n• Đặt mật khẩu có độ khó cao (bao gồm chữ hoa, chữ thường, số và ký tự đặc biệt) để bảo vệ tài khoản tốt nhất nhé ạ!" 
+            },
+            { 
+                t: "Khóa tài khoản", 
+                kw: ["khóa acc", "bị khóa", "không đăng nhập được", "tài khoản bị khóa", "bị vô hiệu hóa", "tài khoản bị hạn chế", "bị ban nick"], 
+                m: "Dạ tài khoản của Anh/Chị có thể bị hệ thống tự động khóa tạm thời do phát hiện các dấu hiệu đăng nhập bất thường (sai mật khẩu nhiều lần, truy cập từ địa chỉ IP lạ hoặc thiết bị không xác định) nhằm bảo vệ số dư tài sản bên trong.\n\n🛠 HƯỚNG DẪN MỞ KHÓA TÀI KHOẢN:\n- Anh/Chị cung cấp ngay tên đăng nhập / ID và hình ảnh giấy tờ tùy thân (Căn cước công dân / Chứng minh nhân dân - có thể che bớt thông tin nhạy cảm).\n- Bộ phận an ninh mạng sẽ tiến hành xác minh khuôn mặt và lịch sử truy cập. Ngay sau khi xác thực chính chủ thành công, tài khoản của mình sẽ được mở khóa hoàn toàn ngay lập tức ạ." 
+            },
+            {
+                t: "Đổi số điện thoại / Email",
+                kw: ["đổi sdt", "đổi số điện thoại", "đổi email", "cập nhật thông tin cá nhân", "thay đổi thông tin tài khoản", "cập nhật sđt"],
+                m: "📞 HƯỚNG DẪN THAY ĐỔI THÔNG TIN LIÊN HỆ:\n\nĐể thay đổi số điện thoại hoặc địa chỉ email gắn liền với tài khoản, Anh/Chị cần:\n1. Cung cấp thông tin lịch sử giao dịch gần nhất (mã nạp tiền / rút tiền gần đây nhất).\n2. Gửi ảnh chụp CCCD/CMND để xác thực chính chủ với bộ phận bảo mật.\n\nViệc này giúp bảo vệ tuyệt đối tài khoản của Anh/Chị khỏi các hành vi mạo danh chiếm đoạt tài sản. Chuyên viên sẽ hỗ trợ cập nhật ngay sau khi xác thực hoàn tất."
+            }
         ],
-        km: [{t:"Nhận Code 100K", m:"Dạ Anh/Chị gửi ảnh liên kết ngân hàng để em phát Code ạ."}],
-        game: [{t:"Lỗi sảnh game", m:"Anh/Chị thoát app vào lại hoặc xóa cache trình duyệt ạ."}],
-        app: [{t:"Lỗi tải iOS", m:"Dạ Anh/Chị vào Cài đặt -> Tin cậy cấu hình để mở app ạ."}],
-        vip: [{t:"Lương tuần VIP", m:"Dạ lương VIP phát tự động vào 15h thứ 2 hàng tuần ạ."}],
-        dl: [{t:"Đăng ký đại lý", m:"Chào đối tác! Vui lòng để lại SĐT Telegram em tư vấn ạ."}],
-        xs: [{t:"Dự đoán AI", m:"AI HPOK đã chốt bộ số đẹp hôm nay, em gửi mình tham khảo ạ."}],
-        pl: [{t:"Chính sách bảo mật", m:"HPOK cam kết bảo mật 100% dữ liệu hội viên tại máy chủ."}],
-        sec: [{t:"Lỗi mã 2FA", m:"Dạ Anh/Chị gửi ảnh CCCD để em hỗ trợ xóa mã 2FA cũ ạ."}],
-        evt: [{t:"Sự kiện X2 nạp đầu", m:"Dạ nạp đầu qua Bank hôm nay nhận X2, mình tham gia nhé!"}],
-        bank: [{t:"Thêm ngân hàng mới", m:"Dạ tên thẻ phải trùng tên đăng ký mới có thể thêm ạ."}],
-        oth: [{t:"Hỗ trợ chung", m:"Dạ HPOK nghe ạ! Anh/Chị cần hỗ trợ vấn đề gì ạ?"}]
+        km: [
+            { 
+                t: "Nhận Code 100K", 
+                kw: ["code", "khuyến mãi", "thưởng", "100k", "giftcode", "nhận quà", "mã code", "nhận code 100k", "code tân thủ"], 
+                m: "🎁 CHƯƠNG TRÌNH NHẬN THƯỞNG CODE 100K ĐỘC QUYỀN TẠI HPOK!\n\nĐiều kiện nhận thưởng cơ bản:\n1. Tài khoản hội viên đã liên kết thành công thẻ ngân hàng chính chủ khớp với tên đăng ký.\n2. Đã phát sinh ít nhất một giao dịch xác thực trên hệ thống.\n\n📌 CÁCH THỨC NHẬN CODE:\n• Bước 1: Chụp lại màn hình giao diện thông tin tài khoản và phần liên kết ngân hàng thành công.\n• Bước 2: Gửi ảnh chụp đó vào khung chat này kèm theo câu lệnh 'Xin nhận Code 100K'.\n• Bước 3: Chuyên viên kiểm tra và trực tiếp phát mã Giftcode trị giá 100K vào ví chính cho Anh/Chị ngay lập tức.\n\nChúc Anh/Chị có những trải nghiệm thật tuyệt vời và rinh về nhiều phần quà giá trị lớn tại hệ thống của chúng tôi nhé!" 
+            },
+            {
+                t: "Hoàn trả hàng ngày",
+                kw: ["hoàn trả", "hoàn cược", "nhận hoàn trả", "tiền hoàn trả", "khuyến mãi hoàn trả", "nhận hoa hồng hoàn trả"],
+                m: "💸 CHƯƠNG TRÌNH HOÀN TRẢ KHÔNG GIỚI HẠN MỖI NGÀY:\n\n• Tỷ lệ hoàn trả: Lên đến tối đa 3.0% tùy thuộc vào từng sảnh game (Thể thao, Casino, Slots, Xổ số).\n• Thời gian kết toán: Hệ thống tự động tính toán và trả thưởng trực tiếp vào ví chính của hội viên vào lúc 12:00 trưa hàng ngày.\n• Không cần điều kiện vòng cược lại đối với tiền hoàn trả, Anh/Chị có thể rút tiền mặt ngay lập tức hoặc tiếp tục tham gia giải trí tùy thích!"
+            }
+        ],
+        game: [
+            { 
+                t: "Lỗi sảnh game", 
+                kw: ["lỗi game", "văng game", "lag", "không vào được game", "sập", "lỗi sảnh", "đứng hình", "game bị giật", "mất kết nối game"], 
+                m: "Dạ hiện tượng giật lag, đứng hình hoặc văng khỏi sảnh game thỉnh thoảng xảy ra do đường truyền internet cá nhân không ổn định hoặc bộ nhớ đệm (cache) của trình duyệt / ứng dụng bị đầy.\n\n🛠 HƯỚNG DẪN KHẮC PHỤC KỸ THUẬT CHI TIẾT:\n- Bước 1: Kiểm tra lại đường truyền mạng Wi-Fi hoặc 4G đang sử dụng, đảm bảo tín hiệu kết nối mạnh.\n- Bước 2: Tải lại trang web (nhấn F5 trên máy tính hoặc vuốt màn hình xuống để làm mới trên điện thoại).\n- Bước 3: Xóa lịch sử duyệt web và bộ nhớ cache tạm thời của trình duyệt.\n- Bước 4: Đăng nhập lại tài khoản. Nếu sảnh game chính đang trong lịch trình bảo trì định kỳ, Anh/Chị hãy chọn sang sảnh game phụ tương đương để trải nghiệm không gián đoạn.\n\nNếu vẫn tiếp tục gặp sự cố, Anh/Chị hãy chụp màn hình lỗi và gửi cho em để chuyển bộ phận kỹ thuật kiểm tra fix lỗi ngay lập tức ạ!" 
+            },
+            {
+                t: "Kẹt cược / Chưa trả thưởng",
+                kw: ["kẹt cược", "chưa thanh toán cược", "chưa trả thưởng", "vòng cược treo", "lệnh cược lỗi", "vé cược chưa thanh toán", "chưa kết toán vé cược"],
+                m: "⏳ XỬ LÝ LỖI KẸT CƯỢC / CHƯA THANH TOÁN:\n\nTrong một số trường hợp ván cược kết thúc nhưng nhà cung cấp game mất kết nối máy chủ tạm thời, trạng thái cược có thể hiển thị 'Đang xử lý'.\n\n• Hệ thống kiểm tra tự động sẽ quét và thanh toán toàn bộ vé cược hợp lệ trong vòng từ 15 đến 30 phút sau khi trận đấu/ván chơi kết thúc hoàn toàn.\n• Nếu quá thời gian trên mà chưa thấy cập nhật số dư, Anh/Chị vui lòng cung cấp **Mã phiên cược cụ thể** để chuyên viên khiếu nại lên nhà phát hành game đối soát và hoàn tiền ngay cho mình nhé!"
+            }
+        ],
+        app: [
+            { 
+                t: "Lỗi tải iOS", 
+                kw: ["tải ios", "iphone", "apple", "không tải được app", "lỗi app ios", "cài app iphone", "tin cậy ứng dụng", "không mở được app trên ios"], 
+                m: "Dạ đối với các dòng điện thoại sử dụng hệ điều hành iOS (iPhone / iPad), hệ thống bảo mật của Apple thường có cơ chế mặc định chặn các ứng dụng được cài đặt ngoài App Store.\n\n📱 HƯỚNG DẪN CẤU HÌNH TIN CẬY ỨNG DỤNG TRÊN iOS:\n1. Sau khi tải và cài đặt ứng dụng HPOK về máy, tiến hành mở phần Cài đặt (Settings) -> Cài đặt chung (General).\n2. Kéo xuống và chọn mục Quản lý VPN & Thiết bị (VPN & Device Management).\n3. Tìm đến tên nhà phát hành doanh nghiệp của ứng dụng HPOK.\n4. Bấm chọn vào tên nhà phát hành đó và xác nhận chọn 'Tin cậy' (Trust).\n5. Quay trở lại màn hình chính của điện thoại, lúc này Anh/Chị có thể mở ứng dụng và trải nghiệm mượt mà như bình thường rồi ạ!" 
+            },
+            {
+                t: "Lỗi cài đặt Android (APK)",
+                kw: ["tải android", "samsung", "oppo", "apk", "không cài được app android", "lỗi file apk", "cài đặt apk", "lỗi tệp tin"],
+                m: "🤖 HƯỚNG DẪN CÀI ĐẶT ỨNG DỤNG TRÊN ANDROID:\n\n1. Khi tải tệp APK về máy, hệ thống có thể hiển thị cảnh báo tệp không rõ nguồn gốc.\n2. Anh/Chị chọn **Cài đặt (Settings)** -> Cho phép cài đặt từ nguồn này (Allow from this source).\n3. Tiếp tục tiến hành quá trình cài đặt ứng dụng như bình thường.\n\nNếu gặp khó khăn trong quá trình tải app, Anh/Chị hãy nhắn lại để em gửi link tải trực tiếp tối ưu nhất cho dòng máy mình đang sử dụng nhé!"
+            }
+        ],
+        vip: [
+            { 
+                t: "Lương tuần VIP", 
+                kw: ["lương vip", "thưởng tuần", "đặc quyền", "lương hội viên", "quà vip", "cấp bậc vip", "nhận lương vip"], 
+                m: "👑 HỆ THỐNG TRI ÂN HỘI VIÊN VIP ĐẲNG CẤP TẠI HPOK:\n\nChính sách chi tiết:\n• Thời gian phát thưởng tự động: Vào lúc 15:00 chiều thứ Hai hàng tuần.\n• Cơ chế tính thưởng: Dựa trên tổng doanh thu cược hợp lệ tích lũy của Anh/Chị trong suốt tuần trước đó.\n• Hạng mức ưu đãi: Từ cấp bậc VIP 1 cho đến VIP Kim Cương với giá trị phần thưởng dao động từ vài trăm ngàn cho đến hàng chục triệu đồng tiền mặt.\n\n💰 Tiền thưởng sẽ được hệ thống tự động cộng dồn trực tiếp vào ví chính của hội viên. Anh/Chị có thể rút tiền mặt hoặc sử dụng làm vốn tham gia các trò chơi giải trí bất cứ lúc nào mình muốn nhé ạ!" 
+            }
+        ],
+        dl: [
+            { 
+                t: "Đăng ký đại lý", 
+                kw: ["đại lý", "hoa hồng", "hợp tác", "kiếm tiền", "đăng ký làm đại lý", "chiết khấu đại lý", "kiếm hoa hồng", "làm đối tác"], 
+                m: "🤝 CHƯƠNG TRÌNH HỢP TÁC ĐẠI LÝ TOÀN CẦU CÙNG HPOK:\n\nCơ hội kinh doanh không vốn với mức hoa hồng hấp dẫn lên đến 60%!\n\nQuyền lợi độc quyền cho đối tác đại lý:\n- Nhận hoa hồng kết toán rõ ràng, minh bạch tuyệt đối vào mỗi tuần.\n- Hỗ trợ toàn diện các công cụ marketing, banner quảng cáo, mã QR và link giới thiệu độc quyền riêng biệt.\n- Đội ngũ chuyên viên phát triển thị trường hỗ trợ đồng hành 24/7.\n\n📞 Để đăng ký tham gia, Anh/Chị vui lòng để lại số điện thoại liên hệ hoặc tài khoản Telegram, chuyên viên cấp cao của chúng tôi sẽ chủ động liên hệ tư vấn chi tiết các bước hợp tác cho mình ngay ạ!" 
+            }
+        ],
+        xs: [
+            { 
+                t: "Dự đoán AI", 
+                kw: ["xổ số", "ai", "dự đoán", "soi cầu", "lô đề", "dự đoán kết quả", "gợi ý số đề", "xin số đề"], 
+                m: "🤖 HỆ THỐNG XỔ SỐ AI HPOK - CÔNG NGHỆ DỰ ĐOÁN THÔNG MINH:\n\nNền tảng của chúng tôi tích hợp công nghệ phân tích dữ liệu lớn (Big Data) và thuật toán xác suất thống kê hiện đại nhất hiện nay:\n\n• Cơ chế hoạt động: Quét toàn bộ kết quả quay thưởng lịch sử trong nhiều năm để tìm ra các biên độ cầu đẹp, quy luật xuất hiện của các con số.\n• Tiện ích: Chốt bộ số bạch thủ lô, song thủ lô, xiên và dàn đề có tỷ lệ xác suất về cao nhất trong ngày.\n\nAnh/Chị muốn tham khảo đài quay thưởng khu vực miền Bắc, miền Trung hay miền Nam? Hãy nhắn lại yêu cầu để hệ thống trích xuất bảng phân tích dự đoán chi tiết gửi riêng cho mình nhé!" 
+            }
+        ],
+        pl: [
+            { 
+                t: "Chính sách bảo mật", 
+                kw: ["pháp lý", "bảo mật", "an toàn", "uy tín", "giấy phép", "pagcor", "hợp pháp", "trang web uy tín không"], 
+                m: "🛡 CAM KẾT PHÁP LÝ & BẢO MẬT TUYỆT ĐỐI TẠI HPOK:\n\n- Giấy phép hoạt động: HPOK vận hành hợp pháp dưới sự cấp phép và giám sát nghiêm ngặt bởi tổ chức quản lý cá cược quốc tế danh tiếng PAGCOR.\n- Tiêu chuẩn bảo mật dữ liệu: Toàn bộ thông tin cá nhân, lịch sử giao dịch và tài khoản của hội viên đều được mã hóa bằng công nghệ SSL 256-bit tối tân nhất hiện nay.\n- Quy tắc bảo mật: Tuyệt đối không tiết lộ hoặc cung cấp dữ liệu cho bất kỳ bên thứ ba nào dưới mọi hình thức.\n\nAnh/Chị hoàn toàn có thể an tâm tuyệt đối khi gửi gắm niềm tin và trải nghiệm các dịch vụ giải trí đẳng cấp tại hệ thống của chúng tôi ạ!" 
+            }
+        ],
+        sec: [
+            { 
+                t: "Lỗi mã 2FA", 
+                kw: ["2fa", "mã xác thực", "google authenticator", "mất mã 2fa", "mã otp google", "mất google auth", "lỗi bảo mật 2fa"], 
+                m: "🔒 BẢO MẬT 2FA (GOOGLE AUTHENTICATOR):\n\nTính năng mã xác thực 2FA giúp bảo vệ tài khoản của Anh/Chị khỏi mọi truy cập trái phép.\n\nTrường hợp Anh/Chị bị mất điện thoại, cài lại máy hoặc lỗi mã xác thực:\n- Vui lòng cung cấp thông tin tài khoản kèm theo ảnh chụp giấy tờ tùy thân hợp lệ (CCCD/CMND).\n- Bộ phận an ninh mạng sẽ tiến hành đối chiếu thông tin, xác minh khuôn mặt và danh tính thủ công.\n- Sau khi xác thực thành công, hệ thống sẽ tiến hành gỡ bỏ mã 2FA cũ và hướng dẫn Anh/Chị thiết lập lớp bảo mật 2FA mới an toàn hơn." 
+            }
+        ],
+        evt: [
+            { 
+                t: "Sự kiện X2 nạp đầu", 
+                kw: ["sự kiện", "x2", "nạp đầu", "ưu đãi hot", "khuyến mãi nạp lần đầu", "thưởng nạp đầu", "khuyến mãi chào mừng", "nhận x2 tiền nạp"], 
+                m: "🔥 CHƯƠNG TRÌNH ĐẶC BIỆT: 'SIÊU ƯU ĐÃI X2 NẠP ĐẦU'!\n\nThông tin chi tiết chương trình:\n• Đối tượng tham gia: Toàn bộ hội viên mới đăng ký tài khoản thành công và chưa từng phát sinh giao dịch trước đó.\n• Nội dung ưu đãi: Khi thực hiện nạp tiền lần đầu qua kênh Ngân hàng hoặc QR Code, giá trị tiền nạp của Anh/Chị sẽ được nhân đôi (tối đa lên đến 2.000.000 VNĐ vào ví).\n• Yêu cầu rút tiền: Hoàn thành số vòng cược hợp lệ theo quy định của sự kiện trước khi tạo lệnh rút tiền.\n\n💡 Lời khuyên: Hãy liên hệ ngay với bộ phận CSKH để xác nhận nhận khuyến mãi ngay sau khi nạp tiền thành công nhằm không bỏ lỡ cơ hội gia tăng vốn cược nhé!" 
+            }
+        ],
+        bank: [
+            { 
+                t: "Thêm ngân hàng mới", 
+                kw: ["thêm thẻ", "ngân hàng", "stk", "đổi thẻ", "thêm tài khoản ngân hàng", "liên kết thẻ", "thay đổi ngân hàng", "cập nhật thẻ ngân hàng"], 
+                m: "💳 QUY ĐỊNH LIÊN KẾT VÀ THÊM TÀI KHOẢN NGÂN HÀNG TẠI HPOK:\n\nQuy tắc bắt buộc để đảm bảo an toàn tài sản:\n1. Tên chủ thẻ ngân hàng liên kết **bắt buộc phải trùng khớp 100%** với tên thật đã đăng ký tài khoản ban đầu tại hệ thống (hệ thống sẽ tự động từ chối nếu phát hiện sai lệch tên).\n2. Mỗi tài khoản hội viên được phép liên kết tối đa 3 tài khoản ngân hàng chính chủ khác nhau.\n\n💡 CÁCH THỰC HIỆN:\nTruy cập vào mục Tài khoản cá nhân -> Quản lý thẻ ngân hàng -> Bấm chọn Thêm tài khoản mới và điền đầy đủ, chính xác các thông tin số tài khoản, tên ngân hàng, chi nhánh theo yêu cầu là hoàn tất ạ!" 
+            }
+        ],
+        oth: [
+            { 
+                t: "Hỗ trợ chung", 
+                kw: ["alo", "chăm sóc", "giúp tôi", "hỏi chút", "tư vấn", "cần hỗ trợ", "xin chào", "hi", "hello", "hỗ trợ tôi với"], 
+                m: "Dạ HPOK xin trân trọng kính chào Anh/Chị!\n\nĐội ngũ Chăm sóc khách hàng chuyên nghiệp của chúng tôi luôn túc trực 24/7 để sẵn sàng đồng hành, hỗ trợ và giải đáp mọi thắc mắc của Anh/Chị bất cứ lúc nào.\n\nĐể được phục vụ nhanh chóng và chính xác nhất, Anh/Chị có thể:\n• Gõ trực tiếp câu hỏi hoặc vấn đề mình đang gặp phải vào khung chat này để hệ thống tự động trích xuất kịch bản giải đáp chi tiết.\n• Hoặc lựa chọn các chủ đề hỗ trợ nhanh ở màn hình chính để gặp chuyên viên trực tuyến.\n\nChúng tôi luôn nỗ lực hết mình để mang lại trải nghiệm dịch vụ tuyệt vời nhất cho Anh/Chị ạ!" 
+            }
+        ]
     };
 
     const staffs = [
-        {n: "Mai Phương", i: "https://i.pravatar.cc/100?u=mp"},
-        {n: "Bảo Ngọc", i: "https://i.pravatar.cc/100?u=bn"},
-        {n: "Linh Chi", i: "https://i.pravatar.cc/100?u=lc"}
+        { n: "Mai Phương", i: "https://i.pravatar.cc/100?u=mp" },
+        { n: "Bảo Ngọc", i: "https://i.pravatar.cc/100?u=bn" },
+        { n: "Linh Chi", i: "https://i.pravatar.cc/100?u=lc" }
     ];
 
+    // --- 1. HÀM HIỆU ỨNG ĐẾM SỐ NÂNG CAO (HỖ TRỢ ĐỊNH DẠNG HÀNG NGHÌN) ---
     function animateValue(id, start, end, duration) {
         let obj = document.getElementById(id);
+        if (!obj) return;
         let startTimestamp = null;
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerHTML = Math.floor(progress * (end - start) + start);
-            if (progress < 1) window.requestAnimationFrame(step);
+            let currentVal = Math.floor(progress * (end - start) + start);
+            obj.innerHTML = currentVal.toLocaleString('en-US');
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
         };
         window.requestAnimationFrame(step);
     }
 
-    function startLoad(key) {
-        document.getElementById('loadingBar').style.width = '100%';
-        setTimeout(() => {
-            document.getElementById('loadingBar').style.width = '0';
-            openS2(key);
-        }, 400);
+    // --- 2. HÀM LẤY THỜI GIAN THỰC (GIỜ : PHÚT : GIÂY) ---
+    function getCurrentTime() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        return `${hours}:${minutes}:${seconds}`;
     }
 
+    // --- 3. HÀM THANH TẢI (LOADING BAR) CHUYỂN TRANG MƯỢT MÀ ---
+    function startLoad(key) {
+        const bar = document.getElementById('loadingBar');
+        if (bar) {
+            bar.style.width = '100%';
+            setTimeout(() => {
+                bar.style.width = '0';
+                openS2(key);
+            }, 400);
+        } else {
+            openS2(key);
+        }
+    }
+
+    // --- 4. HÀM HIỂN THỊ DANH SÁCH CHI TIẾT THEO DANH MỤC ---
     function openS2(key) {
         const list = document.getElementById('s2-list');
+        if (!list) return;
         list.innerHTML = '';
-        (fullData[key] || [{t:"Hỗ trợ chung", m:"Dạ em nghe ạ"}]).forEach(item => {
+        
+        let dataList = fullData[key] || [{ t: "Hỗ trợ chung", m: "Dạ HPOK xin chào Anh/Chị, em có thể hỗ trợ gì cho mình ạ?" }];
+        
+        dataList.forEach(item => {
             const d = document.createElement('div');
             d.className = 'detail-card';
             d.innerHTML = `<b>${item.t}</b> <div class="chevron-circle"><i class="fa-solid fa-chevron-right"></i></div>`;
@@ -321,44 +477,253 @@
         switchScreen(2);
     }
 
+    // --- 5. HÀM KHỞI TẠO KHUNG CHAT VỚI NHÂN VIÊN NGẪU NHIÊN ---
     function openChat(obj) {
-        const s = staffs[Math.floor(Math.random()*staffs.length)];
-        document.getElementById('staffName').innerText = s.n + " (HPOK)";
-        document.getElementById('staffImg').src = s.i;
-        document.getElementById('chatBody').innerHTML = "";
+        if (!window.staffs || staffs.length === 0) {
+            window.staffs = [{ n: "Chuyên Viên CSKH", i: "https://i.imgur.com/74u75x2.png" }];
+        }
+        const s = staffs[Math.floor(Math.random() * staffs.length)];
+        
+        const staffNameEl = document.getElementById('staffName');
+        const staffImgEl = document.getElementById('staffImg');
+        const chatBodyEl = document.getElementById('chatBody');
+
+        if (staffNameEl) staffNameEl.innerText = s.n + " (HPOK - Trực tuyến 24/7)";
+        if (staffImgEl) staffImgEl.src = s.i;
+        if (chatBodyEl) chatBodyEl.innerHTML = "";
+        
+        // Hiển thị thêm nút "Kết thúc cuộc trò chuyện" ngay trên header khung chat nếu có
+        injectEndChatButton();
+
         switchScreen(3);
+        
+        // Đẩy tin nhắn khởi đầu của người dùng
         addMsg(obj.t, 'user');
-        setTimeout(() => addMsg(obj.m, 'bot'), 800);
+        
+        // Giả lập trạng thái nhân viên đang soạn tin nhắn
+        showTypingIndicator();
+        setTimeout(() => {
+            removeTypingIndicator();
+            addMsg(obj.m, 'bot');
+        }, 1100);
     }
 
+    // --- 6. HÀM THÊM TIN NHẮN KÈM ĐẦY ĐỦ GIỜ, PHÚT, GIÂY ---
     function addMsg(txt, side) {
         const b = document.getElementById('chatBody');
+        if (!b) return;
+        
+        const timeString = getCurrentTime();
         const d = document.createElement('div');
         d.className = `msg msg-${side}`;
-        d.innerText = txt;
+        
+        d.innerHTML = `
+            <div class="msg-text">${txt}</div>
+            <div class="msg-time" style="font-size: 10px; opacity: 0.7; margin-top: 3px; text-align: ${side === 'user' ? 'right' : 'left'};">${timeString}</div>
+        `;
+        
         b.appendChild(d);
         b.scrollTop = b.scrollHeight;
     }
 
+    // --- 7. HIỆU ỨNG NHÂN VIÊN ĐANG SOẠN TIN NHẮN ---
+    function showTypingIndicator() {
+        const b = document.getElementById('chatBody');
+        if (!b) return;
+        const typingDiv = document.createElement('div');
+        typingDiv.id = 'typingIndicator';
+        typingDiv.className = 'msg msg-bot typing-bubble';
+        typingDiv.innerHTML = '<span>.</span><span>.</span><span>.</span> Chuyên viên đang soạn tin nhắn...';
+        b.appendChild(typingDiv);
+        b.scrollTop = b.scrollHeight;
+    }
+
+    function removeTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) indicator.remove();
+    }
+
+    // --- 8. BỘ PHÂN TÍCH ĐA TỪ KHÓA & TRẢ LỜI TỰ ĐỘNG THÔNG MINH LIÊN TỤC ---
     function sendMsg() {
         const inp = document.getElementById('chatInput');
-        if(inp.value.trim()) { addMsg(inp.value, 'user'); inp.value = ''; }
+        if (!inp) return;
+        const text = inp.value.trim();
+        if(!text) return;
+
+        addMsg(text, 'user');
+        inp.value = '';
+
+        showTypingIndicator();
+
+        setTimeout(() => {
+            removeTypingIndicator();
+            
+            const lowerMsg = text.toLowerCase();
+            let matchedResponses = [];
+
+            // Quét toàn bộ kho dữ liệu fullData tìm kiếm các ý liên quan
+            for (let category in fullData) {
+                fullData[category].forEach(item => {
+                    if (item.kw && item.kw.some(keyword => lowerMsg.includes(keyword.toLowerCase()))) {
+                        if (!matchedResponses.some(r => r.t === item.t)) {
+                            matchedResponses.push(item);
+                        }
+                    }
+                });
+            }
+
+            let finalAnswer = "";
+
+            // Trường hợp khách hỏi gộp nhiều vấn đề cùng lúc (Khớp >= 2 chủ đề)
+            if (matchedResponses.length > 1) {
+                finalAnswer = "Dạ em nhận thấy Anh/Chị đang quan tâm đến nhiều vấn đề cùng một lúc tại hệ thống HPOK. Em xin phép tổng hợp hướng dẫn chi tiết cho từng ý như sau ạ:\n\n";
+                matchedResponses.forEach((res, index) => {
+                    finalAnswer += `📌 **[Ý ${index + 1}: ${res.t}]**\n${res.m}\n\n-----------------------------------\n\n`;
+                });
+                finalAnswer += "Cuộc trò chuyện vẫn đang tiếp tục, Anh/Chị cần hỗ trợ thêm vấn đề gì cứ nhắn tiếp cho em nhé ạ!";
+            } 
+            // Trường hợp khớp đúng 1 vấn đề cụ thể
+            else if (matchedResponses.length === 1) {
+                finalAnswer = matchedResponses[0].m + "\n\n💡 Anh/Chị cần trao đổi thêm vấn đề gì khác không ạ? Em luôn sẵn sàng hỗ trợ đến khi hoàn tất!";
+            } 
+            // Trường hợp câu hỏi mới hoặc chat tiếp tục duy trì hội thoại
+            else {
+                finalAnswer = `Dạ em đã ghi nhận thông tin: "${text}".\n\nVì đây là câu hỏi cần hỗ trợ chuyên sâu, em đã tiếp nhận và chuyển tiếp sang bộ phận kỹ thuật viên. Trong lúc chờ đợi, Anh/Chị có cần em giải đáp thêm về Nạp tiền, Rút tiền hay Khuyến mãi nào nữa không ạ?`;
+            }
+
+            addMsg(finalAnswer, 'bot');
+        }, 1200);
     }
 
-    function backTo(n) { switchScreen(n); }
+    // --- 9. TÍCH HỢP NÚT KẾT THÚC CUỘC TRÒ CHUYỆN VÀ ĐÁNH GIÁ DỊCH VỤ ---
+    function injectEndChatButton() {
+        const chatHeader = document.querySelector('.chat-header') || document.getElementById('screen3');
+        if (chatHeader && !document.getElementById('endChatBtn')) {
+            const endBtn = document.createElement('buttonid');
+            // Tạo nút kết thúc đặt gọn trên header chat
+            let btn = document.createElement('button');
+            btn.id = 'endChatBtn';
+            btn.innerHTML = '<i class="fa-solid fa-flag-checkered"></i> Kết thúc & Đánh giá';
+            btn.style.cssText = 'position: absolute; right: 15px; top: 12px; background: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; cursor: pointer; z-index: 10;';
+            btn.onclick = showRatingModal;
+            
+            // Đảm bảo phần tử chứa có position relative để định vị nút chuẩn xác
+            if (chatHeader.style.position !== 'relative') {
+                chatHeader.style.position = 'relative';
+            }
+            chatHeader.appendChild(btn);
+        }
+    }
+
+    // --- 10. GIAO DIỆN ĐÁNH GIÁ CHẤT LƯỢNG DỊCH VỤ CSKH (MODAL) ---
+    function showRatingModal() {
+        // Xóa modal cũ nếu có
+        const oldModal = document.getElementById('ratingModalOverlay');
+        if (oldModal) oldModal.remove();
+
+        const overlay = document.createElement('div');
+        overlay.id = 'ratingModalOverlay';
+        overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 9999; animation: fadeIn 0.3s ease;';
+
+        overlay.innerHTML = `
+            <div style="background: #1e1e2f; color: #fff; width: 90%; max-width: 400px; padding: 25px; border-radius: 16px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); font-family: inherit;">
+                <h3 style="margin-bottom: 10px; color: #f1c40f;"><i class="fa-solid fa-star"></i> Đánh giá chất lượng CSKH</h3>
+                <p style="font-size: 13px; opacity: 0.8; margin-bottom: 20px;">Cảm ơn Anh/Chị đã sử dụng dịch vụ của HPOK. Xin vui lòng đánh giá trải nghiệm của mình hôm nay ạ!</p>
+                
+                <div id="starContainer" style="font-size: 32px; color: #f39c12; margin-bottom: 20px; cursor: pointer;">
+                    <i class="fa-solid fa-star rating-star" data-value="1"></i>
+                    <i class="fa-solid fa-star rating-star" data-value="2"></i>
+                    <i class="fa-solid fa-star rating-star" data-value="3"></i>
+                    <i class="fa-solid fa-star rating-star" data-value="4"></i>
+                    <i class="fa-solid fa-star rating-star" data-value="5"></i>
+                </div>
+
+                <textarea id="ratingFeedback" placeholder="Ý kiến đóng góp hoặc phản hồi thêm của Anh/Chị (không bắt buộc)..." style="width: 100%; height: 80px; background: #2d2d44; border: 1px solid #444; color: #fff; padding: 10px; border-radius: 8px; font-size: 12px; resize: none; margin-bottom: 20px; outline: none;"></textarea>
+
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="submitRating()" style="flex: 1; background: #2ecc71; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">Gửi đánh giá</button>
+                    <button onclick="closeRatingModal()" style="flex: 1; background: #95a5a6; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">Bỏ qua</button>
+                </div>
+            </div>
+        `;
+
+        document.body.appendChild(overlay);
+
+        // Sự kiện chọn số sao
+        let selectedStars = 5; // Mặc định 5 sao
+        const stars = overlay.querySelectorAll('.rating-star');
+        stars.forEach((star, idx) => {
+            // Mặc định sáng hết 5 sao ban đầu
+            star.style.color = '#f39c12';
+            
+            star.onclick = () => {
+                selectedStars = idx + 1;
+                stars.forEach((s, i) => {
+                    s.style.color = i < selectedStars ? '#f39c12' : '#555';
+                });
+            };
+        });
+
+        window.currentSelectedStars = () => selectedStars;
+    }
+
+    function closeRatingModal() {
+        const overlay = document.getElementById('ratingModalOverlay');
+        if (overlay) overlay.remove();
+        backTo(1); // Quay về màn hình trang chủ sau khi kết thúc chat
+    }
+
+    function submitRating() {
+        const feedback = document.getElementById('ratingFeedback') ? document.getElementById('ratingFeedback').value : '';
+        const stars = window.currentSelectedStars ? window.currentSelectedStars() : 5;
+        
+        // Hiển thị thông báo cảm ơn nhanh
+        const overlayBox = document.querySelector('#ratingModalOverlay > div');
+        if (overlayBox) {
+            overlayBox.innerHTML = `
+                <div style="padding: 20px;">
+                    <i class="fa-solid fa-circle-check" style="font-size: 48px; color: #2ecc71; margin-bottom: 15px;"></i>
+                    <h3>Cảm ơn đánh giá ${stars}⭐ của Anh/Chị!</h3>
+                    <p style="font-size: 13px; opacity: 0.8; margin-top: 10px;">Ý kiến của Anh/Chị đã được ghi nhận để giúp hệ thống HPOK nâng cao chất lượng phục vụ ngày một tốt hơn.</p>
+                </div>
+            `;
+            setTimeout(() => {
+                closeRatingModal();
+            }, 2000);
+        } else {
+            closeRatingModal();
+        }
+    }
+
+    // --- 11. ĐIỀU HƯỚNG MÀN HÌNH VÀ QUẢN LÝ FOOTER ---
+    function backTo(n) { 
+        switchScreen(n); 
+    }
+
     function switchScreen(n) {
         document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-        document.getElementById('screen'+n).classList.add('active');
-        document.getElementById('mainFooter').style.display = (n === 3) ? 'none' : 'block';
+        const targetScreen = document.getElementById('screen' + n);
+        if (targetScreen) targetScreen.classList.add('active');
+        
+        const footer = document.getElementById('mainFooter');
+        if (footer) {
+            footer.style.display = (n === 3) ? 'none' : 'block';
+        }
     }
 
+    // --- 12. KHỞI TẠO HỆ THỐNG KHI TẢI TRANG XONG ---
+    let currentStaff = 156;
     window.onload = () => {
-        animateValue("countStaff", 0, 156, 1500);
+        animateValue("countStaff", 0, currentStaff, 1800);
+        
+        // Hiệu ứng dao động lượng nhân viên trực tuyến ngẫu nhiên chân thực
         setInterval(() => {
-            let next = currentStaff + (Math.floor(Math.random() * 5) - 2);
-            animateValue("countStaff", currentStaff, next, 800);
+            let fluctuation = Math.floor(Math.random() * 5) - 2;
+            let next = currentStaff + fluctuation;
+            if (next < 140) next = 142;
+            animateValue("countStaff", currentStaff, next, 900);
             currentStaff = next;
-        }, 4000);
+        }, 5000);
     };
 </script>
 </body>
