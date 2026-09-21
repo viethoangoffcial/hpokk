@@ -607,418 +607,421 @@ input:focus {
         </div>
     </div>
 
-    <div class="stat-scroller">
-        <div class="stat-card"><h3>Thành viên</h3><div class="val" id="st_u">0</div></div>
-        <div class="stat-card"><h3>Tổng vốn</h3><div class="val" id="st_b" style="color:var(--green)">0₫</div></div>
-        <div class="stat-card"><h3>Thẻ chờ</h3><div class="val" id="st_c" style="color:var(--gold)">0</div></div>
-        <div class="stat-card"><h3>Nạp chờ</h3><div class="val" id="st_n" style="color:var(--green)">0</div></div>
+    <!-- 📊 KHU VỰC THỐNG KÊ NHANH (STAT-SCROLLER V20) -->
+    <div class="stat-scroller" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px;">
+        <div class="stat-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 18px; border-radius: 16px; position: relative; overflow: hidden;">
+            <div style="font-size: 11px; color: #888; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-users" style="color:var(--p)"></i> Thành viên
+            </div>
+            <div class="val" id="st_u" style="font-size: 24px; font-weight: 900; color: #fff; margin-top: 8px; font-family: 'JetBrains Mono';">0</div>
+        </div>
+        <div class="stat-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 18px; border-radius: 16px; position: relative; overflow: hidden;">
+            <div style="font-size: 11px; color: #888; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-vault" style="color:var(--green)"></i> Tổng vốn
+            </div>
+            <div class="val" id="st_b" style="font-size: 24px; font-weight: 900; color: var(--green); margin-top: 8px; font-family: 'JetBrains Mono';">0₫</div>
+        </div>
+        <div class="stat-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 18px; border-radius: 16px; position: relative; overflow: hidden;">
+            <div style="font-size: 11px; color: #888; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-receipt" style="color:var(--gold)"></i> Thẻ chờ
+            </div>
+            <div class="val" id="st_c" style="font-size: 24px; font-weight: 900; color: var(--gold); margin-top: 8px; font-family: 'JetBrains Mono';">0</div>
+        </div>
+        <div class="stat-card" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 18px; border-radius: 16px; position: relative; overflow: hidden;">
+            <div style="font-size: 11px; color: #888; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 6px;">
+                <i class="fa-solid fa-building-columns" style="color:var(--green)"></i> Nạp chờ
+            </div>
+            <div class="val" id="st_n" style="font-size: 24px; font-weight: 900; color: var(--green); margin-top: 8px; font-family: 'JetBrains Mono';">0</div>
+        </div>
     </div>
-    </div>
+
+    <!-- 👤 PANEL QUẢN LÝ THÀNH VIÊN -->
     <div id="p-user" class="panel active">
-    <div class="card-box" style="border-top: 3px solid var(--gold);">
-        <div class="header-flex" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-            <h4 style="margin:0; color:var(--gold);"><i class="fa-solid fa-users-viewfinder"></i> QUẢN TRỊ VIÊN HPOK</h4>
-            <div class="live-count" id="st_u_big" style="font-family:'JetBrains Mono'; font-weight:900;">0 USERS</div>
-        </div>
+        <div class="card-box" style="border-top: 3px solid var(--gold); background: #0a0a0a; border-radius: 16px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div class="header-flex" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                <h4 style="margin:0; color:var(--gold); display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-users-viewfinder"></i> QUẢN TRỊ VIÊN HPOK V20
+                </h4>
+                <div class="live-count" id="st_u_big" style="font-family:'JetBrains Mono'; font-weight:900; background:rgba(212,175,55,0.1); color:var(--gold); padding: 5px 12px; border-radius: 20px; font-size: 11px;">0 USERS</div>
+            </div>
 
-        <div class="search-box-v4" style="margin-bottom: 15px; position: relative;">
-            <input type="text" id="findU" placeholder="Tìm tên khách, SĐT, ID..." oninput="searchUser()" 
-                   style="width:100%; padding:14px 45px; background:#000; border:1px solid #222; border-radius:15px; color:#fff;">
-            <i class="fa-solid fa-search" style="position:absolute; left:18px; top:50%; transform:translateY(-50%); color:#444;"></i>
-        </div>
+            <div class="search-box-v4" style="margin-bottom: 20px; position: relative;">
+                <input type="text" id="findU" placeholder="Tìm kiếm theo tên khách, SĐT, ID định danh..." oninput="searchUser()" 
+                       style="width:100%; padding:14px 15px 14px 45px; background:#000; border:1px solid #222; border-radius:15px; color:#fff; font-size: 13px; outline: none;">
+                <i class="fa-solid fa-search" style="position:absolute; left:18px; top:50%; transform:translateY(-50%); color:#666;"></i>
+            </div>
 
-        <div class="table-res">
-            <table class="hpok-table-v4">
-                <thead>
-                    <tr>
-                        <th>THÀNH VIÊN</th>
-                        <th>TÀI CHÍNH</th>
-                        <th>PHÂN CẤP</th>
-                        <th style="text-align:right">CÀI ĐẶT</th>
-                    </tr>
-                </thead>
-                <tbody id="list_u"></tbody>
-            </table>
+            <div class="table-res" style="overflow-x: auto;">
+                <table class="hpok-table-v4" style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 1px solid #222; text-align: left; color: #777; font-size: 11px; text-transform: uppercase;">
+                            <th style="padding: 12px;">THÀNH VIÊN</th>
+                            <th style="padding: 12px;">TÀI CHÍNH</th>
+                            <th style="padding: 12px;">PHÂN CẤP</th>
+                            <th style="padding: 12px; text-align:right">CÀI ĐẶT</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list_u"></tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
-<div id="modal_edit_user" class="hpok-modal-overlay">
-    <div class="hpok-modal-content glass-premium">
-        
-        <div class="modal-header">
-            <div class="user-identity">
-                <div id="edit_avatar" class="u-avatar-premium fa-glow">
-                    <i class="fa-solid fa-user-astronaut fa-rocket-anim"></i>
-                </div>
-                <div class="header-text">
-                    <h3 id="display_user_name">
-                        <i class="fa-solid fa-circle-user fa-beat-low" style="color:var(--primary)"></i> 
-                        <span class="user-name-text">Loading...</span>
-                    </h3>
-                    <p id="display_user_id">
-                        <i class="fa-solid fa-fingerprint"></i> 
-                        <span style="opacity: 0.6;">UUID:</span> <span class="id-highlight">--</span>
-                    </p>
-                </div>
-            </div>
-            <button class="btn-close-ios" onclick="closeEditModal()" title="Đóng bảng điều khiển">
-                <i class="fa-solid fa-circle-xmark"></i>
-            </button>
-        </div>
-
-        <div class="modal-body scroll-luxury">
-            <div class="section-divider">
-                <span><i class="fa-solid fa-id-badge"></i> THÔNG TIN CƠ BẢN</span>
-            </div>
+    <!-- 🪟 MODAL CHỈNH SỬA THÀNH VIÊN (GLASS PREMIUM) -->
+    <div id="modal_edit_user" class="hpok-modal-overlay">
+        <div class="hpok-modal-content glass-premium">
             
-            <div class="input-grid">
-                <div class="input-group">
-                    <label><i class="fa-solid fa-signature"></i> TÊN TÀI KHOẢN (LOGIN)</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-at fa-spin-hover"></i>
-                        <input type="text" id="up_name" placeholder="Tên đăng nhập hệ thống...">
+            <div class="modal-header">
+                <div class="user-identity">
+                    <div id="edit_avatar" class="u-avatar-premium fa-glow">
+                        <i class="fa-solid fa-user-astronaut fa-rocket-anim"></i>
+                    </div>
+                    <div class="header-text">
+                        <h3 id="display_user_name">
+                            <i class="fa-solid fa-circle-user fa-beat-low" style="color:var(--primary)"></i> 
+                            <span class="user-name-text">Loading...</span>
+                        </h3>
+                        <p id="display_user_id">
+                            <i class="fa-solid fa-fingerprint"></i> 
+                            <span style="opacity: 0.6;">UUID:</span> <span class="id-highlight">--</span>
+                        </p>
                     </div>
                 </div>
-                <div class="input-group">
-                    <label><i class="fa-solid fa-phone-volume"></i> ĐIỆN THOẠI LIÊN HỆ</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-mobile-retro"></i>
-                        <input type="text" id="up_phone" placeholder="09xxxxxxx">
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider">
-                <span><i class="fa-solid fa-shield-halved"></i> BẢO MẬT & TÀI CHÍNH</span>
-            </div>
-
-            <div class="input-grid">
-                <div class="input-group">
-                    <label><i class="fa-solid fa-shield-keyhole"></i> MẬT KHẨU TRUY CẬP</label>
-                    <div class="input-with-icon">
-                        <i class="fa-solid fa-lock"></i>
-                        <input type="text" id="up_pass" placeholder="Nhập mật khẩu mới...">
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label><i class="fa-solid fa-coins fa-glow"></i> SỐ DƯ HIỆN TẠI (VNĐ)</label>
-                    <div class="input-with-icon pulse-green">
-                        <i class="fa-solid fa-money-bill-transfer fa-bounce" style="color:var(--green)"></i>
-                        <input type="number" id="up_balance" class="balance-input-highlight">
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-divider">
-                <span><i class="fa-solid fa-user-gear"></i> PHÂN QUYỀN & TRẠNG THÁI</span>
-            </div>
-
-            <div class="input-grid">
-                <div class="input-group">
-                    <label><i class="fa-solid fa-traffic-light"></i> TRẠNG THÁI HỆ THỐNG</label>
-                    <div class="input-with-icon status-select">
-                        <i class="fa-solid fa-circle-nodes"></i>
-                        <select id="up_status">
-                            <option value="active">🟢 ĐANG HOẠT ĐỘNG (ACTIVE)</option>
-                            <option value="banned">🔴 KHÓA TRUY CẬP (BANNED)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="input-group">
-                    <label><i class="fa-solid fa-medal"></i> CẤP ĐỘ ƯU TIÊN</label>
-                    <div class="input-with-icon rank-select">
-                        <i class="fa-solid fa-gem fa-fade" style="color:var(--gold)"></i>
-                        <select id="up_rank">
-                            <option value="member">👤 THÀNH VIÊN MỚI</option>
-                            <option value="vip">💎 KHÁCH HÀNG VIP (★)</option>
-                            <option value="admin">🛠 QUẢN TRỊ VIÊN (◆)</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="input-group full-width">
-                <label><i class="fa-solid fa-comment-medical"></i> NHẬT KÝ & GHI CHÚ QUẢN TRỊ</label>
-                <div class="textarea-wrapper">
-                    <i class="fa-solid fa-pen-nib"></i>
-                    <textarea id="up_note" rows="3" placeholder="Ghi chú lý do thay đổi số dư, lý do khóa tài khoản hoặc ưu đãi đặc biệt dành cho sếp này..."></textarea>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal-footer">
-            <button class="btn-action-ios delete-luxury" onclick="deleteUser()">
-                <i class="fa-solid fa-user-minus"></i> <span>XÓA NGƯỜI DÙNG</span>
-            </button>
-            <div class="footer-right">
-                <button class="btn-action-ios cancel-luxury" onclick="closeEditModal()">
-                    <i class="fa-solid fa-arrow-rotate-left"></i> QUAY LẠI
+                <button class="btn-close-ios" onclick="closeEditModal()" title="Đóng bảng điều khiển">
+                    <i class="fa-solid fa-circle-xmark"></i>
                 </button>
-                <button type="button" id="btn_submit_update" onclick="updateUserPremium()" class="btn-act btn-p">
-    <i class="fa-solid fa-cloud-arrow-up"></i> CẬP NHẬT NGAY
-</button>
+            </div>
 
+            <div class="modal-body scroll-luxury">
+                <div class="section-divider">
+                    <span><i class="fa-solid fa-id-badge"></i> THÔNG TIN CƠ BẢN</span>
+                </div>
+                
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label><i class="fa-solid fa-signature"></i> TÊN TÀI KHOẢN (LOGIN)</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-at fa-spin-hover"></i>
+                            <input type="text" id="up_name" placeholder="Tên đăng nhập hệ thống...">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fa-solid fa-phone-volume"></i> ĐIỆN THOẠI LIÊN HỆ</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-mobile-retro"></i>
+                            <input type="text" id="up_phone" placeholder="09xxxxxxx">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider">
+                    <span><i class="fa-solid fa-shield-halved"></i> BẢO MẬT & TÀI CHÍNH</span>
+                </div>
+
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label><i class="fa-solid fa-shield-keyhole"></i> MẬT KHẨU TRUY CẬP</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="text" id="up_pass" placeholder="Nhập mật khẩu mới...">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fa-solid fa-coins fa-glow"></i> SỐ DƯ HIỆN TẠI (VNĐ)</label>
+                        <div class="input-with-icon pulse-green">
+                            <i class="fa-solid fa-money-bill-transfer fa-bounce" style="color:var(--green)"></i>
+                            <input type="number" id="up_balance" class="balance-input-highlight">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-divider">
+                    <span><i class="fa-solid fa-user-gear"></i> PHÂN QUYỀN & TRẠNG THÁI</span>
+                </div>
+
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label><i class="fa-solid fa-traffic-light"></i> TRẠNG THÁI HỆ THỐNG</label>
+                        <div class="input-with-icon status-select">
+                            <i class="fa-solid fa-circle-nodes"></i>
+                            <select id="up_status">
+                                <option value="active">🟢 ĐANG HOẠT ĐỘNG (ACTIVE)</option>
+                                <option value="banned">🔴 KHÓA TRUY CẬP (BANNED)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fa-solid fa-medal"></i> CẤP ĐỘ ƯU TIÊN</label>
+                        <div class="input-with-icon rank-select">
+                            <i class="fa-solid fa-gem fa-fade" style="color:var(--gold)"></i>
+                            <select id="up_rank">
+                                <option value="member">👤 THÀNH VIÊN MỚI</option>
+                                <option value="vip">💎 KHÁCH HÀNG VIP (★)</option>
+                                <option value="admin">🛠 QUẢN TRỊ VIÊN (◆)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group full-width">
+                    <label><i class="fa-solid fa-comment-medical"></i> NHẬT KÝ & GHI CHÚ QUẢN TRỊ</label>
+                    <div class="textarea-wrapper">
+                        <i class="fa-solid fa-pen-nib"></i>
+                        <textarea id="up_note" rows="3" placeholder="Ghi chú lý do thay đổi số dư, lý do khóa tài khoản hoặc ưu đãi đặc biệt dành cho sếp này..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-action-ios delete-luxury" onclick="deleteUser()">
+                    <i class="fa-solid fa-user-minus"></i> <span>XÓA NGƯỜI DÙNG</span>
+                </button>
+                <div class="footer-right">
+                    <button class="btn-action-ios cancel-luxury" onclick="closeEditModal()">
+                        <i class="fa-solid fa-arrow-rotate-left"></i> QUAY LẠI
+                    </button>
+                    <button type="button" id="btn_submit_update" onclick="updateUserPremium()" class="btn-act btn-p">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> CẬP NHẬT NGAY
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-</div>  
-            <div id="p-card" class="panel">
-    <div class="panel-header-v3" style="display: flex; justify-content: space-between; align-items: center; background: rgba(212,175,55,0.05); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid rgba(212,175,55,0.1);">
-        <div>
-            <h2 style="margin:0; font-size: 18px; color: var(--gold); letter-spacing: 1px;"><i class="fa-solid fa-microchip-ai"></i> QUẢN TRỊ THẺ CÀO</h2>
-            <p style="margin:5px 0 0 0; font-size: 11px; color: #555; font-weight: 600;">Hệ thống quét dữ liệu thực • <span id="current_day" style="color:var(--gold)">THỨ NĂM, 23/04/2026</span></p>
+    </div>  
+
+    <!-- 💳 PANEL THẺ CÀO -->
+    <div id="p-card" class="panel">
+        <div class="panel-header-v3" style="display: flex; justify-content: space-between; align-items: center; background: rgba(212,175,55,0.05); padding: 20px; border-radius: 15px; margin-bottom: 20px; border: 1px solid rgba(212,175,55,0.1);">
+            <div>
+                <h2 style="margin:0; font-size: 18px; color: var(--gold); letter-spacing: 1px;"><i class="fa-solid fa-microchip-ai"></i> QUẢN TRỊ THẺ CÀO</h2>
+                <p style="margin:5px 0 0 0; font-size: 11px; color: #555; font-weight: 600;">Hệ thống quét dữ liệu thực • <span id="current_day" style="color:var(--gold)">THỨ NĂM, 23/04/2026</span></p>
+            </div>
+            <div class="count-badge" style="text-align:right">
+                <small style="color:#444; display:block; font-size:9px; font-weight:800;">ĐANG CHỜ</small>
+                <span id="sb_c_big" style="font-size: 24px; font-weight: 900; color: var(--gold); font-family: 'JetBrains Mono';">0</span>
+            </div>
         </div>
-        <div class="count-badge" style="text-align:right">
-            <small style="color:#444; display:block; font-size:9px; font-weight:800;">ĐANG CHỜ</small>
-            <span id="sb_c_big" style="font-size: 24px; font-weight: 900; color: var(--gold); font-family: 'JetBrains Mono';">0</span>
-        </div>
+
+        <div id="list_c" class="hpok-list-container" style="display: flex; flex-direction: column; gap: 12px;"></div>
     </div>
 
-    <div id="list_c" class="hpok-list-container" style="display: flex; flex-direction: column; gap: 12px;">
-        </div>
-</div>
-
+    <!-- 🏦 PANEL GIAO DỊCH NẠP / RÚT BANK -->
     <div id="p-bank" class="panel">
-    <div class="grid-charts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
-        <div class="card-box" style="padding: 15px;">
-            <div class="chart-title" style="font-size: 11px;"><i class="fa-solid fa-circle-nodes"></i> TRẠNG THÁI NẠP</div>
-            <canvas id="chartStatusNap" style="max-height: 120px;"></canvas>
-        </div>
-        <div class="card-box" style="padding: 15px;">
-            <div class="chart-title" style="font-size: 11px;"><i class="fa-solid fa-circle-nodes"></i> TRẠNG THÁI RÚT</div>
-            <canvas id="chartStatusRut" style="max-height: 120px;"></canvas>
-        </div>
-    </div>
-
-    <div class="card-box">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <h4 style="margin:0"><i class="fa-solid fa-building-columns" style="color:var(--blue)"></i> LỆNH NẠP BANK</h4>
-            <span class="badge-side" id="count_nap_pending" style="position:static; background:var(--blue)">0</span>
-        </div>
-        <div class="table-res">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Khách hàng</th>
-                        <th>Số tiền</th>
-                        <th>Nội dung / Thời gian</th>
-                        <th>Trạng thái</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody id="list_n_body"></tbody>
-            </table>
-        </div>
-    </div>
-
-    <div class="card-box" style="border-color: rgba(255,0,127,0.2);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <h4 style="margin:0"><i class="fa-solid fa-money-bill-transfer" style="color:var(--p)"></i> LỆNH RÚT TIỀN</h4>
-            <span class="badge-side" id="count_rut_pending" style="position:static;">0</span>
-        </div>
-        <div class="table-res">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Khách hàng</th>
-                        <th>Số tiền rút</th>
-                        <th>Ngân hàng / STK</th>
-                        <th>Thời gian</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody id="list_r_body"></tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<div class="card-box" style="border: 1px solid var(--gold); background: #000; position: relative;">
-    <div class="chart-title" style="color:var(--gold); display: flex; justify-content: space-between; align-items: center;">
-        <span><i class="fa-solid fa-brain-circuit fa-spin"></i> HPOK OMNI AI SYSTEM</span>
-        <span class="badge-log" style="background:rgba(212,175,55,0.1); color:var(--gold)">v3.0</span>
-    </div>
-
-    <div id="hpok_screen" style="height: 160px; overflow-y: auto; background: #050505; padding: 12px; font-size: 12px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; color: #00ffa5; margin: 10px 0; border: 1px solid #111; line-height: 1.5;">
-        <div style="color:var(--gold)">[HPOK-CORE]: Đã kết nối hệ thống...</div>
-    </div>
-
-    <div style="display: flex; gap: 5px; background: #111; padding: 5px; border-radius: 12px; border: 1px solid #333;">
-        <input type="text" id="hpok_input" placeholder="Nhập lệnh (nạp, rút, user...)" 
-               style="flex:1; background: transparent; border: none; padding: 10px; color: #fff; outline: none; font-size: 14px;">
-        
-        <button type="button" id="hpok_btn_send" style="background:var(--gold); color:#000; border:none; width: 50px; height: 40px; border-radius: 8px; cursor:pointer; display: flex; align-items: center; justify-content: center;">
-            <i class="fa-solid fa-bolt" style="font-size: 18px;"></i>
-        </button>
-    </div>
-</div>
-
-<div id="p-manual-update" class="panel">
-    <div class="card-box" style="border-top: 3px solid #ff007f;">
-        <h4 style="color:#ff007f; margin-bottom:15px;">
-            <i class="fa-solid fa-pen-nib"></i> TRÌNH SỬA ĐỔI THỦ CÔNG
-        </h4>
-
-        <div class="form-group" style="margin-bottom:20px;">
-            <label style="color:var(--gold); font-size:11px; text-transform:uppercase;">Link Iframe Game Chung</label>
-            <div class="input-with-icon" style="display:flex; gap:10px;">
-                <input type="text" id="manual_game_url" placeholder="Nhập link .html hoặc url game..." style="flex:1; background:#000; border:1px solid #333; color:#fff; padding:12px; border-radius:10px;">
-                <button onclick="saveManual('game')" style="background:var(--primary); border:none; color:#fff; padding:0 20px; border-radius:10px; cursor:pointer;">LƯU</button>
+        <div class="grid-charts" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+            <div class="card-box" style="padding: 15px;">
+                <div class="chart-title" style="font-size: 11px;"><i class="fa-solid fa-circle-nodes"></i> TRẠNG THÁI NẠP</div>
+                <canvas id="chartStatusNap" style="max-height: 120px;"></canvas>
+            </div>
+            <div class="card-box" style="padding: 15px;">
+                <div class="chart-title" style="font-size: 11px;"><i class="fa-solid fa-circle-nodes"></i> TRẠNG THÁI RÚT</div>
+                <canvas id="chartStatusRut" style="max-height: 120px;"></canvas>
             </div>
         </div>
 
-        <div class="form-group" style="margin-bottom:20px;">
-            <label style="color:var(--gold); font-size:11px; text-transform:uppercase;">Link Ảnh Đại Diện (CDN/Drive)</label>
-            <div class="input-with-icon" style="display:flex; gap:10px;">
-                <input type="text" id="manual_img_url" placeholder="Dán link ảnh mới vào đây..." style="flex:1; background:#000; border:1px solid #333; color:#fff; padding:12px; border-radius:10px;">
-                <button onclick="saveManual('image')" style="background:#007aff; border:none; color:#fff; padding:0 20px; border-radius:10px; cursor:pointer;">LƯU</button>
+        <div class="card-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h4 style="margin:0"><i class="fa-solid fa-building-columns" style="color:var(--blue)"></i> LỆNH NẠP BANK</h4>
+                <span class="badge-side" id="count_nap_pending" style="position:static; background:var(--blue)">0</span>
+            </div>
+            <div class="table-res">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Khách hàng</th>
+                            <th>Số tiền</th>
+                            <th>Nội dung / Thời gian</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list_n_body"></tbody>
+                </table>
             </div>
         </div>
 
-        <div style="padding:15px; background:rgba(255,215,0,0.1); border-radius:10px; border:1px solid var(--gold);">
-            <p style="font-size:11px; color:var(--gold); margin:0;">
-                <i class="fa-solid fa-triangle-exclamation"></i> <b>Lưu ý:</b> Khi sếp cập nhật thủ công, hệ thống Auto-Pilot sẽ tạm dừng ghi đè lên các mục này trong 24h để ưu tiên ý muốn của sếp.
-            </p>
+        <div class="card-box" style="border-color: rgba(255,0,127,0.2);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h4 style="margin:0"><i class="fa-solid fa-money-bill-transfer" style="color:var(--p)"></i> LỆNH RÚT TIỀN</h4>
+                <span class="badge-side" id="count_rut_pending" style="position:static;">0</span>
+            </div>
+            <div class="table-res">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Khách hàng</th>
+                            <th>Số tiền rút</th>
+                            <th>Ngân hàng / STK</th>
+                            <th>Thời gian</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody id="list_r_body"></tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 
+    <!-- 🤖 TRỢ LÝ AI HPOK OMNI -->
+    <div class="card-box" style="border: 1px solid var(--gold); background: #000; position: relative;">
+        <div class="chart-title" style="color:var(--gold); display: flex; justify-content: space-between; align-items: center;">
+            <span><i class="fa-solid fa-brain-circuit fa-spin"></i> HPOK OMNI AI SYSTEM V20</span>
+            <span class="badge-log" style="background:rgba(212,175,55,0.1); color:var(--gold)">v20.0</span>
+        </div>
+
+        <div id="hpok_screen" style="height: 160px; overflow-y: auto; background: #050505; padding: 12px; font-size: 12px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; color: #00ffa5; margin: 10px 0; border: 1px solid #111; line-height: 1.5;">
+            <div style="color:var(--gold)">[HPOK-CORE V20]: Đã kích hoạt Quantum AI Core...</div>
+        </div>
+
+        <div style="display: flex; gap: 5px; background: #111; padding: 5px; border-radius: 12px; border: 1px solid #333;">
+            <input type="text" id="hpok_input" placeholder="Nhập lệnh điều khiển hệ thống (nạp, rút, user...)" 
+                   style="flex:1; background: transparent; border: none; padding: 10px; color: #fff; outline: none; font-size: 14px;">
+            
+            <button type="button" id="hpok_btn_send" style="background:var(--gold); color:#000; border:none; width: 50px; height: 40px; border-radius: 8px; cursor:pointer; display: flex; align-items: center; justify-content: center;">
+                <i class="fa-solid fa-bolt" style="font-size: 18px;"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- ✍️ TRÌNH SỬA ĐỔI THỦ CÔNG -->
+    <div id="p-manual-update" class="panel">
+        <div class="card-box" style="border-top: 3px solid #ff007f;">
+            <h4 style="color:#ff007f; margin-bottom:15px;">
+                <i class="fa-solid fa-pen-nib"></i> TRÌNH SỬA ĐỔI THỦ CÔNG V20
+            </h4>
+
+            <div class="form-group" style="margin-bottom:20px;">
+                <label style="color:var(--gold); font-size:11px; text-transform:uppercase;">Link Iframe Game Chung</label>
+                <div class="input-with-icon" style="display:flex; gap:10px;">
+                    <input type="text" id="manual_game_url" placeholder="Nhập link .html hoặc url game..." style="flex:1; background:#000; border:1px solid #333; color:#fff; padding:12px; border-radius:10px;">
+                    <button onclick="saveManual('game')" style="background:var(--primary); border:none; color:#fff; padding:0 20px; border-radius:10px; cursor:pointer;">LƯU</button>
+                </div>
+            </div>
+
+            <div class="form-group" style="margin-bottom:20px;">
+                <label style="color:var(--gold); font-size:11px; text-transform:uppercase;">Link Ảnh Đại Diện (CDN/Drive)</label>
+                <div class="input-with-icon" style="display:flex; gap:10px;">
+                    <input type="text" id="manual_img_url" placeholder="Dán link ảnh mới vào đây..." style="flex:1; background:#000; border:1px solid #333; color:#fff; padding:12px; border-radius:10px;">
+                    <button onclick="saveManual('image')" style="background:#007aff; border:none; color:#fff; padding:0 20px; border-radius:10px; cursor:pointer;">LƯU</button>
+                </div>
+            </div>
+
+            <div style="padding:15px; background:rgba(255,215,0,0.1); border-radius:10px; border:1px solid var(--gold);">
+                <p style="font-size:11px; color:var(--gold); margin:0;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <b>Lưu ý:</b> Khi sếp cập nhật thủ công, hệ thống Auto-Pilot sẽ tạm dừng ghi đè lên các mục này trong 24h để ưu tiên ý muốn của sếp.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ⚙️ CÀI ĐẶT HỆ THỐNG -->
     <div id="p-set" class="panel">
-
-    <!-- ⚙️ THÔNG TIN HỆ THỐNG -->
-    <div class="card-box" style="border-left:4px solid var(--p);">
-        <h4><i class="fa-solid fa-gears"></i> CẤU HÌNH HỆ THỐNG</h4>
-
-        <div class="form-group">
-            <label>THÔNG BÁO TRANG CHỦ</label>
-            <textarea id="s_msg" rows="3"></textarea>
+        <div class="card-box" style="border-left:4px solid var(--p);">
+            <h4><i class="fa-solid fa-gears"></i> CẤU HÌNH HỆ THỐNG</h4>
+            <div class="form-group">
+                <label>THÔNG BÁO TRANG CHỦ</label>
+                <textarea id="s_msg" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label>TÊN WEBSITE</label>
+                <input type="text" id="s_name">
+            </div>
+            <div class="form-group">
+                <label>LINK LOGO</label>
+                <input type="text" id="s_logo">
+            </div>
         </div>
 
-        <div class="form-group">
-            <label>TÊN WEBSITE</label>
-            <input type="text" id="s_name">
+        <div class="card-box" style="border-left:4px solid var(--gold);">
+            <h4 style="color:var(--gold)"><i class="fa-solid fa-coins"></i> CẤU HÌNH TÀI CHÍNH</h4>
+            <div class="form-group">
+                <label>PHÍ NẠP THẺ (%)</label>
+                <input type="number" id="s_fee">
+            </div>
+            <div class="form-group">
+                <label>PHÍ RÚT TIỀN (VNĐ)</label>
+                <input type="number" id="s_withdraw_fee">
+            </div>
+            <div class="form-group">
+                <label>MIN RÚT TIỀN</label>
+                <input type="number" id="s_min_withdraw">
+            </div>
         </div>
 
-        <div class="form-group">
-            <label>LINK LOGO</label>
-            <input type="text" id="s_logo">
-        </div>
-    </div>
-
-    <!-- 💰 TÀI CHÍNH -->
-    <div class="card-box" style="border-left:4px solid var(--gold);">
-        <h4 style="color:var(--gold)"><i class="fa-solid fa-coins"></i> CẤU HÌNH TÀI CHÍNH</h4>
-
-        <div class="form-group">
-            <label>PHÍ NẠP THẺ (%)</label>
-            <input type="number" id="s_fee">
-        </div>
-
-        <div class="form-group">
-            <label>PHÍ RÚT TIỀN (VNĐ)</label>
-            <input type="number" id="s_withdraw_fee">
+        <div class="card-box" style="border-left:4px solid var(--blue);">
+            <h4 style="color:var(--blue)"><i class="fa-solid fa-shield-halved"></i> API & BẢO MẬT</h4>
+            <div class="form-group">
+                <label>API KEY CARD</label>
+                <input type="text" id="s_api_card">
+            </div>
+            <div class="form-group">
+                <label>API KEY BANK</label>
+                <input type="text" id="s_api_bank">
+            </div>
+            <div class="switch-item">
+                <span>Chống spam request</span>
+                <label class="switch"><input type="checkbox" id="s_anti_spam"><span class="slider"></span></label>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label>MIN RÚT TIỀN</label>
-            <input type="number" id="s_min_withdraw">
-        </div>
-    </div>
-
-    <!-- 🔐 API & BẢO MẬT -->
-    <div class="card-box" style="border-left:4px solid var(--blue);">
-        <h4 style="color:var(--blue)"><i class="fa-solid fa-shield-halved"></i> API & BẢO MẬT</h4>
-
-        <div class="form-group">
-            <label>API KEY CARD</label>
-            <input type="text" id="s_api_card">
-        </div>
-
-        <div class="form-group">
-            <label>API KEY BANK</label>
-            <input type="text" id="s_api_bank">
+        <div class="card-box" style="border-left:4px solid var(--green);">
+            <h4 style="color:var(--green)"><i class="fa-solid fa-robot"></i> AUTO SYSTEM</h4>
+            <div class="switch-item">
+                <span>Auto duyệt Bank</span>
+                <label class="switch"><input type="checkbox" id="s_auto_bank"><span class="slider"></span></label>
+            </div>
+            <div class="switch-item">
+                <span>Auto duyệt thẻ</span>
+                <label class="switch"><input type="checkbox" id="s_auto_card"><span class="slider"></span></label>
+            </div>
+            <div class="switch-item">
+                <span>AI Auto xử lý</span>
+                <label class="switch"><input type="checkbox" id="s_auto_ai"><span class="slider"></span></label>
+            </div>
         </div>
 
-        <div class="switch-item">
-            <span>Chống spam request</span>
-            <label class="switch"><input type="checkbox" id="s_anti_spam"><span class="slider"></span></label>
-        </div>
-    </div>
-
-    <!-- 🤖 AUTO SYSTEM -->
-    <div class="card-box" style="border-left:4px solid var(--green);">
-        <h4 style="color:var(--green)"><i class="fa-solid fa-robot"></i> AUTO SYSTEM</h4>
-
-        <div class="switch-item">
-            <span>Auto duyệt Bank</span>
-            <label class="switch"><input type="checkbox" id="s_auto_bank"><span class="slider"></span></label>
-        </div>
-
-        <div class="switch-item">
-            <span>Auto duyệt thẻ</span>
-            <label class="switch"><input type="checkbox" id="s_auto_card"><span class="slider"></span></label>
+        <div class="card-box" style="border-left:4px solid var(--red);">
+            <h4 style="color:var(--red)"><i class="fa-solid fa-triangle-exclamation"></i> CHẾ ĐỘ BẢO TRÌ</h4>
+            <div class="switch-item">
+                <span>Tắt toàn bộ website</span>
+                <label class="switch"><input type="checkbox" id="s_maintenance_all"><span class="slider"></span></label>
+            </div>
+            <div class="switch-item">
+                <span>Bảo trì nạp thẻ</span>
+                <label class="switch"><input type="checkbox" id="s_maintenance_card"><span class="slider"></span></label>
+            </div>
+            <div class="switch-item">
+                <span>Bảo trì rút tiền</span>
+                <label class="switch"><input type="checkbox" id="s_maintenance_withdraw"><span class="slider"></span></label>
+            </div>
         </div>
 
-        <div class="switch-item">
-            <span>AI Auto xử lý</span>
-            <label class="switch"><input type="checkbox" id="s_auto_ai"><span class="slider"></span></label>
-        </div>
-    </div>
-
-    <!-- 🚫 BẢO TRÌ -->
-    <div class="card-box" style="border-left:4px solid var(--red);">
-        <h4 style="color:var(--red)"><i class="fa-solid fa-triangle-exclamation"></i> CHẾ ĐỘ BẢO TRÌ</h4>
-
-        <div class="switch-item">
-            <span>Tắt toàn bộ website</span>
-            <label class="switch"><input type="checkbox" id="s_maintenance_all"><span class="slider"></span></label>
+        <div class="card-box">
+            <h4><i class="fa-solid fa-chart-line"></i> GIỚI HẠN HỆ THỐNG</h4>
+            <div class="form-group">
+                <label>Giới hạn user tối đa</label>
+                <input type="number" id="s_limit_user">
+            </div>
+            <div class="form-group">
+                <label>Giới hạn nạp/ngày</label>
+                <input type="number" id="s_limit_nap">
+            </div>
         </div>
 
-        <div class="switch-item">
-            <span>Bảo trì nạp thẻ</span>
-            <label class="switch"><input type="checkbox" id="s_maintenance_card"><span class="slider"></span></label>
+        <div class="card-box">
+            <h4><i class="fa-solid fa-database"></i> BACKUP & DỮ LIỆU</h4>
+            <button class="btn-act" onclick="backupData()">
+                <i class="fa-solid fa-download"></i> SAO LƯU DỮ LIỆU
+            </button>
+            <button class="btn-act" style="margin-top:10px; background:#ff3e3e;" onclick="resetSystem()">
+                <i class="fa-solid fa-trash"></i> RESET TOÀN HỆ THỐNG
+            </button>
         </div>
 
-        <div class="switch-item">
-            <span>Bảo trì rút tiền</span>
-            <label class="switch"><input type="checkbox" id="s_maintenance_withdraw"><span class="slider"></span></label>
-        </div>
-    </div>
-
-    <!-- 📊 GIỚI HẠN -->
-    <div class="card-box">
-        <h4><i class="fa-solid fa-chart-line"></i> GIỚI HẠN HỆ THỐNG</h4>
-
-        <div class="form-group">
-            <label>Giới hạn user tối đa</label>
-            <input type="number" id="s_limit_user">
-        </div>
-
-        <div class="form-group">
-            <label>Giới hạn nạp/ngày</label>
-            <input type="number" id="s_limit_nap">
-        </div>
-    </div>
-
-    <!-- 💾 BACKUP -->
-    <div class="card-box">
-        <h4><i class="fa-solid fa-database"></i> BACKUP & DỮ LIỆU</h4>
-
-        <button class="btn-act" onclick="backupData()">
-            <i class="fa-solid fa-download"></i> SAO LƯU DỮ LIỆU
-        </button>
-
-        <button class="btn-act" style="margin-top:10px; background:#ff3e3e;" onclick="resetSystem()">
-            <i class="fa-solid fa-trash"></i> RESET TOÀN HỆ THỐNG
+        <button class="btn-save-all" onclick="saveSettings()">
+            <i class="fa-solid fa-floppy-disk"></i> LƯU TOÀN BỘ CÀI ĐẶT
         </button>
     </div>
 
-    <!-- 💾 SAVE -->
-    <button class="btn-save-all" onclick="saveSettings()">
-        <i class="fa-solid fa-floppy-disk"></i> LƯU TOÀN BỘ CÀI ĐẶT
-    </button>
-
-</div>
+    <!-- 🧭 BOTTOM NAVIGATION V20 -->
     <div class="bottom-nav">
         <div id="nav-user" class="nav-item active" onclick="tab('p-user', this)">
             <i class="fa-solid fa-user-shield"></i>
