@@ -1365,30 +1365,88 @@ input:focus {
             </div>
         </div>
 
-        <!-- 3. API & BẢO MẬT -->
-        <div class="card-box" style="border-left: 4px solid var(--blue); background: linear-gradient(145deg, #0d0d0d, #080c10); box-shadow: 0 4px 20px rgba(0,234,255,0.05);">
-            <h4 style="color: var(--blue); display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
-                <i class="fa-solid fa-shield-halved"></i> API & BẢO MẬT
-            </h4>
-            <div class="form-group">
-                <label>API KEY CARD</label>
-                <div class="input-with-icon">
-                    <i class="fa-solid fa-key" style="color: var(--blue);"></i>
-                    <input type="text" id="s_api_card" placeholder="Khóa kết nối thẻ cào tự động...">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>API KEY BANK</label>
-                <div class="input-with-icon">
-                    <i class="fa-solid fa-vault" style="color: var(--blue);"></i>
-                    <input type="text" id="s_api_bank" placeholder="Khóa kết nối SePay / VietQR...">
-                </div>
-            </div>
-            <div class="switch-item" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
-                <span style="color: #fff; font-weight: 500;">Chống spam request (Rate Limit)</span>
-                <label class="switch"><input type="checkbox" id="s_anti_spam"><span class="slider"></span></label>
-            </div>
+        <!-- 3. API & BẢO MẬT (Ultimate Enterprise V20) -->
+<div class="card-box" style="border-left: 4px solid var(--blue); background: linear-gradient(145deg, #0d0d0d, #080c10); box-shadow: 0 4px 20px rgba(0,234,255,0.05);">
+    <h4 style="color: var(--blue); display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
+        <i class="fa-solid fa-shield-halved"></i> API & BẢO MẬT HỆ THỐNG V20
+    </h4>
+
+    <div class="form-group">
+        <label>API KEY CARD (Gạch thẻ tự động)</label>
+        <div class="input-with-icon">
+            <i class="fa-solid fa-key" style="color: var(--blue);"></i>
+            <input type="text" id="s_api_card" placeholder="Khóa kết nối thẻ cào tự động...">
         </div>
+    </div>
+
+    <div class="form-group">
+        <label>API KEY BANK (SePay / VietQR / Momo)</label>
+        <div class="input-with-icon">
+            <i class="fa-solid fa-vault" style="color: var(--blue);"></i>
+            <input type="text" id="s_api_bank" placeholder="Khóa kết nối SePay / VietQR...">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Cloudflare Global API / WAF Token</label>
+        <div class="input-with-icon">
+            <i class="fa-solid fa-cloud-shield" style="color: var(--blue);"></i>
+            <input type="password" id="s_cloudflare_token" placeholder="Nhập Cloudflare Token chống DDoS...">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Webhook Secret Key (Bảo mật callback)</label>
+        <div class="input-with-icon">
+            <i class="fa-solid fa-fingerprint" style="color: var(--blue);"></i>
+            <input type="text" id="s_webhook_secret" placeholder="Chuỗi mã hóa bí mật xác thực...">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Telegram Bot Token (Nhận thông báo lỗi & nạp rút)</label>
+        <div class="input-with-icon">
+            <i class="fa-brands fa-telegram" style="color: var(--blue);"></i>
+            <input type="text" id="s_tele_token" placeholder="Token bot telegram...">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Telegram Chat ID Admin</label>
+        <div class="input-with-icon">
+            <i class="fa-solid fa-comments" style="color: var(--blue);"></i>
+            <input type="text" id="s_tele_chatid" placeholder="Chat ID nhận thông báo...">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Danh sách IP Admin được phép truy cập (Whitelist)</label>
+        <div class="input-with-icon">
+            <i class="fa-solid fa-network-wired" style="color: var(--blue);"></i>
+            <textarea id="s_ip_whitelist" rows="2" placeholder="Nhập IP, cách nhau bởi dấu phẩy (VD: 113.22.10.5, 171.24.50.12)"></textarea>
+        </div>
+    </div>
+
+    <div class="switch-item" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <span style="color: #fff; font-weight: 500;">Chống spam request (Rate Limit API)</span>
+        <label class="switch"><input type="checkbox" id="s_anti_spam"><span class="slider"></span></label>
+    </div>
+
+    <div class="switch-item" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.03);">
+        <span style="color: #fff; font-weight: 500;">Xác thực 2 lớp (2FA) khi duyệt rút tiền lớn</span>
+        <label class="switch"><input type="checkbox" id="s_enable_2fa" checked><span class="slider"></span></label>
+    </div>
+
+    <div class="switch-item" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.03);">
+        <span style="color: #fff; font-weight: 500;">Tự động khóa IP tấn công (Auto-Ban Brute Force)</span>
+        <label class="switch"><input type="checkbox" id="s_auto_ban" checked><span class="slider"></span></label>
+    </div>
+
+    <div class="switch-item" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.03);">
+        <span style="color: #fff; font-weight: 500;">Chế độ ẩn danh log quản trị (Mask Admin Logs)</span>
+        <label class="switch"><input type="checkbox" id="s_mask_logs"><span class="slider"></span></label>
+    </div>
+</div>
 
         <!-- 4. AUTO SYSTEM -->
         <div class="card-box" style="border-left: 4px solid var(--green); background: linear-gradient(145deg, #0d0d0d, #080f0c); box-shadow: 0 4px 20px rgba(0,255,165,0.05);">
@@ -1857,15 +1915,56 @@ window.onload = () => {
 
 // Hàm bổ trợ lưu Settings
 async function saveSettings() {
-    const s_fee = document.getElementById('s_fee').value;
-    const s_msg = document.getElementById('s_msg').value;
-    await db.ref('settings').update({
-        card_fee: s_fee,
-        home_msg: s_msg,
-        last_update: Date.now()
-    });
-    alert("Cài đặt hệ thống đã được cập nhật!");
+    const data = {
+        home_msg: document.getElementById('s_msg').value,
+        site_name: document.getElementById('s_name').value,
+        logo: document.getElementById('s_logo').value,
+        
+        card_fee: Number(document.getElementById('s_fee').value),
+        withdraw_fee: Number(document.getElementById('s_withdraw_fee').value),
+        min_withdraw: Number(document.getElementById('s_min_withdraw').value),
+        
+        // Nhóm API & Bảo mật nâng cao
+        api_card: document.getElementById('s_api_card').value,
+        api_bank: document.getElementById('s_api_bank').value,
+        cloudflare_token: document.getElementById('s_cloudflare_token').value,
+        webhook_secret: document.getElementById('s_webhook_secret').value,
+        tele_token: document.getElementById('s_tele_token').value,
+        tele_chatid: document.getElementById('s_tele_chatid').value,
+        ip_whitelist: document.getElementById('s_ip_whitelist').value,
+        
+        // Nhóm tính năng Bật/Tắt (Switch)
+        anti_spam: document.getElementById('s_anti_spam').checked,
+        enable_2fa: document.getElementById('s_enable_2fa').checked,
+        auto_ban: document.getElementById('s_auto_ban').checked,
+        mask_logs: document.getElementById('s_mask_logs').checked,
+
+        auto_bank: document.getElementById('s_auto_bank').checked,
+        auto_card: document.getElementById('s_auto_card').checked,
+        auto_ai: document.getElementById('s_auto_ai').checked,
+        
+        maintenance_all: document.getElementById('s_maintenance_all').checked,
+        maintenance_card: document.getElementById('s_maintenance_card').checked,
+        maintenance_withdraw: document.getElementById('s_maintenance_withdraw').checked,
+        
+        limit_user: Number(document.getElementById('s_limit_user').value),
+        limit_nap: Number(document.getElementById('s_limit_nap').value),
+        
+        last_update: firebase.database.ServerValue.TIMESTAMP
+    };
+
+    try {
+        await db.ref('settings').set(data);
+        alert("Đã lưu toàn bộ cấu hình hệ thống và bảo mật thành công!");
+        if (typeof logTerminal === 'function') {
+            logTerminal("[SECURITY] Sếp vừa cập nhật cấu hình API & Bảo mật thành công.", "success");
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Lỗi khi lưu cấu hình: " + error.message);
+    }
 }
+    
 // --- 1. TÌM KIẾM USER NHANH (SEARCH FILTER) ---
 function searchUser() {
     const val = document.getElementById('findU').value.toLowerCase();
