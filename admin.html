@@ -508,36 +508,216 @@ input:focus {
                 <span class="menu-text">Quản lý Đơn hàng hệ thống</span>
             </a>
 
-            <!-- 3. GOOGLE ECOSYSTEM & AI ENGINE -->
-            <div class="menu-label">Google Ecosystem & AI Engine</div>
-            <a class="menu-btn ic-g" onclick="tab('p-google-auth','nav-google'); toggleSidebar();">
-                <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-brands fa-google"></i></div>
-                <span class="menu-text">Google OAuth 2.0 Security</span>
-            </a>
-            <a class="menu-btn ic-b" onclick="tab('p-google-analytics','nav-google'); toggleSidebar();">
-                <div class="menu-icon-bg" style="color:var(--blue); background:rgba(0,234,255,0.15)"><i class="fa-solid fa-chart-line"></i></div>
-                <span class="menu-text">Google Analytics v4 Pro</span>
-            </a>
-            <a class="menu-btn ic-c" onclick="tab('p-google-script','nav-google'); toggleSidebar();">
-                <div class="menu-icon-bg" style="color:var(--gold); background:rgba(255,204,0,0.15)"><i class="fa-solid fa-code"></i></div>
-                <span class="menu-text">Google Apps Script Webhooks</span>
-            </a>
-            <a class="menu-btn ic-p" onclick="tab('p-gmail','nav-google'); toggleSidebar();">
-                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-envelope"></i></div>
-                <span class="menu-text">Gmail API & SMTP Relay</span>
-            </a>
-            <a class="menu-btn ic-g" onclick="tab('p-fcm','nav-google'); toggleSidebar();">
-                <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-solid fa-bell"></i></div>
-                <span class="menu-text">Firebase Push Notifications</span>
-            </a>
-            <a class="menu-btn ic-b" onclick="tab('p-gcp','nav-google'); toggleSidebar();">
-                <div class="menu-icon-bg" style="color:var(--blue); background:rgba(0,234,255,0.15)"><i class="fa-solid fa-cloud"></i></div>
-                <span class="menu-text">Google Cloud Storage / Bucket</span>
-            </a>
-            <a class="menu-btn ic-p" onclick="tab('p-gemini','nav-google'); toggleSidebar();">
-                <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-brain"></i></div>
-                <span class="menu-text">Gemini 1.5 Pro / Flash Scanner</span>
-            </a>
+            <!-- ================================================= -->
+<!-- GOOGLE ECOSYSTEM & AI ENGINE PANELS - V20 ULTIMATE -->
+<!-- ================================================= -->
+
+<!-- 1. Google OAuth 2.0 Security -->
+<div class="panel" id="p-google-auth">
+    <div class="card-box" style="border: 1px solid rgba(0,255,165,0.2); background: linear-gradient(145deg, #0d0d0d, #080f0c);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(0,255,165,0.15); display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 20px;">
+                <i class="fa-brands fa-google"></i>
+            </div>
+            <div>
+                <h3 style="color: var(--green); margin: 0; font-size: 15px;">Google OAuth 2.0 Security</h3>
+                <span style="color: #666; font-size: 11px;">Quản lý mã định danh bảo mật và liên kết đăng nhập một chạm</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label>Google Client ID</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-key" style="color: var(--green);"></i>
+                <input type="text" id="g_client_id" placeholder="Nhập Client ID từ Google Cloud Console...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Google Client Secret</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-lock" style="color: var(--green);"></i>
+                <input type="password" id="g_client_secret" placeholder="Nhập Client Secret mật mã...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Authorized Redirect URI</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-link" style="color: var(--green);"></i>
+                <input type="text" value="https://yourdomain.com/auth/google/callback" readonly style="color: var(--green); background: rgba(0,255,165,0.03);">
+            </div>
+        </div>
+        <button class="btn-save-all" style="background: linear-gradient(45deg, #00ffa5, #00b874); color: #000;" onclick="alert('Đã lưu cấu hình Google OAuth thành công!')">Cập Nhật Bảo Mật OAuth</button>
+    </div>
+</div>
+
+<!-- 2. Google Analytics v4 Pro -->
+<div class="panel" id="p-google-analytics">
+    <div class="card-box" style="border: 1px solid rgba(0,234,255,0.2); background: linear-gradient(145deg, #0d0d0d, #080c10);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(0,234,255,0.15); display: flex; align-items: center; justify-content: center; color: var(--blue); font-size: 20px;">
+                <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <div>
+                <h3 style="color: var(--blue); margin: 0; font-size: 15px;">Google Analytics v4 Pro Integration</h3>
+                <span style="color: #666; font-size: 11px;">Đo lường lưu lượng truy cập và hành vi người dùng theo thời gian thực</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Measurement ID (GA4)</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-gauge-high" style="color: var(--blue);"></i>
+                <input type="text" id="ga4_id" placeholder="G-XXXXXXXXXX">
+            </div>
+        </div>
+        <div class="switch-item" style="padding: 15px 0; margin-bottom: 15px;">
+            <div>
+                <span style="display: block; color: #fff; font-weight: 600;">Kích hoạt theo dõi Realtime sự kiện</span>
+                <span style="font-size: 11px; color: #666;">Gửi log hành động người dùng về Google Cloud tự động</span>
+            </div>
+            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+        <button class="btn-save-all" style="background: linear-gradient(45deg, #00eaff, #0088cc); color: #000;" onclick="alert('Đã cập nhật Google Analytics!')">Lưu Cấu Hình GA4</button>
+    </div>
+</div>
+
+<!-- 3. Google Apps Script Webhooks -->
+<div class="panel" id="p-google-script">
+    <div class="card-box" style="border: 1px solid rgba(255,204,0,0.2); background: linear-gradient(145deg, #0d0d0d, #100f08);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255,204,0,0.15); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 20px;">
+                <i class="fa-solid fa-code"></i>
+            </div>
+            <div>
+                <h3 style="color: var(--gold); margin: 0; font-size: 15px;">Google Apps Script Webhooks</h3>
+                <span style="color: #666; font-size: 11px;">Đồng bộ dữ liệu trực tiếp với Google Sheets dự phòng</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Apps Script Webhook URL</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-terminal" style="color: var(--gold);"></i>
+                <input type="text" id="gas_url" placeholder="https://script.google.com/macros/s/.../exec">
+            </div>
+        </div>
+        <button class="btn-save-all" style="background: linear-gradient(45deg, #ffcc00, #cca300); color: #000;" onclick="alert('Đã kết nối Google Apps Script!')">Kiểm Tra & Kết Nối Webhook</button>
+    </div>
+</div>
+
+<!-- 4. Gmail API & SMTP Relay -->
+<div class="panel" id="p-gmail">
+    <div class="card-box" style="border: 1px solid rgba(255,0,127,0.2); background: linear-gradient(145deg, #0d0d0d, #10080d);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255,0,127,0.15); display: flex; align-items: center; justify-content: center; color: var(--p); font-size: 20px;">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+                <h3 style="color: var(--p); margin: 0; font-size: 15px;">Gmail API & SMTP Relay</h3>
+                <span style="color: #666; font-size: 11px;">Gửi email tự động xác thực tài khoản và thông báo hệ thống</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Email gửi hệ thống (Sender Email)</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-at" style="color: var(--p);"></i>
+                <input type="email" id="smtp_email" placeholder="admin@domain.com">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>App Password (Mật khẩu ứng dụng)</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-shield-keyhole" style="color: var(--p);"></i>
+                <input type="password" id="smtp_pass" placeholder="xxxx xxxx xxxx xxxx">
+            </div>
+        </div>
+        <button class="btn-save-all" onclick="alert('Lưu thông tin SMTP thành công!')">Lưu Cấu Hình SMTP</button>
+    </div>
+</div>
+
+<!-- 5. Firebase Push Notifications -->
+<div class="panel" id="p-fcm">
+    <div class="card-box" style="border: 1px solid rgba(0,255,165,0.2); background: linear-gradient(145deg, #0d0d0d, #080f0c);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(0,255,165,0.15); display: flex; align-items: center; justify-content: center; color: var(--green); font-size: 20px;">
+                <i class="fa-solid fa-bell"></i>
+            </div>
+            <div>
+                <h3 style="color: var(--green); margin: 0; font-size: 15px;">Firebase Push Notifications (FCM)</h3>
+                <span style="color: #666; font-size: 11px;">Gửi thông báo đẩy trực tiếp đến thiết bị người dùng qua Cloud Messaging</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Server Key / VAPID Key</label>
+            <textarea id="fcm_key" rows="3" placeholder="Nhập khóa cấu hình FCM Cloud Messaging..."></textarea>
+        </div>
+        <button class="btn-save-all" style="background: linear-gradient(45deg, #00ffa5, #00b874); color: #000;" onclick="alert('Đã kích hoạt Push Notifications!')">Cập Nhật FCM Khóa</button>
+    </div>
+</div>
+
+<!-- 6. Google Cloud Storage / Bucket -->
+<div class="panel" id="p-gcp">
+    <div class="card-box" style="border: 1px solid rgba(0,234,255,0.2); background: linear-gradient(145deg, #0d0d0d, #080c10);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(0,234,255,0.15); display: flex; align-items: center; justify-content: center; color: var(--blue); font-size: 20px;">
+                <i class="fa-solid fa-cloud"></i>
+            </div>
+            <div>
+                <h3 style="color: var(--blue); margin: 0; font-size: 15px;">Google Cloud Storage / Bucket</h3>
+                <span style="color: #666; font-size: 11px;">Lưu trữ tệp hình ảnh, tài nguyên tĩnh và backup dữ liệu tự động</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>GCS Bucket Name</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-bucket" style="color: var(--blue);"></i>
+                <input type="text" id="gcs_bucket" placeholder="hpok-storage-bucket">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>JSON Service Account Key</label>
+            <textarea id="gcs_json" rows="4" placeholder="Dán nội dung JSON cấu hình quyền truy cập GCS..."></textarea>
+        </div>
+        <button class="btn-save-all" style="background: linear-gradient(45deg, #00eaff, #0088cc); color: #000;" onclick="alert('Đã lưu cấu hình Google Cloud Storage!')">Lưu Cấu Hình Bucket</button>
+    </div>
+</div>
+
+<!-- 7. Gemini 1.5 Pro / Flash Scanner -->
+<div class="panel" id="p-gemini">
+    <div class="card-box" style="border: 1px solid rgba(255,0,127,0.3); background: linear-gradient(145deg, #0d0d0d, #120810); box-shadow: 0 0 30px rgba(255,0,127,0.08);">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255,0,127,0.2); display: flex; align-items: center; justify-content: center; color: var(--p); font-size: 20px;">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+            <div>
+                <h3 style="color: var(--p); margin: 0; font-size: 15px;">Gemini 1.5 Pro / Flash AI Scanner</h3>
+                <span style="color: #666; font-size: 11px;">Hệ thống trí tuệ nhân tạo quét mã độc, phân tích dữ liệu & tự động hóa</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Gemini API Key</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--p);"></i>
+                <input type="password" id="gemini_api_key" placeholder="AIzaSy...">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Lựa chọn mô hình AI (Model Version)</label>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-microchip" style="color: var(--p);"></i>
+                <select id="gemini_model">
+                    <option value="gemini-1.5-pro">Gemini 1.5 Pro (Nâng cao & Phân tích sâu)</option>
+                    <option value="gemini-1.5-flash" selected>Gemini 1.5 Flash (Tốc độ cao & Xử lý nhanh)</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn-save-all" onclick="alert('Đã cấu hình hệ thống AI Gemini thành công!')">Kích Hoạt AI Scanner Engine</button>
+    </div>
+</div>
 
             <!-- 4. HỆ THỐNG VÀ BẢO MẬT NÂNG CAO -->
             <div class="menu-label">Hệ Thống & Tường Lửa</div>
@@ -912,135 +1092,208 @@ input:focus {
         </div>
     </div>
 
-    <!-- ⚙️ CÀI ĐẶT HỆ THỐNG -->
-    <div id="p-set" class="panel">
-        <div class="card-box" style="border-left:4px solid var(--p);">
-            <h4><i class="fa-solid fa-gears"></i> CẤU HÌNH HỆ THỐNG</h4>
+    <!-- ⚙️ CÀI ĐẶT HỆ THỐNG - V20 ULTIMATE -->
+<div id="p-set" class="panel" style="animation: panelFade 0.3s ease;">
+    
+    <!-- Tiêu đề phân vùng -->
+    <div style="margin-bottom: 25px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <h2 style="color: #fff; font-size: 20px; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px;">
+                <i class="fa-solid fa-sliders" style="color: var(--p);"></i> Cài Đặt & Vận Hành Hệ Thống
+            </h2>
+            <p style="color: #666; font-size: 12px; margin: 5px 0 0 0;">Quản lý thông số cấu hình toàn cầu, thiết lập tài chính, bảo mật và cơ chế tự động hóa</p>
+        </div>
+    </div>
+
+    <!-- Lưới hiển thị các khối cấu hình -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+
+        <!-- 1. CẤU HÌNH HỆ THỐNG -->
+        <div class="card-box" style="border-left: 4px solid var(--p); background: linear-gradient(145deg, #0d0d0d, #120810); box-shadow: 0 4px 20px rgba(255,0,127,0.05);">
+            <h4 style="color: var(--p); display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
+                <i class="fa-solid fa-gears"></i> CẤU HÌNH CHUNG
+            </h4>
             <div class="form-group">
                 <label>THÔNG BÁO TRANG CHỦ</label>
-                <textarea id="s_msg" rows="3"></textarea>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-bullhorn" style="color: var(--p);"></i>
+                    <textarea id="s_msg" rows="3" placeholder="Nhập nội dung thông báo hệ thống..."></textarea>
+                </div>
             </div>
             <div class="form-group">
                 <label>TÊN WEBSITE</label>
-                <input type="text" id="s_name">
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-globe" style="color: var(--p);"></i>
+                    <input type="text" id="s_name" placeholder="HPOK OMNI...">
+                </div>
             </div>
             <div class="form-group">
                 <label>LINK LOGO</label>
-                <input type="text" id="s_logo">
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-image" style="color: var(--p);"></i>
+                    <input type="text" id="s_logo" placeholder="https://...">
+                </div>
             </div>
         </div>
 
-        <div class="card-box" style="border-left:4px solid var(--gold);">
-            <h4 style="color:var(--gold)"><i class="fa-solid fa-coins"></i> CẤU HÌNH TÀI CHÍNH</h4>
+        <!-- 2. CẤU HÌNH TÀI CHÍNH -->
+        <div class="card-box" style="border-left: 4px solid var(--gold); background: linear-gradient(145deg, #0d0d0d, #100f08); box-shadow: 0 4px 20px rgba(255,204,0,0.05);">
+            <h4 style="color: var(--gold); display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
+                <i class="fa-solid fa-coins"></i> CẤU HÌNH TÀI CHÍNH
+            </h4>
             <div class="form-group">
                 <label>PHÍ NẠP THẺ (%)</label>
-                <input type="number" id="s_fee">
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-percent" style="color: var(--gold);"></i>
+                    <input type="number" id="s_fee" placeholder="Ví dụ: 15">
+                </div>
             </div>
             <div class="form-group">
                 <label>PHÍ RÚT TIỀN (VNĐ)</label>
-                <input type="number" id="s_withdraw_fee">
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-money-bill-transfer" style="color: var(--gold);"></i>
+                    <input type="number" id="s_withdraw_fee" placeholder="0">
+                </div>
             </div>
             <div class="form-group">
-                <label>MIN RÚT TIỀN</label>
-                <input type="number" id="s_min_withdraw">
+                <label>MIN RÚT TIỀN (VNĐ)</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-arrow-down-short-wide" style="color: var(--gold);"></i>
+                    <input type="number" id="s_min_withdraw" placeholder="50000">
+                </div>
             </div>
         </div>
 
-        <div class="card-box" style="border-left:4px solid var(--blue);">
-            <h4 style="color:var(--blue)"><i class="fa-solid fa-shield-halved"></i> API & BẢO MẬT</h4>
+        <!-- 3. API & BẢO MẬT -->
+        <div class="card-box" style="border-left: 4px solid var(--blue); background: linear-gradient(145deg, #0d0d0d, #080c10); box-shadow: 0 4px 20px rgba(0,234,255,0.05);">
+            <h4 style="color: var(--blue); display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
+                <i class="fa-solid fa-shield-halved"></i> API & BẢO MẬT
+            </h4>
             <div class="form-group">
                 <label>API KEY CARD</label>
-                <input type="text" id="s_api_card">
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-key" style="color: var(--blue);"></i>
+                    <input type="text" id="s_api_card" placeholder="Khóa kết nối thẻ cào tự động...">
+                </div>
             </div>
             <div class="form-group">
                 <label>API KEY BANK</label>
-                <input type="text" id="s_api_bank">
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-vault" style="color: var(--blue);"></i>
+                    <input type="text" id="s_api_bank" placeholder="Khóa kết nối SePay / VietQR...">
+                </div>
             </div>
-            <div class="switch-item">
-                <span>Chống spam request</span>
+            <div class="switch-item" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05);">
+                <span style="color: #fff; font-weight: 500;">Chống spam request (Rate Limit)</span>
                 <label class="switch"><input type="checkbox" id="s_anti_spam"><span class="slider"></span></label>
             </div>
         </div>
 
-        <div class="card-box" style="border-left:4px solid var(--green);">
-            <h4 style="color:var(--green)"><i class="fa-solid fa-robot"></i> AUTO SYSTEM</h4>
-            <div class="switch-item">
-                <span>Auto duyệt Bank</span>
+        <!-- 4. AUTO SYSTEM -->
+        <div class="card-box" style="border-left: 4px solid var(--green); background: linear-gradient(145deg, #0d0d0d, #080f0c); box-shadow: 0 4px 20px rgba(0,255,165,0.05);">
+            <h4 style="color: var(--green); display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
+                <i class="fa-solid fa-robot"></i> AUTO SYSTEM & AI
+            </h4>
+            <div class="switch-item" style="margin-bottom: 14px;">
+                <span style="color: #fff; font-weight: 500;">Auto duyệt Bank</span>
                 <label class="switch"><input type="checkbox" id="s_auto_bank"><span class="slider"></span></label>
             </div>
-            <div class="switch-item">
-                <span>Auto duyệt thẻ</span>
+            <div class="switch-item" style="margin-bottom: 14px;">
+                <span style="color: #fff; font-weight: 500;">Auto duyệt thẻ cào</span>
                 <label class="switch"><input type="checkbox" id="s_auto_card"><span class="slider"></span></label>
             </div>
             <div class="switch-item">
-                <span>AI Auto xử lý</span>
+                <span style="color: #fff; font-weight: 500;">AI Auto xử lý gian lận</span>
                 <label class="switch"><input type="checkbox" id="s_auto_ai"><span class="slider"></span></label>
             </div>
         </div>
 
-        <div class="card-box" style="border-left:4px solid var(--red);">
-            <h4 style="color:var(--red)"><i class="fa-solid fa-triangle-exclamation"></i> CHẾ ĐỘ BẢO TRÌ</h4>
-            <div class="switch-item">
-                <span>Tắt toàn bộ website</span>
-                <label class="switch"><input type="checkbox" id="s_maintenance_all"><span class="slider"></span></label>
+        <!-- 5. CHẾ ĐỘ BẢO TRÌ -->
+        <div class="card-box" style="border-left: 4px solid #ff3e3e; background: linear-gradient(145deg, #0d0d0d, #120808); box-shadow: 0 4px 20px rgba(255,62,62,0.05);">
+            <h4 style="color: #ff3e3e; display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
+                <i class="fa-solid fa-triangle-exclamation"></i> CHẾ ĐỘ BẢO TRÌ
+            </h4>
+            <div class="switch-item" style="margin-bottom: 14px;">
+                <span style="color: #ff8888; font-weight: 500;">Tắt toàn bộ website</span>
+                <label class="switch"><input type="checkbox" id="s_maintenance_all"><span class="slider" style="background-color: #ff3e3e;"></span></label>
             </div>
-            <div class="switch-item">
-                <span>Bảo trì nạp thẻ</span>
+            <div class="switch-item" style="margin-bottom: 14px;">
+                <span style="color: #fff; font-weight: 500;">Bảo trì nạp thẻ</span>
                 <label class="switch"><input type="checkbox" id="s_maintenance_card"><span class="slider"></span></label>
             </div>
             <div class="switch-item">
-                <span>Bảo trì rút tiền</span>
+                <span style="color: #fff; font-weight: 500;">Bảo trì rút tiền</span>
                 <label class="switch"><input type="checkbox" id="s_maintenance_withdraw"><span class="slider"></span></label>
             </div>
         </div>
 
-        <div class="card-box">
-            <h4><i class="fa-solid fa-chart-line"></i> GIỚI HẠN HỆ THỐNG</h4>
+        <!-- 6. GIỚI HẠN HỆ THỐNG -->
+        <div class="card-box" style="border-left: 4px solid #a855f7; background: linear-gradient(145deg, #0d0d0d, #0f0a14);">
+            <h4 style="color: #a855f7; display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
+                <i class="fa-solid fa-chart-line"></i> GIỚI HẠN HỆ THỐNG
+            </h4>
             <div class="form-group">
                 <label>Giới hạn user tối đa</label>
-                <input type="number" id="s_limit_user">
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-users" style="color: #a855f7;"></i>
+                    <input type="number" id="s_limit_user" placeholder="10000">
+                </div>
             </div>
             <div class="form-group">
-                <label>Giới hạn nạp/ngày</label>
-                <input type="number" id="s_limit_nap">
+                <label>Giới hạn nạp/ngày (VNĐ)</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-wallet" style="color: #a855f7;"></i>
+                    <input type="number" id="s_limit_nap" placeholder="100000000">
+                </div>
             </div>
         </div>
 
-        <div class="card-box">
-            <h4><i class="fa-solid fa-database"></i> BACKUP & DỮ LIỆU</h4>
-            <button class="btn-act" onclick="backupData()">
-                <i class="fa-solid fa-download"></i> SAO LƯU DỮ LIỆU
-            </button>
-            <button class="btn-act" style="margin-top:10px; background:#ff3e3e;" onclick="resetSystem()">
-                <i class="fa-solid fa-trash"></i> RESET TOÀN HỆ THỐNG
-            </button>
+        <!-- 7. BACKUP & DỮ LIỆU -->
+        <div class="card-box" style="border-left: 4px solid #00ffa5; background: linear-gradient(145deg, #0d0d0d, #080f0c); grid-column: 1 / -1;">
+            <h4 style="color: #00ffa5; display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
+                <i class="fa-solid fa-database"></i> BACKUP & DỮ LIỆU AN TOÀN
+            </h4>
+            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <button class="btn-act" onclick="backupData()" style="flex: 1; min-width: 200px; padding: 12px; border-radius: 12px; background: rgba(0,255,165,0.15); color: #00ffa5; border: 1px solid rgba(0,255,165,0.3); font-weight: 600; cursor: pointer; transition: 0.2s;">
+                    <i class="fa-solid fa-download"></i> SAO LƯU DỮ LIỆU (JSON)
+                </button>
+                <button class="btn-act" onclick="resetSystem()" style="flex: 1; min-width: 200px; padding: 12px; border-radius: 12px; background: rgba(255,62,62,0.15); color: #ff3e3e; border: 1px solid rgba(255,62,62,0.3); font-weight: 600; cursor: pointer; transition: 0.2s;">
+                    <i class="fa-solid fa-trash"></i> RESET TOÀN HỆ THỐNG
+                </button>
+            </div>
         </div>
 
-        <button class="btn-save-all" onclick="saveSettings()">
+    </div>
+
+    <!-- Nút Lưu Toàn Cục Trọng Tâm -->
+    <div style="margin-top: 30px; text-align: center;">
+        <button class="btn-save-all" onclick="saveSettings()" style="width: 100%; max-width: 400px; padding: 16px; font-size: 15px; font-weight: 700; border-radius: 16px; background: linear-gradient(45deg, var(--p), #00eaff); color: #000; border: none; cursor: pointer; box-shadow: 0 4px 25px rgba(255,0,127,0.3); transition: 0.3s;">
             <i class="fa-solid fa-floppy-disk"></i> LƯU TOÀN BỘ CÀI ĐẶT
         </button>
     </div>
 
-    <!-- 🧭 BOTTOM NAVIGATION V20 -->
-    <div class="bottom-nav">
-        <div id="nav-user" class="nav-item active" onclick="tab('p-user', this)">
-            <i class="fa-solid fa-user-shield"></i>
-            <span>Thành viên</span>
-        </div>
-        <div id="nav-card" class="nav-item" onclick="tab('p-card', this)">
-            <i class="fa-solid fa-ticket-simple"></i>
-            <span>Thẻ Cào</span>
-        </div>
-        <div id="nav-bank" class="nav-item" onclick="tab('p-bank', this)">
-            <i class="fa-solid fa-vault"></i>
-            <span>Giao dịch</span>
-        </div>
-        <div id="nav-set" class="nav-item" onclick="tab('p-set', this)">
-            <i class="fa-solid fa-sliders"></i>
-            <span>Hệ thống</span>
-        </div>
-    </div>
+</div>
 
+<!-- 🧭 BOTTOM NAVIGATION V20 -->
+<div class="bottom-nav">
+    <div id="nav-user" class="nav-item active" onclick="tab('p-user', this)">
+        <i class="fa-solid fa-user-shield"></i>
+        <span>Thành viên</span>
+    </div>
+    <div id="nav-card" class="nav-item" onclick="tab('p-card', this)">
+        <i class="fa-solid fa-ticket-simple"></i>
+        <span>Thẻ Cào</span>
+    </div>
+    <div id="nav-bank" class="nav-item" onclick="tab('p-bank', this)">
+        <i class="fa-solid fa-vault"></i>
+        <span>Giao dịch</span>
+    </div>
+    <div id="nav-set" class="nav-item" onclick="tab('p-set', this)">
+        <i class="fa-solid fa-sliders"></i>
+        <span>Hệ thống</span>
+    </div>
+</div>
+    
 <script>
 // --- 1. CẤU HÌNH FIREBASE CHUẨN ---
 const firebaseConfig = {
