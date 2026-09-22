@@ -433,7 +433,12 @@ input:focus {
 .modal-body {
     -webkit-transform: translate3d(0,0,0); /* Ép GPU xử lý để không lag */
 }
-
+.panel {
+    display: none; /* Các panel mặc định ẩn */
+}
+.panel.active {
+    display: block; /* Chỉ hiện panel có class active */
+}
     </style>
 </head>
 <body>
