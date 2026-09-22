@@ -1224,34 +1224,113 @@ input:focus {
     <!-- Lưới hiển thị các khối cấu hình -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
 
-        <!-- 1. CẤU HÌNH HỆ THỐNG -->
+        <!-- 1. CẤU HÌNH HỆ THỐNG - NÂNG CẤP V20 ULTIMATE PRO -->
         <div class="card-box" style="border-left: 4px solid var(--p); background: linear-gradient(145deg, #0d0d0d, #120810); box-shadow: 0 4px 20px rgba(255,0,127,0.05);">
-            <h4 style="color: var(--p); display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
-                <i class="fa-solid fa-gears"></i> CẤU HÌNH CHUNG
-            </h4>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+                <h4 style="color: var(--p); display: flex; align-items: center; gap: 8px; margin: 0; font-size: 14px;">
+                    <i class="fa-solid fa-gears"></i> CẤU HÌNH CHUNG & HỆ THỐNG CAO CẤP
+                </h4>
+                <span style="font-size: 10px; background: rgba(255,0,127,0.15); color: var(--p); padding: 3px 8px; border-radius: 10px; font-weight: 700;">V20 Pro Core</span>
+            </div>
+
+            <!-- Thông báo trang chủ dạng Marquee -->
             <div class="form-group">
-                <label>THÔNG BÁO TRANG CHỦ</label>
+                <label>THÔNG BÁO TRANG CHỦ (HỆ THỐNG CHẠY CHỮ)</label>
                 <div class="input-with-icon">
                     <i class="fa-solid fa-bullhorn" style="color: var(--p);"></i>
-                    <textarea id="s_msg" rows="3" placeholder="Nhập nội dung thông báo hệ thống..."></textarea>
+                    <textarea id="s_msg" rows="3" placeholder="Nhập nội dung thông báo toàn hệ thống..."></textarea>
                 </div>
             </div>
-            <div class="form-group">
-                <label>TÊN WEBSITE</label>
-                <div class="input-with-icon">
-                    <i class="fa-solid fa-globe" style="color: var(--p);"></i>
-                    <input type="text" id="s_name" placeholder="HPOK OMNI...">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>LINK LOGO</label>
-                <div class="input-with-icon">
-                    <i class="fa-solid fa-image" style="color: var(--p);"></i>
-                    <input type="text" id="s_logo" placeholder="https://...">
-                </div>
-            </div>
-        </div>
 
+            <!-- Thông báo Popup Toàn Màn Hình -->
+            <div class="form-group">
+                <label>NỘI DUNG POPUP THÔNG BÁO KHI VÀO WEB</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-bell" style="color: var(--p);"></i>
+                    <textarea id="s_popup_msg" rows="2" placeholder="Nội dung hiển thị dạng bảng thông báo khi user vừa truy cập..."></textarea>
+                </div>
+            </div>
+
+            <!-- Tên Website & Hotline -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div class="form-group">
+                    <label>TÊN WEBSITE</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-globe" style="color: var(--p);"></i>
+                        <input type="text" id="s_name" placeholder="HPOK OMNI...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>HOTLINE / ZALO CSKH</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-phone-volume" style="color: var(--p);"></i>
+                        <input type="text" id="s_hotline" placeholder="0988xxxxxx">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Link Logo & Màu chủ đạo -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div class="form-group">
+                    <label>LINK LOGO THƯƠNG HIỆU</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-image" style="color: var(--p);"></i>
+                        <input type="text" id="s_logo" placeholder="https://...">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>MÀU CHỦ ĐẠO (ACCENT NEON)</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-palette" style="color: var(--p);"></i>
+                        <select id="s_accent_color" style="background: #080808; border: 1px solid #1a1a1a; color: #fff; padding: 14px; border-radius: 14px; width: 100%;">
+                            <option value="#ff007f">Hồng Neon (Mặc định)</option>
+                            <option value="#00ffa5">Xanh Lá Cyber</option>
+                            <option value="#ffcc00">Vàng Kim Cương</option>
+                            <option value="#00eaff">Xanh Dương Quantum</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Các Công tắc điều khiển nhanh nâng cao -->
+            <div style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px;">
+                <div class="switch-item" style="padding: 10px 0;">
+                    <div>
+                        <span style="display: block; color: #fff; font-weight: 600;">Chế độ bảo trì hệ thống (Maintenance Mode)</span>
+                        <span style="font-size: 11px; color: #666;">Khóa giao diện user, hiển thị thông báo bảo trì toàn hệ thống</span>
+                    </div>
+                    <label class="switch"><input type="checkbox" id="s_maintenance"><span class="slider"></span></label>
+                </div>
+
+                <div class="switch-item" style="padding: 10px 0;">
+                    <div>
+                        <span style="display: block; color: #fff; font-weight: 600;">Cho phép đăng ký tài khoản thành viên mới</span>
+                        <span style="font-size: 11px; color: #666;">Bật/tắt tính năng đăng ký mở tài khoản nhanh</span>
+                    </div>
+                    <label class="switch"><input type="checkbox" id="s_register_enabled" checked><span class="slider"></span></label>
+                </div>
+
+                <div class="switch-item" style="padding: 10px 0;">
+                    <div>
+                        <span style="display: block; color: #fff; font-weight: 600;">Bật âm thanh hiệu ứng giao dịch (Sound FX)</span>
+                        <span style="font-size: 11px; color: #666;">Phát âm thanh khi có tiền vào hoặc thao tác thành công</span>
+                    </div>
+                    <label class="switch"><input type="checkbox" id="s_sound_fx" checked><span class="slider"></span></label>
+                </div>
+
+                <div class="switch-item" style="padding: 10px 0;">
+                    <div>
+                        <span style="display: block; color: #fff; font-weight: 600;">Kích hoạt AI Quantum Engine kiểm duyệt tự động</span>
+                        <span style="font-size: 11px; color: #666;">Tự động phân tích các lệnh nạp/rút tiền rủi ro cao</span>
+                    </div>
+                    <label class="switch"><input type="checkbox" id="s_ai_shield" checked><span class="slider"></span></label>
+                </div>
+            </div>
+
+            <!-- Nút lưu toàn bộ cấu hình chung -->
+            <button class="btn-save-all" style="margin-top: 15px;" onclick="saveSystemConfigAdvanced()">LƯU TOÀN BỘ CẤU HÌNH CHUNG</button>
+        </div>
+        
         <!-- 2. CẤU HÌNH TÀI CHÍNH -->
         <div class="card-box" style="border-left: 4px solid var(--gold); background: linear-gradient(145deg, #0d0d0d, #100f08); box-shadow: 0 4px 20px rgba(255,204,0,0.05);">
             <h4 style="color: var(--gold); display: flex; align-items: center; gap: 8px; margin-bottom: 18px; font-size: 14px;">
