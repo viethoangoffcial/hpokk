@@ -524,7 +524,6 @@ input:focus {
                 <span style="color: #666; font-size: 11px;">Quản lý mã định danh bảo mật và liên kết đăng nhập một chạm</span>
             </div>
         </div>
-        
         <div class="form-group">
             <label>Google Client ID</label>
             <div class="input-with-icon">
@@ -562,7 +561,6 @@ input:focus {
                 <span style="color: #666; font-size: 11px;">Đo lường lưu lượng truy cập và hành vi người dùng theo thời gian thực</span>
             </div>
         </div>
-
         <div class="form-group">
             <label>Measurement ID (GA4)</label>
             <div class="input-with-icon">
@@ -573,70 +571,11 @@ input:focus {
         <div class="switch-item" style="padding: 15px 0; margin-bottom: 15px;">
             <div>
                 <span style="display: block; color: #fff; font-weight: 600;">Kích hoạt theo dõi Realtime sự kiện</span>
-                <span style="font-size: 11px; color: #666;">Gửi log hành động người dùng về Google Cloud tự động</span>
+                <span style="font-size: 11px; color: #666;">Gửi log hành động người dùng về Google Analytics tự động</span>
             </div>
             <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
         </div>
-        <button class="btn-save-all" style="background: linear-gradient(45deg, #00eaff, #0088cc); color: #000;" onclick="alert('Đã cập nhật Google Analytics!')">Lưu Cấu Hình GA4</button>
-    </div>
-</div>
-            <!-- 3. Google Apps Script Integration -->
-<div class="panel" id="p-google-apps-script">
-    <div class="card-box" style="border: 1px solid rgba(255,204,0,0.2); background: linear-gradient(145deg, #0d0d0d, #0f0d08);">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255,204,0,0.15); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 20px;">
-                <i class="fa-solid fa-code"></i>
-            </div>
-            <div>
-                <h3 style="color: var(--gold); margin: 0; font-size: 15px;">Google Apps Script Webhook</h3>
-                <span style="color: #666; font-size: 11px;">Đồng bộ dữ liệu tự động với Google Sheets và Google Drive</span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Deployment Web App URL</label>
-            <div class="input-with-icon">
-                <i class="fa-solid fa-cloud-arrow-up" style="color: var(--gold);"></i>
-                <input type="text" id="gas_url" placeholder="https://script.google.com/macros/s/.../exec">
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Secret Token Xác Thực</label>
-            <div class="input-with-icon">
-                <i class="fa-solid fa-shield-halved" style="color: var(--gold);"></i>
-                <input type="password" id="gas_token" placeholder="Nhập mã token bảo mật webhook...">
-            </div>
-        </div>
-        <button class="btn-save-all" style="background: linear-gradient(45deg, #ffcc00, #ff8800); color: #000;" onclick="alert('Đã cập nhật cấu hình Google Apps Script!')">Lưu Webhook GAS</button>
-    </div>
-</div>
-
-<!-- 4. AI Quantum Engine Settings -->
-<div class="panel" id="p-ai-quantum">
-    <div class="card-box" style="border: 1px solid rgba(255,0,127,0.2); background: linear-gradient(145deg, #0d0d0d, #0f080c);">
-        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-            <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255,0,127,0.15); display: flex; align-items: center; justify-content: center; color: var(--p); font-size: 20px;">
-                <i class="fa-solid fa-microchip"></i>
-            </div>
-            <div>
-                <h3 style="color: var(--p); margin: 0; font-size: 15px;">AI Quantum Engine V20</h3>
-                <span style="color: #666; font-size: 11px;">Thiết lập thông số trí tuệ nhân tạo và kiểm duyệt tự động</span>
-            </div>
-        </div>
-        <div class="switch-item" style="padding: 10px 0; margin-bottom: 15px;">
-            <div>
-                <span style="display: block; color: #fff; font-weight: 600;">Trợ lý AI kiểm duyệt giao dịch</span>
-                <span style="font-size: 11px; color: #666;">Tự động phân tích và từ chối các lệnh nạp/rút bất thường</span>
-            </div>
-            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-        </div>
-        <div class="form-group">
-            <label>Ngưỡng cảnh báo rủi ro (VNĐ)</label>
-            <div class="input-with-icon">
-                <i class="fa-solid fa-triangle-exclamation" style="color: var(--p);"></i>
-                <input type="number" id="ai_risk_threshold" value="10000000">
-            </div>
-        </div>
-        <button class="btn-save-all" onclick="alert('Đã lưu cấu hình AI Quantum Engine!')">Cập Nhật AI Engine</button>
+        <button class="btn-save-all" style="background: linear-gradient(45deg, #00eaff, #0077ff); color: #000;" onclick="alert('Đã lưu cấu hình Google Analytics!')">Cập Nhật GA4 Pro</button>
     </div>
 </div>
 
@@ -648,28 +587,17 @@ input:focus {
                 <i class="fa-solid fa-code"></i>
             </div>
             <div>
-                <div class="form-group">
+                <h3 style="color: var(--gold); margin: 0; font-size: 15px;">Google Apps Script Webhooks</h3>
+                <span style="color: #666; font-size: 11px;">Đồng bộ dữ liệu trực tiếp với Google Sheets dự phòng</span>
+            </div>
+        </div>
+        <div class="form-group">
             <label>API Key / Secret Token</label>
             <div class="input-with-icon">
                 <i class="fa-solid fa-key" style="color: var(--gold);"></i>
                 <input type="password" id="gas_api_key" placeholder="Nhập khóa API kết nối Sheets...">
             </div>
         </div>
-        <div class="switch-item" style="padding: 10px 0; margin-bottom: 15px;">
-            <div>
-                <span style="display: block; color: #fff; font-weight: 600;">Tự động đồng bộ dữ liệu User</span>
-                <span style="font-size: 11px; color: #666;">Gửi thông tin đăng ký và lịch sử nạp tiền lên Google Sheets</span>
-            </div>
-            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
-        </div>
-        <button class="btn-save-all" style="background: linear-gradient(45deg, #ffcc00, #ff8800); color: #000;" onclick="alert('Đã cập nhật Webhooks Google Script!')">Lưu Cấu Hình GAS</button>
-    </div>
-</div>
-                <h3 style="color: var(--gold); margin: 0; font-size: 15px;">Google Apps Script Webhooks</h3>
-                <span style="color: #666; font-size: 11px;">Đồng bộ dữ liệu trực tiếp với Google Sheets dự phòng</span>
-            </div>
-        </div>
-
         <div class="form-group">
             <label>Apps Script Webhook URL</label>
             <div class="input-with-icon">
@@ -680,18 +608,8 @@ input:focus {
         <button class="btn-save-all" style="background: linear-gradient(45deg, #ffcc00, #cca300); color: #000;" onclick="alert('Đã kết nối Google Apps Script!')">Kiểm Tra & Kết Nối Webhook</button>
     </div>
 </div>
-<div class="form-group">
-            <label>Apps Script Webhook URL</label>
-            <div class="input-with-icon">
-                <i class="fa-solid fa-terminal" style="color: var(--gold);"></i>
-                <input type="text" id="gas_url" placeholder="https://script.google.com/macros/s/.../exec">
-            </div>
-        </div>
-        <button class="btn-save-all" style="background: linear-gradient(45deg, #ffcc00, #cca300); color: #000;" onclick="alert('Đã kết nối Google Apps Script!')">Kiểm Tra & Kết Nối Webhook</button>
-    </div>
-</div>
 
-<!-- 5. Firebase Push Notifications -->
+<!-- 4. Firebase Push Notifications -->
 <div class="panel" id="p-fcm">
     <div class="card-box" style="border: 1px solid rgba(0, 204, 255, 0.2); background: linear-gradient(145deg, #0d0d0d, #080d10);">
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
