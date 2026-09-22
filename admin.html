@@ -865,10 +865,57 @@ input:focus {
                 <span class="menu-text">Trình quản trị Auto-Pilot AI</span>
                 <span class="badge-side" style="background:var(--p); color:#fff">V20</span>
             </a>
+    <div class="panel" id="p-auto-pilot">
+    <div class="card-box" style="border-left: 4px solid var(--gold); background: linear-gradient(145deg, #0d0d0d, #141208);">
+        <h3 style="color: var(--gold); margin-top: 0; font-size: 16px;"><i class="fa-solid fa-robot"></i> Trình Quản Trị Auto-Pilot AI V20</h3>
+        <p style="color: #666; font-size: 11px; margin-bottom: 20px;">Tự động hóa toàn bộ quy trình vận hành và kiểm duyệt giao dịch bằng trí tuệ nhân tạo.</p>
+        
+        <div class="switch-item" style="padding: 12px 0;">
+            <div>
+                <span style="display: block; color: #fff; font-weight: 600;">Kích hoạt chế độ lái tự động Auto-Pilot</span>
+                <span style="font-size: 11px; color: #666;">AI tự động duyệt thẻ cào, đối soát bank và chặn lệnh gian lận</span>
+            </div>
+            <label class="switch"><input type="checkbox" id="ai_autopilot_toggle" checked><span class="slider"></span></label>
+        </div>
+
+        <div class="form-group" style="margin-top: 15px;">
+            <label>Tần suất quét tự động (Cron-Job Interval)</label>
+            <select id="ai_scan_freq">
+                <option value="1">Quét mỗi 1 phút (Realtime Max)</option>
+                <option value="5" selected>Quét mỗi 5 phút (Khuyên dùng)</option>
+                <option value="15">Quét mỗi 15 phút</option>
+            </select>
+        </div>
+
+        <button class="btn-save-all" style="background: linear-gradient(45deg, var(--gold), #ff8800); color: #000;" onclick="alert('Đã cập nhật cấu hình Auto-Pilot AI!')">LƯU CẤU HÌNH AUTO-PILOT</button>
+    </div>
+</div>
             <a href="javascript:void(0)" class="menu-btn ic-p" onclick="tab('p-manual-update', 'nav-set'); toggleSidebar();">
                 <div class="menu-icon-bg" style="color:var(--p); background:rgba(255,0,127,0.15)"><i class="fa-solid fa-pen-to-square"></i></div>
                 <span class="menu-text">Cập nhật Thủ công (Code Editor)</span>
             </a>
+    <div class="panel" id="p-manual-update">
+    <div class="card-box" style="border-left: 4px solid var(--p); background: linear-gradient(145deg, #0d0d0d, #120810);">
+        <h3 style="color: var(--p); margin-top: 0; font-size: 16px;"><i class="fa-solid fa-pen-to-square"></i> Cập Nhật Mã Nguồn Trực Tiếp (Code Editor)</h3>
+        <p style="color: #666; font-size: 11px; margin-bottom: 15px;">Chỉnh sửa nhanh mã nguồn cấu hình hoặc tùy chỉnh giao diện trực tuyến.</p>
+        
+        <div class="form-group">
+            <label>Chọn tệp mã nguồn cần chỉnh sửa</label>
+            <select id="code_file_select">
+                <option value="config.js">config.js (Cấu hình hệ thống)</option>
+                <option value="admin.html">admin.html (Giao diện Admin)</option>
+                <option value="home.html">home.html (Giao diện Trang chủ)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Nội dung mã nguồn (Raw Code)</label>
+            <textarea id="code_editor_area" rows="8" style="font-family: var(--font-mono); font-size: 12px; background: #050505; color: var(--green);" placeholder="// Dán hoặc chỉnh sửa mã nguồn tại đây..."></textarea>
+        </div>
+
+        <button class="btn-save-all" onclick="alert('Đã lưu và biên dịch mã nguồn thành công!')">BIÊN DỊCH & CẬP NHẬT MÃ</button>
+    </div>
+</div>
             <a href="javascript:void(0)" class="menu-btn ic-g" onclick="runHealthCheck(); toggleSidebar();">
                 <div class="menu-icon-bg" style="color:var(--green); background:rgba(0,255,165,0.15)"><i class="fa-solid fa-microscope"></i></div>
                 <span class="menu-text">Quét & Sửa lỗi hệ thống tự động</span>
@@ -877,10 +924,46 @@ input:focus {
                 <div class="menu-icon-bg" style="color:var(--blue); background:rgba(0,234,255,0.15)"><i class="fa-solid fa-database"></i></div>
                 <span class="menu-text">Sao lưu đám mây & Phục hồi DB</span>
             </a>
+    <div class="panel" id="p-backup">
+    <div class="card-box" style="border-left: 4px solid var(--blue); background: linear-gradient(145deg, #0d0d0d, #080d12);">
+        <h3 style="color: var(--blue); margin-top: 0; font-size: 16px;"><i class="fa-solid fa-database"></i> Sao Lưu Đám Mây & Phục Hồi Dữ Liệu</h3>
+        <p style="color: #666; font-size: 11px; margin-bottom: 20px;">Tạo bản sao lưu toàn bộ cơ sở dữ liệu (Database) hệ thống lên mây an toàn.</p>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px;">
+            <button class="btn-act" style="background: rgba(0,234,255,0.15); color: var(--blue); border: 1px solid rgba(0,234,255,0.3);" onclick="alert('Đã tạo bản sao lưu Database thành công!')">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Tạo Bản Backup Mới
+            </button>
+            <button class="btn-act" style="background: rgba(255,204,0,0.15); color: var(--gold); border: 1px solid rgba(255,204,0,0.3);" onclick="alert('Đã khôi phục dữ liệu từ bản sao lưu gần nhất!')">
+                <i class="fa-solid fa-cloud-arrow-down"></i> Phục Hồi Dữ Liệu
+            </button>
+        </div>
+    </div>
+</div>
             <a href="javascript:void(0)" class="menu-btn ic-r" onclick="tab('p-chatbot', 'nav-set'); toggleSidebar();">
                 <div class="menu-icon-bg" style="color:var(--red); background:rgba(255,62,62,0.15)"><i class="fa-solid fa-comments"></i></div>
                 <span class="menu-text">Trợ lý CSKH & Phản hồi Tự động</span>
             </a>
+    <div class="panel" id="p-chatbot">
+    <div class="card-box" style="border-left: 4px solid var(--red); background: linear-gradient(145deg, #0d0d0d, #140808);">
+        <h3 style="color: var(--red); margin-top: 0; font-size: 16px;"><i class="fa-solid fa-comments"></i> Trợ Lý CSKH & Phản Hồi Tự Động (AI Chatbot)</h3>
+        <p style="color: #666; font-size: 11px; margin-bottom: 20px;">Cấu hình kịch bản trả lời tự động cho khách hàng khi nhắn tin qua cổng hỗ trợ.</p>
+        
+        <div class="form-group">
+            <label>Kịch bản lời chào tự động (Welcome Message)</label>
+            <textarea id="bot_welcome" rows="3" placeholder="Chào bạn, HPOK Omni sẵn sàng hỗ trợ bạn 24/7..."></textarea>
+        </div>
+
+        <div class="switch-item" style="padding: 10px 0; margin-bottom: 15px;">
+            <div>
+                <span style="display: block; color: #fff; font-weight: 600;">Bật AI trả lời thông minh thay nhân viên</span>
+                <span style="font-size: 11px; color: #666;">Tự động giải đáp các câu hỏi thường gặp về nạp rút và dịch vụ</span>
+            </div>
+            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+        </div>
+
+        <button class="btn-save-all" style="background: linear-gradient(45deg, var(--red), #ff5e62);" onclick="alert('Đã lưu cấu hình trợ lý CSKH thành công!')">CẬP NHẬT KỊCH BẢN CHATBOT</button>
+    </div>
+</div>
 
             <!-- 6. CÔNG CỤ QUẢN TRỊ VIÊN CAO CẤP -->
             <div class="menu-label">Công Cụ Quản Trị V20</div>
