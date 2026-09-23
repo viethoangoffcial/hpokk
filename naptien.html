@@ -42,7 +42,6 @@
             background-attachment: fixed;
         }
 
-        /* --- TRANG TRÍ TRUNG THU ĐỘNG --- */
         .mid-autumn-decor {
             position: fixed;
             top: 0;
@@ -174,13 +173,8 @@
             box-shadow: 0 8px 20px var(--gold-glow);
         }
 
-        .tab-item.active i {
-            color: var(--gold);
-        }
-
-        .tab-item.active span {
-            color: var(--white);
-        }
+        .tab-item.active i { color: var(--gold); }
+        .tab-item.active span { color: var(--white); }
 
         .form-card {
             background: var(--card-bg);
@@ -214,11 +208,6 @@
             text-align: center;
         }
 
-        .form-card input:focus {
-            border-color: var(--gold);
-            box-shadow: 0 0 15px var(--gold-glow);
-        }
-
         .btn-pay {
             width: 100%;
             background: linear-gradient(135deg, var(--gold), #ff8c00);
@@ -234,7 +223,6 @@
             margin-top: 16px;
         }
 
-        /* Giao diện Thanh toán QR & Thẻ cào */
         #paymentUI {
             display: none;
             position: fixed;
@@ -244,12 +232,8 @@
             overflow-y: auto;
         }
 
-        .panel-gate {
-            display: none;
-        }
-        .panel-gate.active {
-            display: block;
-        }
+        .panel-gate { display: none; }
+        .panel-gate.active { display: block; }
 
         .pp-header {
             display: flex;
@@ -270,11 +254,7 @@
             border-bottom: 1px dashed var(--card-border);
         }
 
-        .qr-master-box {
-            text-align: center;
-            margin: 16px 0;
-        }
-
+        .qr-master-box { text-align: center; margin: 16px 0; }
         .qr-inner {
             display: inline-block;
             padding: 12px;
@@ -282,12 +262,7 @@
             border-radius: 16px;
             box-shadow: 0 0 25px var(--gold-glow);
         }
-
-        .qr-inner img {
-            width: 180px;
-            height: 180px;
-            display: block;
-        }
+        .qr-inner img { width: 180px; height: 180px; display: block; }
 
         .info-list {
             background: var(--card-bg);
@@ -306,18 +281,8 @@
         }
 
         .info-row:last-child { border-bottom: none; }
-
-        .info-data label {
-            font-size: 10px;
-            color: var(--gray);
-            display: block;
-            text-transform: uppercase;
-        }
-
-        .info-data b {
-            font-size: 13px;
-            color: #fff;
-        }
+        .info-data label { font-size: 10px; color: var(--gray); display: block; text-transform: uppercase; }
+        .info-data b { font-size: 13px; color: #fff; }
 
         .btn-copy {
             background: rgba(255, 215, 0, 0.15);
@@ -351,13 +316,7 @@
             cursor: pointer;
         }
 
-        .bill-zone img {
-            max-width: 100%;
-            max-height: 120px;
-            margin-top: 8px;
-            display: none;
-            border-radius: 6px;
-        }
+        .bill-zone img { max-width: 100%; max-height: 120px; margin-top: 8px; display: none; border-radius: 6px; }
 
         .btn-confirm {
             width: 100%;
@@ -408,7 +367,6 @@
 </head>
 <body>
 
-    <!-- Đồ họa Trang trí Trung Thu Động -->
     <div class="mid-autumn-decor">
         <div class="moon-glow"></div>
         <div class="floating-lantern" style="left: 10%; animation-delay: 0s; font-size: 24px;"><i class="fa-solid fa-gift"></i></div>
@@ -442,12 +400,12 @@
         <div class="form-card">
             <label>Nhập số tiền cần nạp (VNĐ)</label>
             <input type="number" id="input_amount" value="100000">
-            <button class="btn-pay" onclick="goPayment()">TIẾP TỤC THANH TOÁN</button>
+            <!-- ĐÃ THÊM type="button" ĐỂ NGĂN TRÌNH DUYỆT TỰ ĐỘNG SUBMIT VỀ TRANG CHỦ -->
+            <button type="button" class="btn-pay" onclick="goPayment()">TIẾP TỤC THANH TOÁN</button>
             <p style="text-align:center; color:#777; font-size:10px; margin-top:16px; font-weight:800; text-transform:uppercase;">Bảo mật tự động bởi HPOK</p>
         </div>
     </div>
 
-    <!-- Màn hình Thanh toán ẩn hiện linh hoạt -->
     <div id="paymentUI">
         <div class="app-wrapper">
             <div class="pp-header">
@@ -456,7 +414,6 @@
                 <i class="fa-solid fa-shield-halved" style="color:var(--gold)"></i>
             </div>
 
-            <!-- Panel Chuyển khoản Ngân hàng -->
             <div id="panel-bank" class="panel-gate active">
                 <div class="timer-strip">⏳ ĐƠN HÀNG HẾT HẠN SAU: <span id="timer_val">15:00</span></div>
 
@@ -477,14 +434,14 @@
                     </div>
                     <div class="info-row">
                         <div class="info-data"><label>Số tài khoản</label><b id="stk_val">99MM25287M78000152</b></div>
-                        <button class="btn-copy" onclick="copyTextVal('stk_val')">COPY</button>
+                        <button type="button" class="btn-copy" onclick="copyTextVal('stk_val')">COPY</button>
                     </div>
                     <div class="info-row">
                         <div class="info-data"><label>Chủ tài khoản</label><b>OKHP BANKING</b></div>
                     </div>
                     <div class="info-row">
                         <div class="info-data"><label>Nội dung nạp</label><b id="code_val" style="color:var(--gold)">...</b></div>
-                        <button class="btn-copy" onclick="copyTextVal('code_val')">COPY</button>
+                        <button type="button" class="btn-copy" onclick="copyTextVal('code_val')">COPY</button>
                     </div>
                 </div>
 
@@ -501,11 +458,10 @@
                 </div>
 
                 <div style="padding: 0 20px;">
-                    <button class="btn-confirm" onclick="submitBankRequest()">XÁC NHẬN ĐÃ CHUYỂN TIỀN</button>
+                    <button type="button" class="btn-confirm" onclick="submitBankRequest()">XÁC NHẬN ĐÃ CHUYỂN TIỀN</button>
                 </div>
             </div>
 
-            <!-- Panel Gạch Thẻ Cào -->
             <div id="panel-thecao" class="panel-gate">
                 <div style="padding: 20px;">
                     <label style="font-size: 11px; color: var(--gray); font-weight: 800;">LOẠI THẺ:</label>
@@ -529,7 +485,7 @@
                     <input type="text" id="card-serial" placeholder="Nhập số Seri thẻ..." class="hpok-input">
                     <input type="text" id="card-pin" placeholder="Nhập mã số thẻ (PIN)..." class="hpok-input">
 
-                    <button id="btn-card" onclick="submitCardRequest()" class="btn-confirm" style="margin-top: 20px; background: linear-gradient(135deg, var(--gold), #ff8c00); color: #000;">
+                    <button type="button" id="btn-card" onclick="submitCardRequest()" class="btn-confirm" style="margin-top: 20px; background: linear-gradient(135deg, var(--gold), #ff8c00); color: #000;">
                         GỬI THẺ NGAY
                     </button>
                     <p style="font-size: 10px; color: #aaa; text-align: center; margin-top: 12px;">* Lưu ý: Chọn sai mệnh giá sẽ mất thẻ. Phí gạch thẻ 20%.</p>
@@ -540,7 +496,6 @@
         </div>
     </div>
 
-    <!-- Script Tích hợp Firebase chuẩn xác -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getDatabase, ref, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -583,7 +538,6 @@
             rechargeCode = "NAP " + currentUser.toUpperCase();
             document.getElementById('code_val').innerText = rechargeCode;
 
-            // Hiển thị panel tương ứng với cổng đã chọn ở trang chủ
             document.querySelectorAll('.panel-gate').forEach(p => p.classList.remove('active'));
             if (selectedGate === 'bank') {
                 document.getElementById('panel-bank').classList.add('active');
