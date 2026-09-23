@@ -45,7 +45,6 @@
             background-attachment: fixed;
         }
 
-        /* --- HIỆU ỨNG TRUNG THU ĐỘNG --- */
         .mid-autumn-decor {
             position: fixed;
             top: 0;
@@ -57,7 +56,6 @@
             overflow: hidden;
         }
 
-        /* Ánh trăng rằm */
         .moon-glow {
             position: absolute;
             top: -50px;
@@ -75,7 +73,6 @@
             100% { transform: scale(1.1); opacity: 1; }
         }
 
-        /* Đèn lồng bay lơ lửng */
         .floating-lantern {
             position: absolute;
             color: #ff3333;
@@ -431,7 +428,6 @@
 </head>
 <body>
 
-    <!-- Đồ họa Trang trí Trung Thu Động -->
     <div class="mid-autumn-decor">
         <div class="moon-glow"></div>
         <div class="floating-lantern" style="left: 10%; animation-delay: 0s; font-size: 26px;"><i class="fa-solid fa-gift"></i></div>
@@ -469,16 +465,16 @@
         <div class="form-card">
             <label>Nhập số tiền cần nạp (VNĐ)</label>
             <input type="number" id="input_amount" value="100000">
-            <button class="btn-pay" onclick="goPayment()">TIẾP TỤC THANH TOÁN</button>
+            <!-- ĐÃ THÊM type="button" ĐỂ NGĂN NÚT TỰ ĐỘNG SUBMIT VỀ TRANG CHỦ -->
+            <button type="button" class="btn-pay" onclick="goPayment()">TIẾP TỤC THANH TOÁN</button>
             <p style="text-align:center; color:#777; font-size:10px; margin-top:20px; font-weight:800; text-transform:uppercase;">Bảo mật tự động bởi HPOK</p>
         </div>
     </div>
 
-    <!-- Màn hình Thanh toán chuyển khoản -->
     <div id="paymentUI">
         <div class="app-wrapper">
             <div class="pp-header">
-                <i class="fa-solid fa-chevron-left" onclick="location.reload()" style="cursor:pointer; font-size: 18px;"></i>
+                <i class="fa-solid fa-chevron-left" onclick="closePaymentUI()" style="cursor:pointer; font-size: 18px;"></i>
                 <span style="font-weight:900; letter-spacing:1px; color:var(--gold)">QUÉT MÃ CHUYỂN KHOẢN</span>
                 <i class="fa-solid fa-shield-halved" style="color:var(--gold)"></i>
             </div>
@@ -504,14 +500,14 @@
                 </div>
                 <div class="info-row">
                     <div class="info-data"><label>Số tài khoản</label><b id="stk_val">99MM25287M78000152</b></div>
-                    <button class="btn-copy" onclick="copy('stk_val')">COPY</button>
+                    <button type="button" class="btn-copy" onclick="copy('stk_val')">COPY</button>
                 </div>
                 <div class="info-row">
                     <div class="info-data"><label>Chủ tài khoản</label><b>OKHP BANKING</b></div>
                 </div>
                 <div class="info-row">
                     <div class="info-data"><label>Nội dung nạp</label><b id="code_val" style="color:var(--gold)">...</b></div>
-                    <button class="btn-copy" onclick="copy('code_val')">COPY</button>
+                    <button type="button" class="btn-copy" onclick="copy('code_val')">COPY</button>
                 </div>
             </div>
 
@@ -530,16 +526,15 @@
             </div>
 
             <div style="padding: 0 20px;">
-                <button class="btn-confirm" onclick="submitToFirebase()">XÁC NHẬN ĐÃ CHUYỂN TIỀN</button>
-                <p onclick="location.reload()" style="text-align:center; color:#666; font-size:12px; margin-top:20px; font-weight:800; cursor:pointer;">HỦY GIAO DỊCH NÀY</p>
+                <button type="button" class="btn-confirm" onclick="submitToFirebase()">XÁC NHẬN ĐÃ CHUYỂN TIỀN</button>
+                <p onclick="closePaymentUI()" style="text-align:center; color:#666; font-size:12px; margin-top:20px; font-weight:800; cursor:pointer;">HỦY GIAO DỊCH NÀY</p>
             </div>
         </div>
     </div>
 
-    <!-- Script Tích hợp Firebase và Xử lý sự kiện chuẩn xác -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, push, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBD27MYenkjWOEjqj0hCisbh_61F_6bhSE",
@@ -581,6 +576,10 @@
             document.getElementById('code_val').innerText = rechargeCode;
 
             document.getElementById('paymentUI').style.display = 'block';
+        };
+
+        window.closePaymentUI = function() {
+            document.getElementById('paymentUI').style.display = 'none';
         };
 
         window.copy = function(id) {
