@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-    <title>HPOK BANKING - FULL OPTION</title>
+    <title>HPOK BANKING - TRUNG THU ĐOÀN VIÊN</title>
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700;800;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -11,602 +11,632 @@
 
     <style>
         :root {
-    --pink: #ff2a85;
-    --pink-glow: rgba(255, 42, 133, 0.35);
-    --bg-base: #070709;
-    --card-bg: rgba(20, 20, 25, 0.75);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --teal: #00f2fe;
-    --teal-glow: rgba(0, 242, 254, 0.25);
-    --white: #ffffff;
-    --gray: #94a3b8;
-}
+            --pink: #ff2a85;
+            --pink-glow: rgba(255, 42, 133, 0.35);
+            --bg-base: #050508;
+            --card-bg: rgba(20, 20, 30, 0.82);
+            --card-border: rgba(255, 215, 0, 0.18);
+            --teal: #00f2fe;
+            --teal-glow: rgba(0, 242, 254, 0.25);
+            --gold: #ffd700;
+            --gold-glow: rgba(255, 215, 0, 0.4);
+            --white: #ffffff;
+            --gray: #94a3b8;
+        }
 
-/* RESET & CORE */
-* {
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-    margin: 0;
-    padding: 0;
-}
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            margin: 0;
+            padding: 0;
+        }
 
-html, body {
-    overflow-x: hidden;
-    width: 100%;
-    background: var(--bg-base);
-    color: var(--white);
-    font-family: 'Lexend', sans-serif;
-    background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255, 42, 133, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.06) 0%, transparent 40%);
-    background-attachment: fixed;
-}
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            background: var(--bg-base);
+            color: var(--white);
+            font-family: 'Lexend', sans-serif;
+            background-image: 
+                radial-gradient(circle at 50% 10%, rgba(255, 215, 0, 0.12) 0%, transparent 50%),
+                radial-gradient(circle at 10% 80%, rgba(255, 42, 133, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(0, 242, 254, 0.06) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
 
-.app-wrapper {
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    min-height: 100vh;
-    position: relative;
-    padding-bottom: 40px;
-}
+        /* --- HIỆU ỨNG TRUNG THU ĐỘNG --- */
+        .mid-autumn-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
 
-/* HEADER HIỆN ĐẠI */
-header {
-    padding: 18px 20px;
-    text-align: center;
-    background: rgba(7, 7, 9, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--card-border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
+        /* Ánh trăng rằm */
+        .moon-glow {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(255,230,128,0.25) 0%, rgba(255,180,0,0.05) 60%, transparent 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 60px rgba(255,215,0,0.2);
+            animation: moonPulse 6s ease-in-out infinite alternate;
+        }
 
-header h2 {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--white);
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    background: linear-gradient(135deg, #fff 30%, var(--pink));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+        @keyframes moonPulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.1); opacity: 1; }
+        }
 
-/* HERO SECTION & PULSE RADAR */
-.hero-section {
-    text-align: center;
-    margin: 24px 0 20px;
-}
+        /* Đèn lồng bay lơ lửng */
+        .floating-lantern {
+            position: absolute;
+            color: #ff3333;
+            font-size: 22px;
+            text-shadow: 0 0 15px var(--gold);
+            animation: floatLantern 8s linear infinite;
+            opacity: 0.75;
+        }
 
-.brand-logo {
-    font-size: 32px;
-    font-weight: 900;
-    background: linear-gradient(135deg, #FFD700, #ff8c00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+        @keyframes floatLantern {
+            0% { transform: translateY(105vh) translateX(0) rotate(-5deg); opacity: 0; }
+            20% { opacity: 0.9; }
+            80% { opacity: 0.9; }
+            100% { transform: translateY(-10vh) translateX(30px) rotate(5deg); opacity: 0; }
+        }
 
-.radar-box {
-    width: 54px;
-    height: 54px;
-    background: linear-gradient(135deg, var(--teal), #4facfe);
-    border-radius: 50%;
-    margin: 12px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-shadow: 0 0 25px var(--teal-glow);
-    font-size: 20px;
-    color: #000;
-}
+        .app-wrapper {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            padding-bottom: 40px;
+            z-index: 2;
+        }
 
-/* TAB CỔNG NẠP GLASSMORPHISM */
-.tab-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 0 20px;
-    margin-bottom: 22px;
-}
+        header {
+            padding: 18px 20px;
+            text-align: center;
+            background: rgba(7, 7, 12, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.tab-item {
-    background: var(--card-bg);
-    backdrop-filter: blur(12px);
-    border: 1.5px solid var(--card-border);
-    border-radius: 20px;
-    padding: 18px 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+        header h2 {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #fff 30%, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.tab-item i {
-    font-size: 24px;
-    color: var(--gray);
-    margin-bottom: 8px;
-    display: block;
-    transition: 0.3s;
-}
+        .hero-section {
+            text-align: center;
+            margin: 24px 0 20px;
+        }
 
-.tab-item span {
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--gray);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+        .brand-logo {
+            font-size: 30px;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--gold), #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 20px var(--gold-glow);
+        }
 
-/* Trạng thái Active cho Tab */
-.tab-item.active {
-    border-color: var(--pink);
-    background: linear-gradient(145deg, rgba(255, 42, 133, 0.12), rgba(20, 20, 25, 0.9));
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px var(--pink-glow);
-}
+        .radar-box {
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, var(--gold), #ff6b00);
+            border-radius: 50%;
+            margin: 12px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 25px var(--gold-glow);
+            font-size: 20px;
+            color: #000;
+        }
 
-.tab-item.active i {
-    color: var(--pink);
-    text-shadow: 0 0 12px var(--pink-glow);
-}
+        .tab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            padding: 0 20px;
+            margin-bottom: 22px;
+        }
 
-.tab-item.active span {
-    color: var(--white);
-}
+        .tab-item {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1.5px solid var(--card-border);
+            border-radius: 20px;
+            padding: 18px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-/* FORM NHẬP TIỀN ĐỈNH CAO */
-.form-card {
-    background: var(--card-bg);
-    backdrop-filter: blur(16px);
-    margin: 0 20px;
-    padding: 30px 20px;
-    border-radius: 24px;
-    border: 1px solid var(--card-border);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
+        .tab-item i {
+            font-size: 24px;
+            color: var(--gray);
+            margin-bottom: 8px;
+            display: block;
+            transition: 0.3s;
+        }
 
-.form-card label {
-    display: block;
-    text-align: center;
-    font-size: 11px;
-    font-weight: 800;
-    color: var(--gray);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
-}
+        .tab-item span {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-.form-card input {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    border: 2px solid rgba(255, 255, 255, 0.08);
-    color: var(--pink);
-    padding: 18px;
-    border-radius: 16px;
-    font-size: 30px;
-    font-weight: 900;
-    text-align: center;
-    font-family: 'Inter', sans-serif;
-    transition: 0.3s;
-}
+        .tab-item.active {
+            border-color: var(--gold);
+            background: linear-gradient(145deg, rgba(255, 215, 0, 0.12), rgba(20, 20, 30, 0.9));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--gold-glow);
+        }
 
-.form-card input:focus {
-    border-color: var(--pink);
-    box-shadow: 0 0 20px var(--pink-glow);
-}
+        .tab-item.active i {
+            color: var(--gold);
+            text-shadow: 0 0 12px var(--gold-glow);
+        }
 
-/* NÚT THANH TOÁN 3D NEON */
-.btn-pay {
-    width: 100%;
-    background: linear-gradient(135deg, var(--pink), #d9046b);
-    color: #fff;
-    padding: 20px;
-    border: none;
-    border-radius: 16px;
-    font-size: 15px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    box-shadow: 0 12px 25px var(--pink-glow);
-    margin-top: 20px;
-    transition: all 0.3s ease;
-}
+        .tab-item.active span {
+            color: var(--white);
+        }
 
-.btn-pay:active {
-    transform: scale(0.97);
-    box-shadow: 0 5px 15px var(--pink-glow);
-}
+        .form-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            margin: 0 20px;
+            padding: 30px 20px;
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-card label {
+            display: block;
+            text-align: center;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--gray);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .form-card input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            color: var(--gold);
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 30px;
+            font-weight: 900;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            transition: 0.3s;
+        }
+
+        .form-card input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .btn-pay {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold), #ff8c00);
+            color: #000;
+            padding: 20px;
+            border: none;
+            border-radius: 16px;
+            font-size: 15px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 12px 25px var(--gold-glow);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pay:active {
+            transform: scale(0.97);
+            box-shadow: 0 5px 15px var(--gold-glow);
+        }
+
+        #paymentUI {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-base);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .pp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            background: rgba(7, 7, 12, 0.9);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .timer-strip {
+            text-align: center;
+            padding: 12px;
+            background: rgba(255, 215, 0, 0.08);
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 13px;
+            border-bottom: 1px dashed var(--card-border);
+        }
+
+        .qr-master-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .qr-inner {
+            display: inline-block;
+            padding: 15px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 30px var(--gold-glow);
+        }
+
+        .qr-inner img {
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
+
+        .info-list {
+            background: var(--card-bg);
+            margin: 0 20px 20px 20px;
+            padding: 15px;
+            border-radius: 16px;
+            border: 1px solid var(--card-border);
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-data label {
+            font-size: 11px;
+            color: var(--gray);
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .info-data b {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .btn-copy {
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+        .note-area {
+            background: rgba(255, 140, 0, 0.08);
+            border: 1px solid rgba(255, 140, 0, 0.3);
+            margin: 0 20px 20px 20px;
+            padding: 15px;
+            border-radius: 16px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: #ffd;
+        }
+
+        .bill-zone {
+            background: var(--card-bg);
+            margin: 0 20px 20px 20px;
+            padding: 20px;
+            border: 2px dashed var(--card-border);
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .bill-zone img {
+            max-width: 100%;
+            max-height: 150px;
+            margin-top: 10px;
+            display: none;
+            border-radius: 8px;
+        }
+
+        .btn-confirm {
+            width: 100%;
+            background: linear-gradient(135deg, #00ffa5, #00b374);
+            color: #000;
+            padding: 18px;
+            border: none;
+            border-radius: 16px;
+            font-size: 15px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 255, 165, 0.3);
+        }
+
+        #loader {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner {
+            width: 50px; height: 50px;
+            border: 4px solid rgba(255,215,0,0.2);
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
 
-<div id="loader">
-    <div class="spinner"></div>
-    <p style="margin-top:20px; font-weight:800; color:var(--pink); letter-spacing:1px;">HỆ THỐNG ĐANG XỬ LÝ...</p>
-</div>
-
-<div class="app-wrapper">
-    <header><h2>NẠP TIỀN TỰ ĐỘNG</h2></header>
-
-    <div class="hero-section">
-        <div class="brand-logo">HPOK BANK</div>
-        <div class="radar-box">
-            <div class="pulse"></div>
-            <div class="pulse"></div>
-            <i class="fa-solid fa-bolt-lightning"></i>
-        </div>
+    <!-- Đồ họa Trang trí Trung Thu Động -->
+    <div class="mid-autumn-decor">
+        <div class="moon-glow"></div>
+        <div class="floating-lantern" style="left: 10%; animation-delay: 0s; font-size: 26px;"><i class="fa-solid fa-gift"></i></div>
+        <div class="floating-lantern" style="left: 30%; animation-delay: 3s; font-size: 20px;"><i class="fa-solid fa-moon"></i></div>
+        <div class="floating-lantern" style="left: 70%; animation-delay: 1.5s; font-size: 24px;"><i class="fa-solid fa-star"></i></div>
+        <div class="floating-lantern" style="left: 85%; animation-delay: 4.5s; font-size: 28px;"><i class="fa-solid fa-gift"></i></div>
     </div>
 
-    <div class="tab-grid">
-        <div class="tab-item active" onclick="switchGate('bank', this)">
-            <i class="fa-solid fa-building-columns"></i>
-            <span>BVBANK AUTO</span>
-        </div>
-        <div class="tab-item" onclick="switchGate('momo', this)">
-            <i class="fa-solid fa-wallet"></i>
-            <span>MOMO PAY</span>
-            </div>
-        <div class="tab-item" onclick="switchGate('thecao', this)">
-            <i class="fas fa-ticket-alt"></i>
-            <span>THẺ CÀO</span>
-        </div>
+    <div id="loader">
+        <div class="spinner"></div>
+        <p style="margin-top:20px; font-weight:800; color:var(--gold); letter-spacing:1px;">ĐANG XỬ LÝ GIAO DỊCH...</p>
     </div>
-  <div class="form-card">
-        <label>Nhập số tiền cần nạp (VNĐ)</label>
-        <input type="number" id="input_amount" value="100000">
-        <button class="btn-pay" onclick="goPayment()">THANH TOÁN NGAY</button>
-        <p style="text-align:center; color:#555; font-size:10px; margin-top:20px; font-weight:800; text-transform:uppercase;">Bảo mật bởi công nghệ mã hóa HPOK</p>
-    </div>
-</div>
 
-<div id="paymentUI">
     <div class="app-wrapper">
-        <div class="pp-header">
-            <i class="fa-solid fa-chevron-left" onclick="location.reload()"></i>
-            <span style="font-weight:900; letter-spacing:1px; color:var(--teal)">GIAO DỊCH AN TOÀN</span>
-            <i class="fa-solid fa-shield-check" style="color:var(--teal)"></i>
-        </div>
+        <header><h2>🥮 NẠP TIỀN TRUNG THU ĐOÀN VIÊN 🥮</h2></header>
 
-        <div class="timer-strip">
-            ⏳ ĐƠN HÀNG SẼ HẾT HẠN SAU: <span id="timer_val">15:00</span>
-        </div>
-
-        <div class="qr-master-box">
-            <div class="qr-inner">
-                <div class="laser"></div>
-                <img id="qrImg" src="https://drive.google.com/thumbnail?id=1XTdOah4tNsyPHmvqXlWU5WZllz6OtnR0&sz=w1000">
+        <div class="hero-section">
+            <div class="brand-logo">HPOK BANK</div>
+            <div class="radar-box">
+                <i class="fa-solid fa-moon"></i>
             </div>
         </div>
 
-        <div style="text-align:center;">
-            <p style="font-size:11px; color:#666; font-weight:800; text-transform:uppercase;">Số tiền phải chuyển</p>
-            <h1 id="amt_show" style="font-size:45px; font-weight:900; color:#fff;">0đ</h1>
+        <div class="tab-grid">
+            <div class="tab-item active" onclick="switchGate('bank', this)">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>BVBANK AUTO</span>
+            </div>
+            <div class="tab-item" onclick="switchGate('momo', this)">
+                <i class="fa-solid fa-wallet"></i>
+                <span>MOMO PAY</span>
+            </div>
         </div>
 
-        <div class="info-list">
-            <div class="info-row">
-                <div class="info-data"><label>Ngân hàng</label><b>BVBANK ( NGÂN HÀNG BẢN VIỆT )</b></div>
-            </div>
-            <div class="info-row">
-                <div class="info-data"><label>Số tài khoản</label><b id="stk_val">99MM25287M78000152</b></div>
-                <button class="btn-copy" onclick="copy('stk_val')">COPY</button>
-            </div>
-            <div class="info-row">
-                <div class="info-data"><label>Chủ tài khoản</label><b id="own_val">OKHP BANKING</b></div>
-            </div>
-            <div class="info-row">
-                <div class="info-data"><label>Nội dung nạp</label><b id="code_val" style="color:var(--pink)">...</b></div>
-                <button class="btn-copy" onclick="copy('code_val')">COPY</button>
-            </div>
+        <div class="form-card">
+            <label>Nhập số tiền cần nạp (VNĐ)</label>
+            <input type="number" id="input_amount" value="100000">
+            <button class="btn-pay" onclick="goPayment()">TIẾP TỤC THANH TOÁN</button>
+            <p style="text-align:center; color:#777; font-size:10px; margin-top:20px; font-weight:800; text-transform:uppercase;">Bảo mật tự động bởi HPOK</p>
         </div>
+    </div>
+
+    <!-- Màn hình Thanh toán chuyển khoản -->
+    <div id="paymentUI">
+        <div class="app-wrapper">
+            <div class="pp-header">
+                <i class="fa-solid fa-chevron-left" onclick="location.reload()" style="cursor:pointer; font-size: 18px;"></i>
+                <span style="font-weight:900; letter-spacing:1px; color:var(--gold)">QUÉT MÃ CHUYỂN KHOẢN</span>
+                <i class="fa-solid fa-shield-halved" style="color:var(--gold)"></i>
+            </div>
+
+            <div class="timer-strip">
+                ⏳ ĐƠN HÀNG SẼ HẾT HẠN SAU: <span id="timer_val">15:00</span>
+            </div>
+
+            <div class="qr-master-box">
+                <div class="qr-inner">
+                    <img id="qrImg" src="https://drive.google.com/thumbnail?id=1XTdOah4tNsyPHmvqXlWU5WZllz6OtnR0&sz=w1000">
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-bottom: 20px;">
+                <p style="font-size:11px; color:#888; font-weight:800; text-transform:uppercase;">Số tiền phải chuyển</p>
+                <h1 id="amt_show" style="font-size:40px; font-weight:900; color:var(--gold);">0đ</h1>
+            </div>
+
+            <div class="info-list">
+                <div class="info-row">
+                    <div class="info-data"><label>Ngân hàng</label><b>BVBANK ( BẢN VIỆT )</b></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-data"><label>Số tài khoản</label><b id="stk_val">99MM25287M78000152</b></div>
+                    <button class="btn-copy" onclick="copy('stk_val')">COPY</button>
+                </div>
+                <div class="info-row">
+                    <div class="info-data"><label>Chủ tài khoản</label><b>OKHP BANKING</b></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-data"><label>Nội dung nạp</label><b id="code_val" style="color:var(--gold)">...</b></div>
+                    <button class="btn-copy" onclick="copy('code_val')">COPY</button>
+                </div>
+            </div>
+
             <div class="note-area">
-        <div class="note-header">
-            <i class="fa-solid fa-circle-exclamation icon-blink"></i> LƯU Ý QUAN TRỌNG
-        </div>
-        - Chủ tài khoản: <b>OKHP BANKING</b><br>
-        - Ngân hàng thụ hưởng: <b>BVBANK NGÂN HÀNG TMCP NGÂN HÀNG BẢN VIỆT</b><br>
-        - Bạn phải chuyển <b>ĐÚNG NỘI DUNG</b> để được cộng tiền tự động.<br>
-        - Sau khi chuyển, nhấn nút "Xác nhận" bên dưới.
-    </div>
+                <i class="fa-solid fa-circle-exclamation"></i> <b>LƯU Ý QUAN TRỌNG:</b><br>
+                - Bạn bắt buộc phải chuyển <b>ĐÚNG NỘI DUNG</b> để hệ thống tự động cộng tiền.<br>
+                - Tải lên ảnh bill hoặc bấm xác nhận sau khi đã chuyển khoản thành công.
+            </div>
 
-        <div class="bill-zone" onclick="document.getElementById('file_bill').click()">
-            <i class="fa-solid fa-camera-retro"></i>
-            <p style="font-weight:800; font-size:12px; color:#888; margin-top:10px;">Tải lên ảnh Bill chuyển khoản</p>
-            <input type="file" id="file_bill" accept="image/*" style="display:none" onchange="handleOCR(this)">
-            <img id="imgPrev">
-            <div id="ocrStatus">Hệ thống sẽ tự động quét Bill của bạn</div>
-        </div>
+            <div class="bill-zone" onclick="document.getElementById('file_bill').click()">
+                <i class="fa-solid fa-camera-retro" style="font-size: 24px; color: var(--gold);"></i>
+                <p style="font-weight:800; font-size:12px; color:#aaa; margin-top:10px;">Tải lên ảnh Bill chuyển khoản (Tùy chọn)</p>
+                <input type="file" id="file_bill" accept="image/*" style="display:none" onchange="handleOCR(this)">
+                <img id="imgPrev">
+                <div id="ocrStatus" style="font-size: 11px; margin-top: 8px; color: #888;">Hệ thống hỗ trợ quét Bill tự động</div>
+            </div>
 
-        <div style="padding: 0 15px;">
-            <button class="btn-confirm" onclick="submitToFirebase()">XÁC NHẬN ĐÃ CHUYỂN TIỀN</button>
-            <p onclick="location.reload()" style="text-align:center; color:#444; font-size:12px; margin-top:25px; font-weight:800; cursor:pointer;">HỦY GIAO DỊCH NÀY</p>
+            <div style="padding: 0 20px;">
+                <button class="btn-confirm" onclick="submitToFirebase()">XÁC NHẬN ĐÃ CHUYỂN TIỀN</button>
+                <p onclick="location.reload()" style="text-align:center; color:#666; font-size:12px; margin-top:20px; font-weight:800; cursor:pointer;">HỦY GIAO DỊCH NÀY</p>
+            </div>
         </div>
     </div>
-       <div class="input-group-hpok">
-        <label>Loại thẻ:</label>
-        <select id="card-type" class="hpok-input" style="width: 100%; background: #000; color: #fff; border: 1px solid var(--gray); padding: 10px; border-radius: 10px;">
-            <option value="VIETTEL">Viettel</option>
-            <option value="VINAPHONE">Vinaphone</option>
-            <option value="MOBIFONE">Mobifone</option>
-            <option value="ZING">Thẻ Zing</option>
-        </select>
-    </div>
 
-    <div class="input-group-hpok" style="margin-top: 15px;">
-        <label>Mệnh giá:</label>
-        <select id="card-amount" class="hpok-input" style="width: 100%; background: #000; color: #fff; border: 1px solid var(--gray); padding: 10px; border-radius: 10px;">
-            <option value="10000">10.000 VND</option>
-            <option value="20000">20.000 VND</option>
-            <option value="50000">50.000 VND</option>
-            <option value="100000">100.000 VND</option>
-            <option value="200000">200.000 VND</option>
-            <option value="500000">500.000 VND</option>
-        </select>
-    </div>
+    <!-- Script Tích hợp Firebase và Xử lý sự kiện chuẩn xác -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getDatabase, ref, push, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
-    <div class="input-group-hpok" style="margin-top: 15px;">
-        <input type="text" id="card-serial" placeholder="Số Seri thẻ..." class="hpok-input" style="width: 100%; background: #222; border: 1px solid var(--pink-glow);">
-    </div>
-
-    <div class="input-group-hpok" style="margin-top: 10px;">
-        <input type="text" id="card-pin" placeholder="Mã số thẻ (sau lớp cào)..." class="hpok-input" style="width: 100%; background: #222; border: 1px solid var(--pink-glow);">
-    </div>
-
-    <button onclick="submitCard()" class="hpok-btn-submit" style="width: 100%; margin-top: 20px; background: linear-gradient(to right, #ff007f, #800040); color: white; padding: 15px; border-radius: 12px; border: none; font-weight: bold; cursor: pointer; box-shadow: 0 0 15px var(--pink-glow);">
-        GỬI THẺ NGAY
-    </button>
-    
-    <p style="font-size: 11px; color: #aaa; text-align: center; margin-top: 10px;">
-        * Lưu ý: Chọn sai mệnh giá sẽ mất thẻ. Phí gạch thẻ 20%.
-    </p>
-</div>
-</div>
-</div>
-
-<script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
-
-    // --- 1. Cấu hình Firebase (Giữ nguyên từ register/login) ---
-    const firebaseConfig = {
-        apiKey: "AIzaSyBD27MYenkjWOEjqj0hCisbh_61F_6bhSE",
-        authDomain: "hpok-d355c.firebaseapp.com",
-        databaseURL: "https://hpok-d355c-default-rtdb.asia-southeast1.firebasedatabase.app",
-        projectId: "hpok-d355c",
-        storageBucket: "hpok-d355c.appspot.com",
-        messagingSenderId: "338810246244",
-        appId: "1:338810246244:web:80674516c73855e4e7512d"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getDatabase(app);
-
-    // --- 2. Khởi tạo & Đồng bộ người dùng ---
-    const currentUser = localStorage.getItem("username");
-    let lastBalance = null;
-
-    if (!currentUser) {
-        window.location.href = "login.html";
-    } else {
-        const userRef = ref(db, 'users/' + currentUser);
-        onValue(userRef, (snapshot) => {
-            const data = snapshot.val();
-            if (data) {
-                const currentBalance = data.balance || 0;
-                
-                // Hiển thị tên & số dư hiện tại
-                if(document.getElementById('db-user')) document.getElementById('db-user').innerText = data.fullName || currentUser;
-                if(document.getElementById('db-balance')) document.getElementById('db-balance').innerText = new Intl.NumberFormat('vi-VN').format(currentBalance) + " VND";
-                
-                // Tự động điền nội dung chuyển khoản theo Username
-                const noteEl = document.getElementById('transfer-note');
-                if (noteEl) noteEl.innerText = "NAP " + currentUser.toUpperCase();
-
-                // Thông báo khi tiền nhảy (Nạp thành công)
-                if (lastBalance !== null && currentBalance > lastBalance) {
-                    showSuccessToast(currentBalance - lastBalance);
-                }
-                lastBalance = currentBalance;
-            }
-        });
-    }
-
-    // --- 3. Hàm Copy nhanh (Tiện ích) ---
-    window.copyText = function(elementId) {
-        const text = document.getElementById(elementId).innerText;
-        navigator.clipboard.writeText(text).then(() => {
-            // Tạo toast thông báo nhanh
-            const toast = document.createElement('div');
-            toast.innerText = `Đã sao chép: ${text}`;
-            toast.style.cssText = `
-                position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%);
-                background: rgba(0,0,0,0.8); color: #fff; padding: 10px 20px;
-                border-radius: 20px; font-size: 14px; z-index: 10000;
-                border: 1px solid #ff4d94; box-shadow: 0 0 10px var(--pink-glow);
-            `;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2000);
-        });
-    };
-
-    // Hàm hiện thông báo nạp thành công
-    function showSuccessToast(amount) {
-        const popup = document.createElement('div');
-        popup.style.cssText = `
-            position: fixed; top: 20px; right: 20px; z-index: 10000;
-            background: linear-gradient(135deg, #ff4d94, #ff007f);
-            color: white; padding: 15px 25px; border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 2px solid gold;
-        `;
-        popup.innerHTML = `<b>✅ NẠP THÀNH CÔNG!</b><br>Số dư +${new Intl.NumberFormat('vi-VN').format(amount)} VND`;
-        document.body.appendChild(popup);
-        setTimeout(() => popup.remove(), 7000);
-    }
-    
-    // OCR NHẬN DIỆN BILL
-    window.handleOCR = (input) => {
-        const file = input.files[0];
-        if(!file) return;
-
-        const reader = new FileReader();
-        reader.onload = (e) => {
-            const img = document.getElementById('imgPrev');
-            img.src = e.target.result;
-            img.style.display = 'block';
-            const status = document.getElementById('ocrStatus');
-            status.innerText = "🔍 Đang phân tích Bill...";
-            status.style.color = "cyan";
-
-            Tesseract.recognize(e.target.result, 'vie').then(({ data: { text } }) => {
-                if(text.toLowerCase().includes("thành công") || text.includes("BVBANK")) {
-                    status.innerText = "✅ Bill hợp lệ! Vui lòng bấm xác nhận.";
-                    status.style.color = "#00ffa5";
-                } else {
-                    status.innerText = "⚠️ Ảnh mờ hoặc không rõ Bill, vui lòng thử lại.";
-                    status.style.color = "orange";
-                }
-            });
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD27MYenkjWOEjqj0hCisbh_61F_6bhSE",
+            authDomain: "hpok-d355c.firebaseapp.com",
+            databaseURL: "https://hpok-d355c-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "hpok-d355c",
+            storageBucket: "hpok-d355c.appspot.com",
+            messagingSenderId: "338810246244",
+            appId: "1:338810246244:web:80674516c73855e4e7512d"
         };
-        reader.readAsDataURL(file);
-    };
 
-    window.submitToFirebase = async () => {
-    const amt = document.getElementById('input_amount').value;
-    const loader = document.getElementById('loader');
-    loader.style.display = 'flex';
-    
-    try {
-        await push(ref(db, 'recharge_requests'), {
-            username: localStorage.getItem("username") || "Guest",
-            amount: Number(amt),
-            gate: selectedGate,
-            code: rechargeCode,
-            status: "pending",
-            createdAt: serverTimestamp()
-        });
-        alert("Gửi yêu cầu thành công! Admin sẽ duyệt bill trong giây lát.");
-        location.reload();
-    } catch (e) {
-        console.error(e);
-        alert("Lỗi kết nối máy chủ!");
-        loader.style.display = 'none';
-    }
-};
-    
-    window.copy = (id) => {
-        const val = document.getElementById(id).innerText;
-        navigator.clipboard.writeText(val);
-        alert("Đã sao chép: " + val);
-    };
-    // Thêm các hàm cần thiết vào phần import của bạn
-import { getDatabase, ref, push, onValue, serverTimestamp, query, orderByChild, equalTo } 
-from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
 
-const db = getDatabase();
-const username = localStorage.getItem("username");
-
-// 1. Logic Gửi Thẻ
-window.submitCard = async function() {
-    const type = document.getElementById('card-type').value;
-    const amount = document.getElementById('card-amount').value;
-    const serial = document.getElementById('card-serial').value.trim();
-    const pin = document.getElementById('card-pin').value.trim();
-    const btn = document.getElementById('btn-card');
-
-    if (!serial || !pin) return alert("Vui lòng nhập đủ Seri và Mã thẻ!");
-
-    btn.innerText = "ĐANG XỬ LÝ...";
-    btn.disabled = true;
-
-    try {
-        await push(ref(db, 'card_requests'), {
-            username: username,
-            type: type,
-            amount: parseInt(amount),
-            serial: serial,
-            pin: pin,
-            status: "pending", // Trạng thái chờ duyệt
-            createdAt: serverTimestamp()
-        });
-        alert("Gửi thẻ thành công! Vui lòng đợi Admin kiểm tra.");
-        document.getElementById('card-serial').value = "";
-        document.getElementById('card-pin').value = "";
-    } catch (e) {
-        alert("Lỗi kết nối Firebase!");
-    } finally {
-        btn.innerText = "GỬI THẺ NGAY";
-        btn.disabled = false;
-    }
-};
-
-// 2. Logic Hiển thị Lịch sử (Realtime)
-if (username) {
-    const historyRef = query(ref(db, 'card_requests'), orderByChild('username'), equalTo(username));
-    onValue(historyRef, (snapshot) => {
-        const listArea = document.getElementById('card-history-list');
-        listArea.innerHTML = ""; // Xóa dữ liệu cũ để cập nhật mới
-
-        if (snapshot.exists()) {
-            const data = snapshot.val();
-            // Đảo ngược để hiện yêu cầu mới nhất lên đầu
-            Object.keys(data).reverse().forEach(key => {
-                const item = data[key];
-                const statusColor = item.status === "pending" ? "orange" : (item.status === "success" ? "#00ffa5" : "#ff2d55");
-                const statusText = item.status === "pending" ? "Đang duyệt" : (item.status === "success" ? "Thành công" : "Thất bại");
-
-                listArea.innerHTML += `
-                    <div style="display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #222;">
-                        <div>
-                            <b style="color: gold;">${item.type}</b> - ${new Intl.NumberFormat('vi-VN').format(item.amount)}đ<br>
-                            <small style="color: #888;">${item.serial}</small>
-                        </div>
-                        <div style="text-align: right;">
-                            <span style="color: ${statusColor}; font-weight: bold;">${statusText}</span><br>
-                            <small style="color: #555;">${new Date(item.createdAt).toLocaleTimeString()}</small>
-                        </div>
-                    </div>
-                `;
-            });
-        } else {
-            listArea.innerHTML = `<p style="color: #666; text-align: center;">Chưa có giao dịch nào...</p>`;
+        const currentUser = localStorage.getItem("username");
+        if (!currentUser) {
+            window.location.href = "login.html";
         }
-    });
-}
-    let selectedGate = 'bank';
-let rechargeCode = '';
 
-window.switchGate = function(gate, element) {
-    selectedGate = gate;
-    document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));
-    element.classList.add('active');
-};
+        let selectedGate = 'bank';
+        let rechargeCode = '';
 
-window.goPayment = function() {
-    const amount = document.getElementById('input_amount').value;
-    if (!amount || amount <= 0) {
-        alert("Vui lòng nhập số tiền hợp lệ!");
-        return;
-    }
-    
-    // Hiển thị số tiền lên giao diện thanh toán
-    document.getElementById('amt_show').innerText = new Intl.NumberFormat('vi-VN').format(amount) + "đ";
-    
-    // Tạo nội dung nạp tự động dựa trên username
-    const username = localStorage.getItem("username") || "GUEST";
-    rechargeCode = "NAP " + username.toUpperCase();
-    document.getElementById('code_val').innerText = rechargeCode;
+        window.switchGate = function(gate, element) {
+            selectedGate = gate;
+            document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+        };
 
-    // Mở màn hình thanh toán
-    document.getElementById('paymentUI').style.display = 'block';
-};
-    
-</script>
+        window.goPayment = function() {
+            const amount = document.getElementById('input_amount').value;
+            if (!amount || amount <= 0) {
+                alert("Vui lòng nhập số tiền hợp lệ!");
+                return;
+            }
+            
+            document.getElementById('amt_show').innerText = new Intl.NumberFormat('vi-VN').format(amount) + "đ";
+            const username = localStorage.getItem("username") || "GUEST";
+            rechargeCode = "NAP " + username.toUpperCase();
+            document.getElementById('code_val').innerText = rechargeCode;
+
+            document.getElementById('paymentUI').style.display = 'block';
+        };
+
+        window.copy = function(id) {
+            const val = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(val);
+            alert("Đã sao chép: " + val);
+        };
+
+        window.handleOCR = (input) => {
+            const file = input.files[0];
+            if(!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const img = document.getElementById('imgPrev');
+                img.src = e.target.result;
+                img.style.display = 'block';
+                const status = document.getElementById('ocrStatus');
+                status.innerText = "🔍 Đang phân tích Bill...";
+                status.style.color = "cyan";
+
+                Tesseract.recognize(e.target.result, 'vie').then(({ data: { text } }) => {
+                    if(text.toLowerCase().includes("thành công") || text.includes("BVBANK")) {
+                        status.innerText = "✅ Bill hợp lệ!";
+                        status.style.color = "#00ffa5";
+                    } else {
+                        status.innerText = "⚠️ Không quét được mã tự động, hãy chắc chắn bạn đã chuyển khoản.";
+                        status.style.color = "orange";
+                    }
+                });
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.submitToFirebase = async () => {
+            const amt = document.getElementById('input_amount').value;
+            const loader = document.getElementById('loader');
+            loader.style.display = 'flex';
+            
+            try {
+                await push(ref(db, 'recharge_requests'), {
+                    username: localStorage.getItem("username") || "Guest",
+                    amount: Number(amt),
+                    gate: selectedGate,
+                    code: rechargeCode,
+                    status: "pending",
+                    createdAt: serverTimestamp()
+                });
+                alert("Gửi yêu cầu thành công! Admin sẽ duyệt tiền cho bạn trong giây lát.");
+                location.reload();
+            } catch (e) {
+                console.error(e);
+                alert("Lỗi kết nối máy chủ!");
+                loader.style.display = 'none';
+            }
+        };
+    </script>
 </body>
 </html>
