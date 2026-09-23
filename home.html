@@ -336,7 +336,7 @@
         </div>
     </div>
 
-    <div class="banner-container">
+   <div class="banner-container">
         <div class="banner-wrapper" id="bannerWrapper">
             <div class="banner-slide"><img src="https://i.imgur.com/PtkwGr9.png"></div>
         </div>
@@ -350,10 +350,11 @@
     </div>
 
     <div class="finance-row">
-        <a href="naptien.html" class="btn-fin btn-nap">NẠP TIỀN</a>
-        <a href="ruttien.html" class="btn-fin btn-rut">RÚT TIỀN</a>
+        <!-- Đã thêm sự kiện onclick để ép chuyển trang trực tiếp và tránh bị chặn hành vi mặc định -->
+        <a href="naptien.html" onclick="window.location.href='naptien.html'; return false;" class="btn-fin btn-nap">NẠP TIỀN</a>
+        <a href="ruttien.html" onclick="window.location.href='ruttien.html'; return false;" class="btn-fin btn-rut">RÚT TIỀN</a>
     </div>
-
+    
       <div class="game-tabs">
         <div class="tab-scroll">
             <a href="#n1" class="tab-item active"><div class="tab-square" style="color:#ff3b30"><i class="fa-solid fa-dice"></i></div><span>Nổ hũ</span></a>
