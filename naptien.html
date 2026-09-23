@@ -14,8 +14,10 @@
             --pink: #ff2a85;
             --pink-glow: rgba(255, 42, 133, 0.35);
             --bg-base: #050508;
-            --card-bg: rgba(20, 20, 30, 0.85);
-            --card-border: rgba(255, 215, 0, 0.2);
+            --card-bg: rgba(20, 20, 30, 0.82);
+            --card-border: rgba(255, 215, 0, 0.18);
+            --teal: #00f2fe;
+            --teal-glow: rgba(0, 242, 254, 0.25);
             --gold: #ffd700;
             --gold-glow: rgba(255, 215, 0, 0.4);
             --white: #ffffff;
@@ -38,10 +40,12 @@
             font-family: 'Lexend', sans-serif;
             background-image: 
                 radial-gradient(circle at 50% 10%, rgba(255, 215, 0, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 10% 80%, rgba(255, 42, 133, 0.08) 0%, transparent 40%);
+                radial-gradient(circle at 10% 80%, rgba(255, 42, 133, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(0, 242, 254, 0.06) 0%, transparent 40%);
             background-attachment: fixed;
         }
 
+        /* --- HIỆU ỨNG TRUNG THU ĐỘNG --- */
         .mid-autumn-decor {
             position: fixed;
             top: 0;
@@ -53,15 +57,16 @@
             overflow: hidden;
         }
 
+        /* Ánh trăng rằm */
         .moon-glow {
             position: absolute;
-            top: -40px;
-            right: -40px;
-            width: 160px;
-            height: 160px;
+            top: -50px;
+            right: -50px;
+            width: 180px;
+            height: 180px;
             background: radial-gradient(circle, rgba(255,230,128,0.25) 0%, rgba(255,180,0,0.05) 60%, transparent 100%);
             border-radius: 50%;
-            box-shadow: 0 0 50px rgba(255,215,0,0.2);
+            box-shadow: 0 0 60px rgba(255,215,0,0.2);
             animation: moonPulse 6s ease-in-out infinite alternate;
         }
 
@@ -70,6 +75,7 @@
             100% { transform: scale(1.1); opacity: 1; }
         }
 
+        /* Đèn lồng bay lơ lửng */
         .floating-lantern {
             position: absolute;
             color: #ff3333;
@@ -97,7 +103,7 @@
         }
 
         header {
-            padding: 16px 20px;
+            padding: 18px 20px;
             text-align: center;
             background: rgba(7, 7, 12, 0.9);
             backdrop-filter: blur(20px);
@@ -109,7 +115,7 @@
         }
 
         header h2 {
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 800;
             color: var(--white);
             text-transform: uppercase;
@@ -121,17 +127,33 @@
 
         .hero-section {
             text-align: center;
-            margin: 20px 0;
+            margin: 24px 0 20px;
         }
 
         .brand-logo {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 900;
             background: linear-gradient(135deg, var(--gold), #ff8c00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .radar-box {
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, var(--gold), #ff6b00);
+            border-radius: 50%;
+            margin: 12px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 25px var(--gold-glow);
+            font-size: 20px;
+            color: #000;
         }
 
         .tab-grid {
@@ -139,25 +161,26 @@
             grid-template-columns: 1fr 1fr;
             gap: 12px;
             padding: 0 20px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .tab-item {
             background: var(--card-bg);
             backdrop-filter: blur(12px);
             border: 1.5px solid var(--card-border);
-            border-radius: 16px;
-            padding: 16px 10px;
+            border-radius: 20px;
+            padding: 18px 10px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .tab-item i {
-            font-size: 22px;
+            font-size: 24px;
             color: var(--gray);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             display: block;
+            transition: 0.3s;
         }
 
         .tab-item span {
@@ -165,25 +188,33 @@
             font-weight: 700;
             color: var(--gray);
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .tab-item.active {
             border-color: var(--gold);
             background: linear-gradient(145deg, rgba(255, 215, 0, 0.12), rgba(20, 20, 30, 0.9));
-            box-shadow: 0 8px 20px var(--gold-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px var(--gold-glow);
         }
 
-        .tab-item.active i { color: var(--gold); }
-        .tab-item.active span { color: var(--white); }
+        .tab-item.active i {
+            color: var(--gold);
+            text-shadow: 0 0 12px var(--gold-glow);
+        }
+
+        .tab-item.active span {
+            color: var(--white);
+        }
 
         .form-card {
             background: var(--card-bg);
             backdrop-filter: blur(16px);
             margin: 0 20px;
-            padding: 24px 20px;
-            border-radius: 20px;
+            padding: 30px 20px;
+            border-radius: 24px;
             border: 1px solid var(--card-border);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .form-card label {
@@ -193,7 +224,8 @@
             font-weight: 800;
             color: var(--gray);
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
         }
 
         .form-card input {
@@ -201,74 +233,97 @@
             background: rgba(0, 0, 0, 0.6);
             border: 2px solid rgba(255, 255, 255, 0.08);
             color: var(--gold);
-            padding: 16px;
-            border-radius: 14px;
-            font-size: 26px;
+            padding: 18px;
+            border-radius: 16px;
+            font-size: 30px;
             font-weight: 900;
             text-align: center;
+            font-family: 'Inter', sans-serif;
+            transition: 0.3s;
+        }
+
+        .form-card input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px var(--gold-glow);
         }
 
         .btn-pay {
             width: 100%;
             background: linear-gradient(135deg, var(--gold), #ff8c00);
             color: #000;
-            padding: 16px;
+            padding: 20px;
             border: none;
-            border-radius: 14px;
-            font-size: 14px;
+            border-radius: 16px;
+            font-size: 15px;
             font-weight: 900;
             text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            box-shadow: 0 10px 20px var(--gold-glow);
-            margin-top: 16px;
+            box-shadow: 0 12px 25px var(--gold-glow);
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pay:active {
+            transform: scale(0.97);
+            box-shadow: 0 5px 15px var(--gold-glow);
         }
 
         #paymentUI {
             display: none;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background: var(--bg-base);
             z-index: 2000;
             overflow-y: auto;
         }
 
-        .panel-gate { display: none; }
-        .panel-gate.active { display: block; }
-
         .pp-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 20px;
+            padding: 18px 20px;
             background: rgba(7, 7, 12, 0.9);
             border-bottom: 1px solid var(--card-border);
         }
 
         .timer-strip {
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             background: rgba(255, 215, 0, 0.08);
             color: var(--gold);
             font-weight: 800;
-            font-size: 12px;
+            font-size: 13px;
             border-bottom: 1px dashed var(--card-border);
         }
 
-        .qr-master-box { text-align: center; margin: 16px 0; }
+        .qr-master-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+
         .qr-inner {
             display: inline-block;
-            padding: 12px;
+            padding: 15px;
             background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 0 25px var(--gold-glow);
+            border-radius: 20px;
+            box-shadow: 0 0 30px var(--gold-glow);
         }
-        .qr-inner img { width: 180px; height: 180px; display: block; }
+
+        .qr-inner img {
+            width: 200px;
+            height: 200px;
+            display: block;
+        }
 
         .info-list {
             background: var(--card-bg);
-            margin: 0 20px 16px 20px;
-            padding: 12px 15px;
-            border-radius: 14px;
+            margin: 0 20px 20px 20px;
+            padding: 15px;
+            border-radius: 16px;
             border: 1px solid var(--card-border);
         }
 
@@ -276,71 +331,78 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        .info-row:last-child { border-bottom: none; }
-        .info-data label { font-size: 10px; color: var(--gray); display: block; text-transform: uppercase; }
-        .info-data b { font-size: 13px; color: #fff; }
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-data label {
+            font-size: 11px;
+            color: var(--gray);
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .info-data b {
+            font-size: 14px;
+            color: #fff;
+        }
 
         .btn-copy {
             background: rgba(255, 215, 0, 0.15);
             border: 1px solid var(--gold);
             color: var(--gold);
-            padding: 5px 10px;
-            border-radius: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
             font-weight: 800;
-            font-size: 10px;
+            font-size: 11px;
             cursor: pointer;
         }
 
         .note-area {
             background: rgba(255, 140, 0, 0.08);
             border: 1px solid rgba(255, 140, 0, 0.3);
-            margin: 0 20px 16px 20px;
-            padding: 12px;
-            border-radius: 14px;
-            font-size: 11px;
-            line-height: 1.4;
+            margin: 0 20px 20px 20px;
+            padding: 15px;
+            border-radius: 16px;
+            font-size: 12px;
+            line-height: 1.5;
             color: #ffd;
         }
 
         .bill-zone {
             background: var(--card-bg);
-            margin: 0 20px 16px 20px;
-            padding: 16px;
+            margin: 0 20px 20px 20px;
+            padding: 20px;
             border: 2px dashed var(--card-border);
-            border-radius: 14px;
+            border-radius: 16px;
             text-align: center;
             cursor: pointer;
         }
 
-        .bill-zone img { max-width: 100%; max-height: 120px; margin-top: 8px; display: none; border-radius: 6px; }
+        .bill-zone img {
+            max-width: 100%;
+            max-height: 150px;
+            margin-top: 10px;
+            display: none;
+            border-radius: 8px;
+        }
 
         .btn-confirm {
             width: 100%;
             background: linear-gradient(135deg, #00ffa5, #00b374);
             color: #000;
-            padding: 16px;
+            padding: 18px;
             border: none;
-            border-radius: 14px;
-            font-size: 14px;
+            border-radius: 16px;
+            font-size: 15px;
             font-weight: 900;
             text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(0, 255, 165, 0.3);
-        }
-
-        .hpok-input {
-            width: 100%;
-            background: rgba(0,0,0,0.6);
-            color: #fff;
-            border: 1.5px solid var(--card-border);
-            padding: 12px;
-            border-radius: 12px;
-            margin-top: 10px;
-            font-size: 13px;
+            box-shadow: 0 10px 25px rgba(0, 255, 165, 0.3);
         }
 
         #loader {
@@ -355,28 +417,32 @@
         }
 
         .spinner {
-            width: 45px; height: 45px;
+            width: 50px; height: 50px;
             border: 4px solid rgba(255,215,0,0.2);
             border-top-color: var(--gold);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
 
-        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Đồ họa Trang trí Trung Thu Động -->
     <div class="mid-autumn-decor">
         <div class="moon-glow"></div>
-        <div class="floating-lantern" style="left: 10%; animation-delay: 0s; font-size: 24px;"><i class="fa-solid fa-gift"></i></div>
-        <div class="floating-lantern" style="left: 35%; animation-delay: 3s; font-size: 18px;"><i class="fa-solid fa-moon"></i></div>
-        <div class="floating-lantern" style="left: 75%; animation-delay: 1.5s; font-size: 22px;"><i class="fa-solid fa-star"></i></div>
+        <div class="floating-lantern" style="left: 10%; animation-delay: 0s; font-size: 26px;"><i class="fa-solid fa-gift"></i></div>
+        <div class="floating-lantern" style="left: 30%; animation-delay: 3s; font-size: 20px;"><i class="fa-solid fa-moon"></i></div>
+        <div class="floating-lantern" style="left: 70%; animation-delay: 1.5s; font-size: 24px;"><i class="fa-solid fa-star"></i></div>
+        <div class="floating-lantern" style="left: 85%; animation-delay: 4.5s; font-size: 28px;"><i class="fa-solid fa-gift"></i></div>
     </div>
 
     <div id="loader">
         <div class="spinner"></div>
-        <p style="margin-top:15px; font-weight:800; color:var(--gold); font-size: 13px; letter-spacing:1px;">ĐANG XỬ LÝ GIAO DỊCH...</p>
+        <p style="margin-top:20px; font-weight:800; color:var(--gold); letter-spacing:1px;">ĐANG XỬ LÝ GIAO DỊCH...</p>
     </div>
 
     <div class="app-wrapper">
@@ -384,6 +450,9 @@
 
         <div class="hero-section">
             <div class="brand-logo">HPOK BANK</div>
+            <div class="radar-box">
+                <i class="fa-solid fa-moon"></i>
+            </div>
         </div>
 
         <div class="tab-grid">
@@ -391,114 +460,86 @@
                 <i class="fa-solid fa-building-columns"></i>
                 <span>BVBANK AUTO</span>
             </div>
-            <div class="tab-item" onclick="switchGate('thecao', this)">
-                <i class="fas fa-ticket-alt"></i>
-                <span>THẺ CÀO</span>
+            <div class="tab-item" onclick="switchGate('momo', this)">
+                <i class="fa-solid fa-wallet"></i>
+                <span>MOMO PAY</span>
             </div>
         </div>
 
         <div class="form-card">
             <label>Nhập số tiền cần nạp (VNĐ)</label>
             <input type="number" id="input_amount" value="100000">
-            <!-- ĐÃ THÊM type="button" ĐỂ NGĂN TRÌNH DUYỆT TỰ ĐỘNG SUBMIT VỀ TRANG CHỦ -->
-            <button type="button" class="btn-pay" onclick="goPayment()">TIẾP TỤC THANH TOÁN</button>
-            <p style="text-align:center; color:#777; font-size:10px; margin-top:16px; font-weight:800; text-transform:uppercase;">Bảo mật tự động bởi HPOK</p>
+            <button class="btn-pay" onclick="goPayment()">TIẾP TỤC THANH TOÁN</button>
+            <p style="text-align:center; color:#777; font-size:10px; margin-top:20px; font-weight:800; text-transform:uppercase;">Bảo mật tự động bởi HPOK</p>
         </div>
     </div>
 
+    <!-- Màn hình Thanh toán chuyển khoản -->
     <div id="paymentUI">
         <div class="app-wrapper">
             <div class="pp-header">
-                <i class="fa-solid fa-chevron-left" onclick="closePayment()" style="cursor:pointer; font-size: 18px;"></i>
-                <span style="font-weight:900; letter-spacing:1px; color:var(--gold)">XÁC NHẬN GIAO DỊCH</span>
+                <i class="fa-solid fa-chevron-left" onclick="location.reload()" style="cursor:pointer; font-size: 18px;"></i>
+                <span style="font-weight:900; letter-spacing:1px; color:var(--gold)">QUÉT MÃ CHUYỂN KHOẢN</span>
                 <i class="fa-solid fa-shield-halved" style="color:var(--gold)"></i>
             </div>
 
-            <div id="panel-bank" class="panel-gate active">
-                <div class="timer-strip">⏳ ĐƠN HÀNG HẾT HẠN SAU: <span id="timer_val">15:00</span></div>
+            <div class="timer-strip">
+                ⏳ ĐƠN HÀNG SẼ HẾT HẠN SAU: <span id="timer_val">15:00</span>
+            </div>
 
-                <div class="qr-master-box">
-                    <div class="qr-inner">
-                        <img src="https://drive.google.com/thumbnail?id=1XTdOah4tNsyPHmvqXlWU5WZllz6OtnR0&sz=w1000">
-                    </div>
-                </div>
-
-                <div style="text-align:center; margin-bottom: 16px;">
-                    <p style="font-size:10px; color:#888; font-weight:800; text-transform:uppercase;">Số tiền phải chuyển</p>
-                    <h1 id="amt_show" style="font-size:34px; font-weight:900; color:var(--gold);">0đ</h1>
-                </div>
-
-                <div class="info-list">
-                    <div class="info-row">
-                        <div class="info-data"><label>Ngân hàng</label><b>BVBANK ( BẢN VIỆT )</b></div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-data"><label>Số tài khoản</label><b id="stk_val">99MM25287M78000152</b></div>
-                        <button type="button" class="btn-copy" onclick="copyTextVal('stk_val')">COPY</button>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-data"><label>Chủ tài khoản</label><b>OKHP BANKING</b></div>
-                    </div>
-                    <div class="info-row">
-                        <div class="info-data"><label>Nội dung nạp</label><b id="code_val" style="color:var(--gold)">...</b></div>
-                        <button type="button" class="btn-copy" onclick="copyTextVal('code_val')">COPY</button>
-                    </div>
-                </div>
-
-                <div class="note-area">
-                    <i class="fa-solid fa-circle-exclamation"></i> <b>LƯU Ý:</b> Chuyển <b>ĐÚNG NỘI DUNG</b> để hệ thống tự động cộng tiền.
-                </div>
-
-                <div class="bill-zone" onclick="document.getElementById('file_bill').click()">
-                    <i class="fa-solid fa-camera-retro" style="font-size: 20px; color: var(--gold);"></i>
-                    <p style="font-weight:800; font-size:11px; color:#aaa; margin-top:6px;">Tải lên ảnh Bill (Tùy chọn)</p>
-                    <input type="file" id="file_bill" accept="image/*" style="display:none" onchange="handleOCR(this)">
-                    <img id="imgPrev">
-                    <div id="ocrStatus" style="font-size: 10px; margin-top: 6px; color: #888;">Hệ thống hỗ trợ quét Bill</div>
-                </div>
-
-                <div style="padding: 0 20px;">
-                    <button type="button" class="btn-confirm" onclick="submitBankRequest()">XÁC NHẬN ĐÃ CHUYỂN TIỀN</button>
+            <div class="qr-master-box">
+                <div class="qr-inner">
+                    <img id="qrImg" src="https://drive.google.com/thumbnail?id=1XTdOah4tNsyPHmvqXlWU5WZllz6OtnR0&sz=w1000">
                 </div>
             </div>
 
-            <div id="panel-thecao" class="panel-gate">
-                <div style="padding: 20px;">
-                    <label style="font-size: 11px; color: var(--gray); font-weight: 800;">LOẠI THẺ:</label>
-                    <select id="card-type" class="hpok-input">
-                        <option value="VIETTEL">Viettel</option>
-                        <option value="VINAPHONE">Vinaphone</option>
-                        <option value="MOBIFONE">Mobifone</option>
-                        <option value="ZING">Thẻ Zing</option>
-                    </select>
+            <div style="text-align:center; margin-bottom: 20px;">
+                <p style="font-size:11px; color:#888; font-weight:800; text-transform:uppercase;">Số tiền phải chuyển</p>
+                <h1 id="amt_show" style="font-size:40px; font-weight:900; color:var(--gold);">0đ</h1>
+            </div>
 
-                    <label style="font-size: 11px; color: var(--gray); font-weight: 800; margin-top: 15px; display: block;">MỆNH GIÁ:</label>
-                    <select id="card-amount" class="hpok-input">
-                        <option value="10000">10.000 VND</option>
-                        <option value="20000">20.000 VND</option>
-                        <option value="50000">50.000 VND</option>
-                        <option value="100000">100.000 VND</option>
-                        <option value="200000">200.000 VND</option>
-                        <option value="500000">500.000 VND</option>
-                    </select>
-
-                    <input type="text" id="card-serial" placeholder="Nhập số Seri thẻ..." class="hpok-input">
-                    <input type="text" id="card-pin" placeholder="Nhập mã số thẻ (PIN)..." class="hpok-input">
-
-                    <button type="button" id="btn-card" onclick="submitCardRequest()" class="btn-confirm" style="margin-top: 20px; background: linear-gradient(135deg, var(--gold), #ff8c00); color: #000;">
-                        GỬI THẺ NGAY
-                    </button>
-                    <p style="font-size: 10px; color: #aaa; text-align: center; margin-top: 12px;">* Lưu ý: Chọn sai mệnh giá sẽ mất thẻ. Phí gạch thẻ 20%.</p>
+            <div class="info-list">
+                <div class="info-row">
+                    <div class="info-data"><label>Ngân hàng</label><b>BVBANK ( BẢN VIỆT )</b></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-data"><label>Số tài khoản</label><b id="stk_val">99MM25287M78000152</b></div>
+                    <button class="btn-copy" onclick="copy('stk_val')">COPY</button>
+                </div>
+                <div class="info-row">
+                    <div class="info-data"><label>Chủ tài khoản</label><b>OKHP BANKING</b></div>
+                </div>
+                <div class="info-row">
+                    <div class="info-data"><label>Nội dung nạp</label><b id="code_val" style="color:var(--gold)">...</b></div>
+                    <button class="btn-copy" onclick="copy('code_val')">COPY</button>
                 </div>
             </div>
 
-            <p onclick="closePayment()" style="text-align:center; color:#666; font-size:11px; margin: 20px 0; font-weight:800; cursor:pointer;">QUAY LẠI TRANG CHỦ</p>
+            <div class="note-area">
+                <i class="fa-solid fa-circle-exclamation"></i> <b>LƯU Ý QUAN TRỌNG:</b><br>
+                - Bạn bắt buộc phải chuyển <b>ĐÚNG NỘI DUNG</b> để hệ thống tự động cộng tiền.<br>
+                - Tải lên ảnh bill hoặc bấm xác nhận sau khi đã chuyển khoản thành công.
+            </div>
+
+            <div class="bill-zone" onclick="document.getElementById('file_bill').click()">
+                <i class="fa-solid fa-camera-retro" style="font-size: 24px; color: var(--gold);"></i>
+                <p style="font-weight:800; font-size:12px; color:#aaa; margin-top:10px;">Tải lên ảnh Bill chuyển khoản (Tùy chọn)</p>
+                <input type="file" id="file_bill" accept="image/*" style="display:none" onchange="handleOCR(this)">
+                <img id="imgPrev">
+                <div id="ocrStatus" style="font-size: 11px; margin-top: 8px; color: #888;">Hệ thống hỗ trợ quét Bill tự động</div>
+            </div>
+
+            <div style="padding: 0 20px;">
+                <button class="btn-confirm" onclick="submitToFirebase()">XÁC NHẬN ĐÃ CHUYỂN TIỀN</button>
+                <p onclick="location.reload()" style="text-align:center; color:#666; font-size:12px; margin-top:20px; font-weight:800; cursor:pointer;">HỦY GIAO DỊCH NÀY</p>
+            </div>
         </div>
     </div>
 
+    <!-- Script Tích hợp Firebase và Xử lý sự kiện chuẩn xác -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-        import { getDatabase, ref, push, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+        import { getDatabase, ref, push, onValue, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBD27MYenkjWOEjqj0hCisbh_61F_6bhSE",
@@ -535,24 +576,14 @@
             }
             
             document.getElementById('amt_show').innerText = new Intl.NumberFormat('vi-VN').format(amount) + "đ";
-            rechargeCode = "NAP " + currentUser.toUpperCase();
+            const username = localStorage.getItem("username") || "GUEST";
+            rechargeCode = "NAP " + username.toUpperCase();
             document.getElementById('code_val').innerText = rechargeCode;
-
-            document.querySelectorAll('.panel-gate').forEach(p => p.classList.remove('active'));
-            if (selectedGate === 'bank') {
-                document.getElementById('panel-bank').classList.add('active');
-            } else {
-                document.getElementById('panel-thecao').classList.add('active');
-            }
 
             document.getElementById('paymentUI').style.display = 'block';
         };
 
-        window.closePayment = function() {
-            document.getElementById('paymentUI').style.display = 'none';
-        };
-
-        window.copyTextVal = function(id) {
+        window.copy = function(id) {
             const val = document.getElementById(id).innerText;
             navigator.clipboard.writeText(val);
             alert("Đã sao chép: " + val);
@@ -576,7 +607,7 @@
                         status.innerText = "✅ Bill hợp lệ!";
                         status.style.color = "#00ffa5";
                     } else {
-                        status.innerText = "⚠️ Đã tải ảnh lên thành công!";
+                        status.innerText = "⚠️ Không quét được mã tự động, hãy chắc chắn bạn đã chuyển khoản.";
                         status.style.color = "orange";
                     }
                 });
@@ -584,60 +615,26 @@
             reader.readAsDataURL(file);
         };
 
-        window.submitBankRequest = async () => {
+        window.submitToFirebase = async () => {
             const amt = document.getElementById('input_amount').value;
             const loader = document.getElementById('loader');
             loader.style.display = 'flex';
             
             try {
                 await push(ref(db, 'recharge_requests'), {
-                    username: currentUser,
+                    username: localStorage.getItem("username") || "Guest",
                     amount: Number(amt),
-                    gate: 'bank',
+                    gate: selectedGate,
                     code: rechargeCode,
                     status: "pending",
                     createdAt: serverTimestamp()
                 });
-                alert("Gửi yêu cầu thành công! Admin sẽ duyệt tiền cho bạn.");
+                alert("Gửi yêu cầu thành công! Admin sẽ duyệt tiền cho bạn trong giây lát.");
                 location.reload();
             } catch (e) {
                 console.error(e);
                 alert("Lỗi kết nối máy chủ!");
                 loader.style.display = 'none';
-            }
-        };
-
-        window.submitCardRequest = async function() {
-            const type = document.getElementById('card-type').value;
-            const amount = document.getElementById('card-amount').value;
-            const serial = document.getElementById('card-serial').value.trim();
-            const pin = document.getElementById('card-pin').value.trim();
-            const btn = document.getElementById('btn-card');
-
-            if (!serial || !pin) {
-                alert("Vui lòng nhập đủ Seri và Mã thẻ!");
-                return;
-            }
-
-            btn.innerText = "ĐANG XỬ LÝ...";
-            btn.disabled = true;
-
-            try {
-                await push(ref(db, 'card_requests'), {
-                    username: currentUser,
-                    type: type,
-                    amount: Number(amount),
-                    serial: serial,
-                    pin: pin,
-                    status: "pending",
-                    createdAt: serverTimestamp()
-                });
-                alert("Gửi thẻ thành công! Vui lòng đợi Admin kiểm tra.");
-                location.reload();
-            } catch (e) {
-                alert("Lỗi kết nối Firebase!");
-                btn.innerText = "GỬI THẺ NGAY";
-                btn.disabled = false;
             }
         };
     </script>
