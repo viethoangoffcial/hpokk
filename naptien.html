@@ -457,6 +457,34 @@ if (username) {
         }
     });
 }
+    let selectedGate = 'bank';
+let rechargeCode = '';
+
+window.switchGate = function(gate, element) {
+    selectedGate = gate;
+    document.querySelectorAll('.tab-item').forEach(el => el.classList.remove('active'));
+    element.classList.add('active');
+};
+
+window.goPayment = function() {
+    const amount = document.getElementById('input_amount').value;
+    if (!amount || amount <= 0) {
+        alert("Vui lòng nhập số tiền hợp lệ!");
+        return;
+    }
+    
+    // Hiển thị số tiền lên giao diện thanh toán
+    document.getElementById('amt_show').innerText = new Intl.NumberFormat('vi-VN').format(amount) + "đ";
+    
+    // Tạo nội dung nạp tự động dựa trên username
+    const username = localStorage.getItem("username") || "GUEST";
+    rechargeCode = "NAP " + username.toUpperCase();
+    document.getElementById('code_val').innerText = rechargeCode;
+
+    // Mở màn hình thanh toán
+    document.getElementById('paymentUI').style.display = 'block';
+};
+    
 </script>
 </body>
 </html>
