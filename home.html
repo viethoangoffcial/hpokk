@@ -78,7 +78,7 @@
         .btn-nap { background: var(--primary); color: #fff; box-shadow: 0 4px 15px rgba(255, 45, 85, 0.3); }
         .btn-rut { background: #333; color: #fff; border: 1px solid var(--border); }
 
-        /* --- 7. TAB DANH MỤC GAME (CĂN GIỮA) --- */
+        /* --- 7. TAB DANH MỤC GAME --- */
         .game-tabs {
             background: #0a0a0a; padding: 15px 0;
             border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
@@ -112,20 +112,7 @@
             content: ''; width: 20px; height: 2px; background: var(--primary);
             border-radius: 10px; box-shadow: 0 0 5px var(--primary);
         }
-        /* --- Bắn Cá --- */
-    .game-section .game-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Chia 2 cột bằng nhau */
-        gap: 10px; /* Khoảng cách giữa các game */
-        padding: 10px;
-    }
-    .game-card img {
-        width: 100%;
-        border-radius: 8px;
-        display: block;
-    }
 
-        /* THÔNG BÁO DƯỚI TIÊU ĐỀ */
         .section-win-ticker {
             margin: 5px 15px 15px; background: rgba(255, 255, 255, 0.03);
             border-radius: 50px; padding: 4px 15px; border: 1px solid rgba(255, 215, 0, 0.1);
@@ -136,8 +123,55 @@
         .section-win-ticker b { color: #00ff88; }
 
         .game-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 5px 15px 20px; }
-        .game-card { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); background: #1a1a1a; }
+        .game-card { border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); background: #1a1a1a; cursor: pointer; }
         .game-card img { width: 100%; display: block; object-fit: cover; }
+
+        /* --- WINNER LIST STYLE --- */
+        .winner-box {
+            margin: 20px 10px; background: #111111; border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05); overflow: hidden;
+        }
+        .winner-title {
+            padding: 15px; text-align: center; font-weight: 800; color: #ffd700; font-size: 13px;
+            letter-spacing: 1px; background: linear-gradient(to bottom, #1a1a1a, #111);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .row-item { display: flex; align-items: center; padding: 12px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.02); }
+        .col-sanh { width: 25%; display: flex; align-items: center; gap: 8px; }
+        .col-game { width: 30%; text-align: left; }
+        .col-user { width: 25%; text-align: center; color: #888 !important; }
+        .col-money { width: 20%; text-align: right; font-weight: 900; }
+        .header-row { background: rgba(255, 255, 255, 0.03); padding: 10px; }
+        .header-text { font-size: 10px; color: #555; font-weight: 800; text-transform: uppercase; }
+        .lobby-icon { width: 22px; height: 22px; object-fit: contain; background: #000; border-radius: 5px; padding: 2px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .lobby-label { font-size: 11px; font-weight: 700; color: #ffd700; }
+        .game-label { font-size: 11px; color: #ccc; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .user-label { font-size: 11px; }
+        .money-label { font-size: 12px; color: #00ff88; }
+        .money-label.hot { color: #ff2d55; text-shadow: 0 0 8px rgba(255, 45, 85, 0.4); }
+        .scroll-container { height: 350px; overflow: hidden; position: relative; }
+        .scroll-track { animation: scrollLoop 20s linear infinite; }
+        .scroll-track:hover { animation-play-state: paused; }
+        @keyframes scrollLoop {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+
+        /* SPORTS & GRID 3 */
+        .sports-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 5px 15px 20px; }
+        .game-card-sports { 
+            position: relative; border-radius: 12px; overflow: hidden; background: #fff; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s ease; border: 1px solid #ddd; 
+        }
+        .game-card-sports:active { transform: scale(0.97); }
+        .game-card-sports img { width: 100%; display: block; object-fit: cover; }
+
+        .game-grid-3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 5px 15px 20px; }
+        .game-featured { grid-column: span 2; }
+        .game-card-3 { position: relative; border-radius: 12px; overflow: hidden; background: #1a1a1a; box-shadow: 0 2px 5px rgba(0,0,0,0.15); border: 1px solid rgba(255, 255, 255, 0.1); cursor: pointer; }
+        .game-card-3 img { width: 100%; display: block; transition: 0.3s; object-fit: cover; }
+        .game-card-3:hover img { transform: scale(1.05); }
+        .hot-badge { position: absolute; top: 0; right: 0; background: #ff0000; color: #fff; padding: 2px 10px; font-size: 11px; font-weight: bold; border-bottom-left-radius: 10px; z-index: 5; }
 
         /* --- 9. FOOTER --- */
         .footer {
@@ -156,150 +190,7 @@
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
             color: #fff; box-shadow: 0 8px 20px rgba(255, 45, 85, 0.4); border: 4px solid #050505;
         }
-       /* --- WINNER LIST PREMIUM STYLE --- */
-.winner-box {
-    margin: 20px 10px;
-    background: #111111;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    overflow: hidden;
-}
-
-.winner-title {
-    padding: 15px;
-    text-align: center;
-    font-weight: 800;
-    color: #ffd700;
-    font-size: 13px;
-    letter-spacing: 1px;
-    background: linear-gradient(to bottom, #1a1a1a, #111);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Chia cột theo tỷ lệ % cố định */
-.row-item {
-    display: flex;
-    align-items: center;
-    padding: 12px 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-}
-
-.col-sanh { width: 25%; display: flex; align-items: center; gap: 8px; }
-.col-game { width: 30%; text-align: left; }
-.col-user { width: 25%; text-align: center; color: #888 !important; }
-.col-money { width: 20%; text-align: right; font-weight: 900; }
-
-.header-row {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 10px;
-}
-
-.header-text {
-    font-size: 10px;
-    color: #555;
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-/* Style ảnh sảnh nhỏ gọn như ảnh mẫu */
-.lobby-icon {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    background: #000;
-    border-radius: 5px;
-    padding: 2px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.lobby-label {
-    font-size: 11px;
-    font-weight: 700;
-    color: #ffd700;
-}
-
-.game-label {
-    font-size: 11px;
-    color: #ccc;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.user-label { font-size: 11px; }
-
-.money-label { font-size: 12px; color: #00ff88; }
-.money-label.hot { color: #ff2d55; text-shadow: 0 0 8px rgba(255, 45, 85, 0.4); }
-
-/* Cuộn mượt */
-.scroll-container { height: 350px; overflow: hidden; position: relative; }
-.scroll-track { animation: scrollLoop 20s linear infinite; }
-.scroll-track:hover { animation-play-state: paused; }
-
-@keyframes scrollLoop {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
-}
- 
-    /* Đảm bảo chia 2 cột đều nhau sảnh bài */
-    .game-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px;
-    }
-    .game-card img {
-        width: 100%;
-        border-radius: 10px;
-        display: block;
-        cursor: pointer;
-    }
-      /* Grid Layout cho 2 sảnh */
-    .sports-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-    }
-    
-    .game-card-sports { 
-        position: relative; 
-        border-radius: 12px; 
-        overflow: hidden; 
-        background: #fff; 
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
-        cursor: pointer; 
-        transition: transform 0.2s ease;
-        border: 1px solid #ddd;
-    }
-
-    .game-card-sports:active { transform: scale(0.97); }
-
-    .game-card-sports img { 
-        width: 100%; 
-        display: block; 
-        object-fit: cover;
-    }
-
-    /* GRID LAYOUT 2 CỘT */
-    .game-grid-3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .game-featured { grid-column: span 2; }
-    
-    .game-card-3 { position: relative; border-radius: 10px; overflow: hidden; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.15); border: 1px solid #ddd; cursor: pointer; }
-    .game-card-3 img { width: 100%; display: block; transition: 0.3s; }
-    .game-card-3:hover img { transform: scale(1.05); }
-    .hot-badge { position: absolute; top: 0; right: 0; background: #ff0000; color: #fff; padding: 2px 10px; font-size: 11px; font-weight: bold; border-bottom-left-radius: 10px; z-index: 5; }
-    .access-label { position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.85)); color: #ffcc00; text-align: center; padding: 8px 0; font-size: 12px; font-weight: bold; }
-    
-     #n8.game-section { background: #fff5f5; padding: 15px; border-radius: 15px; font-family: 'Arial', sans-serif; }
-    #n8 .section-title { color: #c62828; text-align: center; font-weight: 900; font-size: 22px; margin-bottom: 15px; text-transform: uppercase; }
-    #n8 .section-win-ticker { background: #fff; padding: 10px; border-radius: 50px; display: flex; align-items: center; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(198, 40, 40, 0.1); }
-    
-    .game-grid-3 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .game-card-3 { position: relative; border-radius: 12px; overflow: hidden; background: #fff; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer; transition: 0.2s; border: 1px solid #eee; }
-    .game-card-3:active { transform: scale(0.96); }
-    .game-card-3 img { width: 100%; display: block; object-fit: cover; }
-
-   </style>
+    </style>
 </head>
 <body>
 
@@ -307,9 +198,7 @@
         <a href="menu.html" class="h-icon" id="btnMenu">
             <i class="fa-solid fa-bars-staggered"></i>
         </a>
-
         <div class="h-logo">HP<span>OK</span></div>
-
         <a href="taiapp.html" class="h-icon" style="text-align:right; color:var(--gold)" id="btnDownload">
             <i class="fa-solid fa-cloud-arrow-down"></i>
         </a>
@@ -325,7 +214,7 @@
                 <div style="font-size: 10px; color: #666;">SỐ DƯ TÀI KHOẢN</div>
                 <div class="bal-val" id="uBalance">0 ₫</div>
             </div>
-            <i class="fa-solid fa-rotate" onclick="location.reload()" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-rotate" onclick="location.reload()" style="color:var(--gold); cursor:pointer;"></i>
         </div>
     </div>
 
@@ -336,7 +225,7 @@
         </div>
     </div>
 
-   <div class="banner-container">
+    <div class="banner-container">
         <div class="banner-wrapper" id="bannerWrapper">
             <div class="banner-slide"><img src="https://i.imgur.com/PtkwGr9.png"></div>
         </div>
@@ -350,12 +239,11 @@
     </div>
 
     <div class="finance-row">
-        <!-- Đã thêm sự kiện onclick để ép chuyển trang trực tiếp và tránh bị chặn hành vi mặc định -->
         <a href="naptien.html" onclick="window.location.href='naptien.html'; return false;" class="btn-fin btn-nap">NẠP TIỀN</a>
         <a href="ruttien.html" onclick="window.location.href='ruttien.html'; return false;" class="btn-fin btn-rut">RÚT TIỀN</a>
     </div>
     
-      <div class="game-tabs">
+    <div class="game-tabs">
         <div class="tab-scroll">
             <a href="#n1" class="tab-item active"><div class="tab-square" style="color:#ff3b30"><i class="fa-solid fa-dice"></i></div><span>Nổ hũ</span></a>
             <a href="#n2" class="tab-item"><div class="tab-square" style="color:#00d2ff"><i class="fa-solid fa-layer-group"></i></div><span>Bài</span></a>
@@ -364,359 +252,155 @@
             <a href="#n5" class="tab-item"><div class="tab-square" style="color:#ff9500"><i class="fa-solid fa-dice-five"></i></div><span>Tài Xỉu</span></a>
             <a href="#n6" class="tab-item"><div class="tab-square" style="color:#fff"><i class="fa-solid fa-circle-dot"></i></div><span>Xóc Đĩa</span></a>
             <a href="#n7" class="tab-item"><div class="tab-square" style="color:#ffcc00"><i class="fa-solid fa-futbol"></i></div><span>Bóng đá</span></a>
+            <a href="#n8" class="tab-item"><div class="tab-square" style="color:#ff2d55"><i class="fa-solid fa-ticket"></i></div><span>Xổ số</span></a>
+            <a href="#n9" class="tab-item"><div class="tab-square" style="color:#ffd700"><i class="fa-solid fa-fire-flame-curved"></i></div><span>Đá Gà</span></a>
         </div>
     </div>
 
+    <!-- SẠNH 1: NỔ HŨ -->
     <section id="n1" class="game-section">
         <div class="section-title">✨ Nổ Hũ ✨</div>
         <div class="section-win-ticker">
             <i class="fa-solid fa-trophy"></i>
             <marquee>Chúc mừng <b>Văn Tú***</b> thắng <b>+2,400,000₫</b> • <b>LộcPhát***</b> nổ hũ <b>+10,500,000₫</b></marquee>
         </div>
-     <div class="game-grid">
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mythicalguardians')">
-        <img src="https://drive.google.com/thumbnail?id=1RULcgo3OiRgq3-nEqqdQVyy0GsRPDZVi&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mahjongwins2')">
-        <img src="https://drive.google.com/thumbnail?id=13VI0CJzWdRkK9YETb4oOEQUEjJXZWnrs&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/sugarrush')">
-        <img src="https://drive.google.com/thumbnail?id=1xco-2Lf8AD6o9gsT-DR0bMinXDransbH&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mahjongways')">
-        <img src="https://drive.google.com/thumbnail?id=17Yeaf-mcBIaWZi2VNg6nMsdNSSdUR-0-&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/treasuresofaztec')">
-        <img src="https://drive.google.com/thumbnail?id=10pkvs_IbdqmprzgIhRObUteHKYaRmAXb&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/luckyneko')">
-        <img src="https://drive.google.com/thumbnail?id=1L44JEYCaDpj_avYPeEok4oyFuNkDmb-Y&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/fortunerabbit')">
-        <img src="https://drive.google.com/thumbnail?id=11upSq5AZD8__-dD8S9tiGJqgrEC068Zc&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/fortunetiger')">
-        <img src="https://drive.google.com/thumbnail?id=1j7TU3afS_jd0ZVTKmVrFD_mbgHGomsFk&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/caishenwins')">
-        <img src="https://drive.google.com/thumbnail?id=13MM0fIMqonGWX0jYKU7hXJWDnxAHW1GQ&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/songkransplash')">
-        <img src="https://drive.google.com/thumbnail?id=1aB3f8qwzzJC0Z-AMpbCO06p5txSm0K-W&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mythicalsand')">
-        <img src="https://drive.google.com/thumbnail?id=1PhnzOLzPvSJTQAL_tl4kt7im9rNI9uha&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/zeusvstyphon')">
-        <img src="https://drive.google.com/thumbnail?id=1BLK3DVo_a8hwDgzO6jomEz9UenLVvtlI&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/gatesofolympus1000')">
-        <img src="https://drive.google.com/thumbnail?id=1hL3OEUrnOaGfMlDRJyl1G2WwXfovPL44&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mahjongwinsgongxifacai')">
-        <img src="https://drive.google.com/thumbnail?id=1FjM7jh7EJ0q2RP4jc22d8fOtJfDLDJNC&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/supergolfdrive')">
-        <img src="https://drive.google.com/thumbnail?id=11rBe_tZxJaKE4NAbezeHIkQR9ogpvnB3&sz=w1000">
-    </div>
-
-    <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/knockoutriches')">
-        <img src="https://drive.google.com/thumbnail?id=1Bqxzp2n5qbj5rgvjhc0a1CUbhds1J-d8&sz=w1000">
-    </div>
-</div>
-
+        <div class="game-grid">
+            <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mythicalguardians')"><img src="https://drive.google.com/thumbnail?id=1RULcgo3OiRgq3-nEqqdQVyy0GsRPDZVi&sz=w1000"></div>
+            <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mahjongwins2')"><img src="https://drive.google.com/thumbnail?id=13VI0CJzWdRkK9YETb4oOEQUEjJXZWnrs&sz=w1000"></div>
+            <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/sugarrush')"><img src="https://drive.google.com/thumbnail?id=1xco-2Lf8AD6o9gsT-DR0bMinXDransbH&sz=w1000"></div>
+            <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/mahjongways')"><img src="https://drive.google.com/thumbnail?id=17Yeaf-mcBIaWZi2VNg6nMsdNSSdUR-0-&sz=w1000"></div>
+            <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/treasuresofaztec')"><img src="https://drive.google.com/thumbnail?id=10pkvs_IbdqmprzgIhRObUteHKYaRmAXb&sz=w1000"></div>
+            <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/luckyneko')"><img src="https://drive.google.com/thumbnail?id=1L44JEYCaDpj_avYPeEok4oyFuNkDmb-Y&sz=w1000"></div>
+            <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/fortunerabbit')"><img src="https://drive.google.com/thumbnail?id=11upSq5AZD8__-dD8S9tiGJqgrEC068Zc&sz=w1000"></div>
+            <div class="game-card" onclick="go('https://nagaimam.xyz/pgsoft/fortunetiger')"><img src="https://drive.google.com/thumbnail?id=1j7TU3afS_jd0ZVTKmVrFD_mbgHGomsFk&sz=w1000"></div>
+        </div>
     </section>
 
-<section id="n2" class="game-section">
-    <div class="section-title">🃏 Game Bài 🃏</div>
-    <div class="section-win-ticker">
-        <i class="fa-solid fa-crown"></i>
-        <marquee><b>Cao Thủ***</b> ăn sập bàn Poker <b>+5,200,000₫</b> • <b>Hải Đăng***</b> thắng <b>+1,500,000₫</b></marquee>
-    </div>
-    
-    <div class="game-grid">
-        <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=ls2&lang=vi&cur=VND&jurisdiction=99&lobbyURL=https%3A%2F%2Fgoogle.com')">
-            <img src="https://drive.google.com/thumbnail?id=1241BBakUGFrhciJmeXCtsN5tt0qTkKPN&sz=w1000">
+    <!-- SẠNH 2: GAME BÀI -->
+    <section id="n2" class="game-section">
+        <div class="section-title">🃏 Game Bài 🃏</div>
+        <div class="section-win-ticker">
+            <i class="fa-solid fa-crown"></i>
+            <marquee><b>Cao Thủ***</b> ăn sập bàn Poker <b>+5,200,000₫</b> • <b>Hải Đăng***</b> thắng <b>+1,500,000₫</b></marquee>
         </div>
-
-        <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vstableandarb&lang=vi&cur=VND&jurisdiction=99&lobbyURL=https%3A%2F%2Fgoogle.com')">
-            <img src="https://drive.google.com/thumbnail?id=168RoN9fjG-Xorct_Nw8mWMSMKc8Asfda&sz=w1000">
+        <div class="game-grid">
+            <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=ls2&lang=vi&cur=VND&jurisdiction=99')"><img src="https://drive.google.com/thumbnail?id=1241BBakUGFrhciJmeXCtsN5tt0qTkKPN&sz=w1000"></div>
+            <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vstableandarb&lang=vi&cur=VND&jurisdiction=99')"><img src="https://drive.google.com/thumbnail?id=168RoN9fjG-Xorct_Nw8mWMSMKc8Asfda&sz=w1000"></div>
+            <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=ls1001&lang=vi&cur=VND&jurisdiction=99')"><img src="https://drive.google.com/thumbnail?id=162K3FsZzBQEq0RRRWVB7OdMHptuaDtEr&sz=w1000"></div>
+            <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs1multihandbj&lang=vi&cur=VND&jurisdiction=99')"><img src="https://drive.google.com/thumbnail?id=1Xe1OVPTgN3rOeOxPuYAkTxqgrGcD-O-7&sz=w1000"></div>
         </div>
+    </section>
 
-        <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=ls1001&lang=vi&cur=VND&jurisdiction=99&lobbyURL=https%3A%2F%2Fgoogle.com')">
-            <img src="https://drive.google.com/thumbnail?id=162K3FsZzBQEq0RRRWVB7OdMHptuaDtEr&sz=w1000">
+    <!-- SẠNH 3: BẮN CÁ -->
+    <section id="n3" class="game-section">
+        <div class="section-title">🌊 Bắn Cá 🌊</div>
+        <div class="section-win-ticker">
+            <i class="fa-solid fa-fish"></i>
+            <marquee>Sát thủ <b>Jack***</b> vừa hạ Boss nhận ngay <b>+8,800,000₫</b></marquee>
         </div>
-
-        <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs1multihandbj&lang=vi&cur=VND&jurisdiction=99&lobbyURL=https%3A%2F%2Fgoogle.com')">
-            <img src="https://drive.google.com/thumbnail?id=1Xe1OVPTgN3rOeOxPuYAkTxqgrGcD-O-7&sz=w1000">
+        <div class="game-grid">
+            <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/32?showGame=true')"><img src="https://drive.google.com/thumbnail?id=1yD8qREamml3v5wIDSTUG9D0acDflzvtL&sz=w1000"></div>
+            <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/42?showGame=true')"><img src="https://drive.google.com/thumbnail?id=1uMrLbVFU4MwgGc4uk6Y5SepGKA2CzqpG&sz=w1000"></div>
         </div>
+    </section>
 
-        <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vstablepoker&lang=vi&cur=VND&jurisdiction=99&lobbyURL=https%3A%2F%2Fgoogle.com')">
-            <img src="https://drive.google.com/thumbnail?id=1mwVHtrjhN7oUr0Rba9Nhi5Qtsaw7nbfy&sz=w1000">
-        </div>
-
-        <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vs1bjvp&lang=vi&cur=VND&jurisdiction=99&lobbyURL=https%3A%2F%2Fgoogle.com')">
-            <img src="https://drive.google.com/thumbnail?id=1PeErIBHpwnRrxG39AkrEVp4GpbH9DOfM&sz=w1000">
-        </div>
-
-        <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=vstableroulette&lang=vi&cur=VND&jurisdiction=99&lobbyURL=https%3A%2F%2Fgoogle.com')">
-            <img src="https://drive.google.com/thumbnail?id=1zgGKeZKLdWNdjJc81GbaQp5qxGoRNRv4&sz=w1000">
-        </div>
-
-        <div class="game-card" onclick="playGame('https://demogamesfree.pragmaticplay.net/gs2c/openGame.do?gameSymbol=ls4&lang=vi&cur=VND&jurisdiction=99&lobbyURL=https%3A%2F%2Fgoogle.com')">
-            <img src="https://drive.google.com/thumbnail?id=1AxZgXvrB9QsCvDM5QBToVPu91euhP9hU&sz=w1000">
-        </div>
-    </div>
-</section>
-<section id="n3" class="game-section">
-    <div class="section-title">🌊 Bắn Cá 🌊</div>
-    <div class="section-win-ticker">
-        <i class="fa-solid fa-fish"></i>
-        <marquee>Sát thủ <b>Jack***</b> vừa hạ Boss nhận ngay <b>+8,800,000₫</b></marquee>
-    </div>
-
-    <div class="game-grid">
-        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/32?showGame=true')">
-            <img src="https://drive.google.com/thumbnail?id=1yD8qREamml3v5wIDSTUG9D0acDflzvtL&sz=w1000">
-        </div>
-
-        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/42?showGame=true')">
-            <img src="https://drive.google.com/thumbnail?id=1uMrLbVFU4MwgGc4uk6Y5SepGKA2CzqpG&sz=w1000">
-        </div>
-
-        <div class="game-card" onclick="playGame('https://1gzyg0da.bxz9xuq7.com/?lang=vn&homeUrl=&d=1&isAPP=false&gameType=7&mType=7004&gName=ShadeDragonsFishing_c3fbad6&mute=0&x=e9tkQRED2CC1vwa__RbrImXOQ8A5cVPpw0249GUYbys0YEBTrE0IoO8FI0A-JKtBGD3DpI_YVLhsB8jBpzXHAK_pjkIVFOoT')">
-            <img src="https://drive.google.com/thumbnail?id=1hiob2oqorErNU97IbQzE2C2w2XKizQ3b&sz=w1000">
-        </div>
-
-        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/38?showGame=true')">
-            <img src="https://drive.google.com/thumbnail?id=1QPkWkzf6ptz2Ex6OsJJvm1HEbuBiZUbv&sz=w1000">
-        </div>
-
-        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/41?showGame=true')">
-            <img src="https://drive.google.com/thumbnail?id=1F1DJ4RNZGBKLp-6AAb_jHc7Qm8SxKa0t&sz=w1000">
-        </div>
-
-        <div class="game-card" onclick="playGame('https://tadagaming.com/PlusIntro/57?showGame=true')">
-            <img src="https://drive.google.com/thumbnail?id=1lINx2saMsrh2mF_7E1fRgixYPF_Ma-sI&sz=w1000">
-        </div>
-    </div>
- </section>
-
+    <!-- SẠNH 4: LIVE CASINO -->
     <section id="n4" class="game-section">
-    <div class="section-title">💃 Live Casino 💃</div>
-    
-    <div class="section-win-ticker">
-        <i class="fa-solid fa-clover"></i>
-        <marquee scrollamount="5"><b>Thành viên VIP***</b> vừa thắng sảnh AE Sexy <b>+45,000,000₫</b> • Hệ thống nạp rút tự động 30s</marquee>
-    </div>
-
-    <div class="game-grid-3">
-        <div class="game-card-3 game-featured" onclick="launchLiveGame('https://m.livecasinodemo.com', 'Sảnh Casino AE Sexy')">
-            <div class="hot-badge">HOT</div>
-            <img src="https://drive.google.com/thumbnail?id=13vnLU70SB11AjHtnfx134AE2T0HJCcf_&sz=w1000">
+        <div class="section-title">💃 Live Casino 💃</div>
+        <div class="section-win-ticker">
+            <i class="fa-solid fa-clover"></i>
+            <marquee scrollamount="5"><b>Thành viên VIP***</b> vừa thắng sảnh AE Sexy <b>+45,000,000₫</b> • Hệ thống nạp rút tự động 30s</marquee>
         </div>
-
-        <div class="game-card-3" onclick="mở_trò_chơi('http://hpokapp.gamer.gd/home.html#/gameThird?gameUrl=https%3A%2F%2Fwww.evolution.com%2Four-games%2Flive-casino%2F&firmType=EVO&playCode=LIVE', 'Sảnh Evolution')">
-    <img src="https://drive.google.com/thumbnail?id=16ZwFi7MBNXTWYWi3SPVIL4NSTgMfgZdf&sz=w1000">
-</div>
-
-       <div class="game-card-3" onclick="mở_trò_chơi_tự_động('https://www.evolution.com/our-games/live-casino/', 'EVO', 'Sảnh Evolution')">
-    <img src="https://drive.google.com/thumbnail?id=16ZwFi7MBNXTWYWi3SPVIL4NSTgMfgZdf&sz=w1000">
-</div>
-
-        <div class="game-card-3" onclick="launchLiveGame('https://www.dg99.com', 'Sảnh Dream Gaming')">
-            <img src="https://drive.google.com/thumbnail?id=1GPehAVWz4TcimN9d6SeGiTXqMflBEvdT&sz=w1000">
+        <div class="game-grid-3">
+            <div class="game-card-3 game-featured" onclick="mở_trò_chơi('https://m.livecasinodemo.com', 'Sảnh Casino AE Sexy')">
+                <div class="hot-badge">HOT</div>
+                <img src="https://drive.google.com/thumbnail?id=13vnLU70SB11AjHtnfx134AE2T0HJCcf_&sz=w1000">
+            </div>
+            <div class="game-card-3" onclick="mở_trò_chơi('https://www.evolution.com/our-games/live-casino/', 'Sảnh Evolution')">
+                <img src="https://drive.google.com/thumbnail?id=16ZwFi7MBNXTWYWi3SPVIL4NSTgMfgZdf&sz=w1000">
+            </div>
+            <div class="game-card-3" onclick="mở_trò_chơi('https://www.dg99.com', 'Sảnh Dream Gaming')">
+                <img src="https://drive.google.com/thumbnail?id=1GPehAVWz4TcimN9d6SeGiTXqMflBEvdT&sz=w1000">
+            </div>
         </div>
-
-        <div class="game-card-3" onclick="launchLiveGame('https://wm-casino.com', 'Sảnh WM Casino')">
-            <img src="https://drive.google.com/thumbnail?id=1-wbl5OH0tkAk_V7UyQ6pd8vZZ9cAWwPk&sz=w1000">
-        </div>
-
-        <div class="game-card-3" onclick="launchLiveGame('https://www.sa-gaming.com/games', 'Sảnh SA Gaming')">
-            <img src="https://drive.google.com/thumbnail?id=1FOLzszwdMlfcDl4TKCmr2dffII-ZUb7q&sz=w1000">
-        </div>
-
-        <div class="game-card-3" onclick="launchLiveGame('https://www.microgaming.co.uk/games', 'Sảnh Microgaming')">
-            <img src="https://drive.google.com/thumbnail?id=18ywDK9XFumA_S3toJvVldmwoj-gJINcL&sz=w1000">
-        </div>
-
-        <div class="game-card-3" onclick="launchLiveGame('https://www.playtech.com/products/live-casino', 'Sảnh Playtech')">
-            <img src="https://drive.google.com/thumbnail?id=1g4l6-HqeXHtzwwMMGZiyzEn6ofLrUBdZ&sz=w1000">
-        </div>
-
-        <div class="game-card-3" onclick="launchLiveGame('https://www.bbin-global.com/casino', 'Sảnh BBIN')">
-            <img src="https://drive.google.com/thumbnail?id=1MZ3WKWEFFFP914h1e6wE5-C5t0umzvkF&sz=w1000">
-        </div>
-    </div>
- 
     </section>
 
-<section id="n7" class="game-section">
-    <div class="section-title">⚽ Bóng Đá ⚽</div>
-    
-    <div class="section-win-ticker">
-        <i class="fa-solid fa-trophy"></i>
-        <marquee scrollamount="5"><b>FanMU***</b> thắng kèo xiên nhận <b>+15,000,000₫</b> • <b>BétThủ***</b> vừa nổ kèo góc <b>+8,200,000₫</b> • Trực tiếp tất cả các giải đấu hàng đầu</marquee>
-    </div>
-
-    <div class="sports-grid">
-        <div class="game-card-sports" onclick="launchSportsGame('https://m.SABA-SPORTS-DEMO.com', 'Sảnh Thể Thao SABA')">
-            <img src="https://drive.google.com/thumbnail?id=1UdtHgYMLYNSp-OpGcRoskHeBsL1VQMhs&sz=w1000" alt="SABA Sports">
+    <!-- SẠNH 5, 6, 7: TÀI XỈU, XÓC ĐĨA, BÓNG ĐÁ -->
+    <section id="n7" class="game-section">
+        <div class="section-title">⚽ Bóng Đá ⚽</div>
+        <div class="section-win-ticker">
+            <i class="fa-solid fa-trophy"></i>
+            <marquee scrollamount="5"><b>FanMU***</b> thắng kèo xiên nhận <b>+15,000,000₫</b></marquee>
         </div>
-
-        <div class="game-card-sports" onclick="launchSportsGame('https://m.CMD-SPORTS-DEMO.com', 'Sảnh Thể Thao CMD')">
-            <img src="https://drive.google.com/thumbnail?id=1BFe2k_KozgIzQN_27t5gzldMT_0n9jlK&sz=w1000" alt="CMD Sports">
+        <div class="sports-grid">
+            <div class="game-card-sports" onclick="mở_trò_chơi('https://m.SABA-SPORTS-DEMO.com', 'Sảnh Thể Thao SABA')">
+                <img src="https://drive.google.com/thumbnail?id=1UdtHgYMLYNSp-OpGcRoskHeBsL1VQMhs&sz=w1000" alt="SABA Sports">
+            </div>
+            <div class="game-card-sports" onclick="mở_trò_chơi('https://m.CMD-SPORTS-DEMO.com', 'Sảnh Thể Thao CMD')">
+                <img src="https://drive.google.com/thumbnail?id=1BFe2k_KozgIzQN_27t5gzldMT_0n9jlK&sz=w1000" alt="CMD Sports">
+            </div>
         </div>
-    </div>
     </section>
 
+    <!-- SẠNH 8: XỔ SỐ -->
     <section id="n8" class="game-section">
-    <div class="section-title">🎟️ Xổ Số 🎟️</div>
-    
-    <div class="section-win-ticker">
-        <i class="fa-solid fa-ticket"></i>
-        <marquee scrollamount="5"><b>ThầnSố***</b> vừa trúng lô xiên cực lớn <b>+5,000,000₫</b> • <b>LôĐềHọc***</b> nổ đề đặc biệt <b>+12,400,000₫</b> • Tỷ lệ ăn cao nhất thị trường 1 ăn 99</marquee>
-    </div>
-
-    <div class="game-grid-3">
-        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_0', 'Sảnh Xổ Số 1')">
-            <img src="https://drive.google.com/thumbnail?id=1ZSPgvySGq25W2oEg70vhYczKJzprhdkR&sz=w1000" alt="Xổ Số 0">
+        <div class="section-title">🎟️ Xổ Số 🎟️</div>
+        <div class="section-win-ticker">
+            <i class="fa-solid fa-ticket"></i>
+            <marquee scrollamount="5"><b>ThầnSố***</b> vừa trúng lô xiên cực lớn <b>+5,000,000₫</b> • Tỷ lệ ăn 1 ăn 99</marquee>
         </div>
-
-        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_1', 'Sảnh Xổ Số 2')">
-            <img src="https://drive.google.com/thumbnail?id=1TnlnzftUmSIzE9s3hvU3YuTmaQEJaoSJ&sz=w1000" alt="Xổ Số 1">
+        <div class="game-grid-3">
+            <div class="game-card-3" onclick="mở_trò_chơi('#', 'Xổ Số 1')"><img src="https://drive.google.com/thumbnail?id=1ZSPgvySGq25W2oEg70vhYczKJzprhdkR&sz=w1000"></div>
+            <div class="game-card-3" onclick="mở_trò_chơi('#', 'Xổ Số 2')"><img src="https://drive.google.com/thumbnail?id=1TnlnzftUmSIzE9s3hvU3YuTmaQEJaoSJ&sz=w1000"></div>
         </div>
+    </section>
 
-        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_2', 'Sảnh Xổ Số 3')">
-            <img src="https://drive.google.com/thumbnail?id=1Xe4ztvE54JIF0U1m9Zt6wPPFI9cG_vQY&sz=w1000" alt="Xổ Số 2">
-        </div>
-
-        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_3', 'Sảnh Xổ Số 4')">
-            <img src="https://drive.google.com/thumbnail?id=1wFllSUIF5fdRBN6y9uT0r--Q7CXq5zi7&sz=w1000" alt="Xổ Số 3">
-        </div>
-
-        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_4', 'Sảnh Xổ Số 5')">
-            <img src="https://drive.google.com/thumbnail?id=1ngbDVd5XQXYntVEsmNcQnPI8ciRaBsB2&sz=w1000" alt="Xổ Số 4">
-        </div>
-
-        <div class="game-card-3" onclick="launchLotteryGame('URL_XO_SO_5', 'Sảnh Xổ Số 6')">
-            <img src="https://drive.google.com/thumbnail?id=1GkT6QqDP0R2_O7hPiTes34D8jhlJj9kU&sz=w1000" alt="Xổ Số 5">
-        </div>
-    </div> 
-      </section>
-
+    <!-- SẠNH 9: ĐÁ GÀ -->
     <section id="n9" class="game-section">
-    <div class="section-title">🐓 Đá Gà Trực Tiếp 🐓</div>
-    
-    <div class="section-win-ticker">
-        <i class="fa-solid fa-fire-flame-curved"></i>
-        <marquee scrollamount="5"><b>KêThủ99***</b> vừa thắng cược Meron <b>+18,500,000₫</b> • <b>SátThủBồ67***</b> nổ kèo Wala <b>+9,200,000₫</b> • Trực tiếp Thomo hôm nay</marquee>
-    </div>
-
-    <div class="game-grid-3">
-        <div class="game-card-3" onclick="launchCockGame('URL_DA_GA_0', 'Sảnh Đá Gà Thomo')">
-            <div class="hot-badge">LIVE</div>
-            <img src="https://drive.google.com/thumbnail?id=1TooMwE67oUc_um_ZmKIIZpvlkRCTgibT&sz=w1000" alt="Đá Gà 0">
+        <div class="section-title">🐓 Đá Gà Trực Tiếp 🐓</div>
+        <div class="section-win-ticker">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            <marquee scrollamount="5"><b>KêThủ99***</b> vừa thắng cược Meron <b>+18,500,000₫</b></marquee>
+        </div>
+        <div class="game-grid-3">
+            <div class="game-card-3" onclick="mở_trò_chơi('#', 'Đá Gà Thomo')">
+                <div class="hot-badge">LIVE</div>
+                <img src="https://drive.google.com/thumbnail?id=1TooMwE67oUc_um_ZmKIIZpvlkRCTgibT&sz=w1000">
+            </div>
         </div>
 
-        <div class="game-card-3" onclick="launchCockGame('URL_DA_GA_1', 'Sảnh Đá Gà Philippines')">
-            <img src="https://drive.google.com/thumbnail?id=13Yki5iek0RsI8OAtseUy1gKSipF6F1d7&sz=w1000" alt="Đá Gà 1">
-        </div>
-
-        <div class="game-card-3" onclick="launchCockGame('URL_DA_GA_2', 'Sảnh Đá Gà SV388')">
-            <img src="https://drive.google.com/thumbnail?id=1ut6ciqEkI3v-vVg7ZrQ2RvkXSEdR724b&sz=w1000" alt="Đá Gà 2">
-        </div>
-
-        <div class="game-card-3" onclick="launchCockGame('URL_DA_GA_3', 'Sảnh Đá Gà Quốc Tế')">
-            <img src="https://drive.google.com/thumbnail?id=1AnfsSmYcMPXKjEgSfEYahdAlWs_EOMXA&sz=w1000" alt="Đá Gà 3">
-        </div>
-    </div>  
-  <div class="winner-box">
-    <div class="winner-title">BẢNG VÀNG CHIẾN THẮNG</div>
-    
-    <div class="row-item header-row">
-        <div class="col-sanh"><span class="header-text">SẢNH</span></div>
-        <div class="col-game"><span class="header-text">TRÒ CHƠI</span></div>
-        <div class="col-user"><span class="header-text">TÀI KHOẢN</span></div>
-        <div class="col-money"><span class="header-text">THẮNG</span></div>
-    </div>
-
-    <div class="scroll-container">
-        <div class="scroll-track">
-            <div class="row-item">
-                <div class="col-sanh">
-                    <img src="https://i.postimg.cc/yY3DmPFT/IMG-3725.png" class="lobby-icon">
-                    <span class="lobby-label">EVO</span>
-                </div>
-                <div class="col-game"><span class="game-label">Crazy Time</span></div>
-                <div class="col-user"><span class="user-label">ho***an</span></div>
-                <div class="col-money"><span class="money-label hot">1.520.000</span></div>
+        <!-- BẢNG VÀNG CHIẾN THẮNG -->
+        <div class="winner-box">
+            <div class="winner-title">BẢNG VÀNG CHIẾN THẮNG</div>
+            <div class="row-item header-row">
+                <div class="col-sanh"><span class="header-text">SẢNH</span></div>
+                <div class="col-game"><span class="header-text">TRÒ CHƠI</span></div>
+                <div class="col-user"><span class="header-text">TÀI KHOẢN</span></div>
+                <div class="col-money"><span class="header-text">THẮNG</span></div>
             </div>
 
-            <div class="row-item">
-                <div class="col-sanh">
-                    <img src="https://i.postimg.cc/7YJ53Vgn/IMG-3724.png" class="lobby-icon">
-                    <span class="lobby-label">PP</span>
+            <div class="scroll-container">
+                <div class="scroll-track">
+                    <div class="row-item">
+                        <div class="col-sanh">
+                            <img src="https://i.postimg.cc/yY3DmPFT/IMG-3725.png" class="lobby-icon">
+                            <span class="lobby-label">EVO</span>
+                        </div>
+                        <div class="col-game"><span class="game-label">Crazy Time</span></div>
+                        <div class="col-user"><span class="user-label">ho***an</span></div>
+                        <div class="col-money"><span class="money-label hot">1.520.000</span></div>
+                    </div>
+                    <div class="row-item">
+                        <div class="col-sanh">
+                            <img src="https://i.postimg.cc/7YJ53Vgn/IMG-3724.png" class="lobby-icon">
+                            <span class="lobby-label">PP</span>
+                        </div>
+                        <div class="col-game"><span class="game-label">Gates of Olympus</span></div>
+                        <div class="col-user"><span class="user-label">an***77</span></div>
+                        <div class="col-money"><span class="money-label">432.900</span></div>
+                    </div>
                 </div>
-                <div class="col-game"><span class="game-label">Gates of Olympus</span></div>
-                <div class="col-user"><span class="user-label">an***77</span></div>
-                <div class="col-money"><span class="money-label">432.900</span></div>
             </div>
-
-            <div class="row-item">
-                <div class="col-sanh">
-                    <img src="https://i.postimg.cc/htFfpdry/IMG-3730.png" class="lobby-icon">
-                    <span class="lobby-label">JILI</span>
-                </div>
-                <div class="col-game"><span class="game-label">Quyền Vương</span></div>
-                <div class="col-user"><span class="user-label">lo***88</span></div>
-                <div class="col-money"><span class="money-label hot">2.310.500</span></div>
-            </div>
-
-            <div class="row-item">
-                <div class="col-sanh">
-                    <img src="https://i.postimg.cc/7YJ53Vgn/IMG-3724.png" class="lobby-icon">
-                    <span class="lobby-label">VA2</span>
-                </div>
-                <div class="col-game"><span class="game-label">Mạt Chược 2</span></div>
-                <div class="col-user"><span class="user-label">ax***02</span></div>
-                <div class="col-money"><span class="money-label">266.088</span></div>
-            </div>
-
-            <div class="row-item">
-                <div class="col-sanh">
-                    <img src="https://i.postimg.cc/yY3DmPFT/IMG-3725.png" class="lobby-icon">
-                    <span class="lobby-label">EVO</span>
-                </div>
-                <div class="col-game"><span class="game-label">Crazy Time</span></div>
-                <div class="col-user"><span class="user-label">ho***an</span></div>
-                <div class="col-money"><span class="money-label hot">1.520.000</span></div>
-            </div>
-             <div class="row-item">
-                <div class="col-sanh">
-                    <img src="https://i.postimg.cc/7YJ53Vgn/IMG-3724.png" class="lobby-icon">
-                    <span class="lobby-label">PP</span>
-                </div>
-                <div class="col-game"><span class="game-label">Gates of Olympus</span></div>
-                <div class="col-user"><span class="user-label">an***77</span></div>
-                <div class="col-money"><span class="money-label">432.900</span></div>
-            </div>
-        </div>
-    </div>
         </div>
     </section>
 
@@ -728,101 +412,85 @@
         <a href="taikhoan.html" class="f-btn"><i class="fa-solid fa-circle-user"></i><span>Của tôi</span></a>
     </div>
 
-<script>
-    /**
-     * HỆ THỐNG ĐỒNG BỘ DỮ LIỆU HPOK - FIXED BALANCE
-     */
+    <script>
+        const cấu_hình_firebase = { 
+            apiKey: "AIzaSyBD27MYenkjWOEjqj0hCisbh_61F_6bhSE", 
+            databaseURL: "https://hpok-d355c-default-rtdb.asia-southeast1.firebasedatabase.app", 
+            projectId: "hpok-d355c" 
+        };
 
-    const cấu_hình_firebase = { 
-        apiKey: "AIzaSyBD27MYenkjWOEjqj0hCisbh_61F_6bhSE", 
-        databaseURL: "https://hpok-d355c-default-rtdb.asia-southeast1.firebasedatabase.app", 
-        projectId: "hpok-d355c" 
-    };
-
-    // Khởi tạo Firebase nếu chưa có
-    if (!firebase.apps.length) {
-        firebase.initializeApp(cấu_hình_firebase);
-    }
-    const cơ_sở_dữ_liệu = firebase.database();
-
-    // Lấy username từ localStorage
-    const username = localStorage.getItem("username");
-
-    function startSync() {
-        if (!username) {
-            console.error("Không tìm thấy username trong localStorage!");
-            document.getElementById('uName').innerText = "Khách";
-            return;
+        if (!firebase.apps.length) {
+            firebase.initializeApp(cấu_hình_firebase);
         }
+        const cơ_sở_dữ_liệu = firebase.database();
+        const username = localStorage.getItem("username");
 
-        const userRef = cơ_sở_dữ_liệu.ref('users/' + username);
-
-        // Lắng nghe dữ liệu thời gian thực
-        userRef.on('value', (snap) => {
-            if (snap.exists()) {
-                const dữ_liệu = snap.val();
-                
-                // 1. Cập nhật Tên
+        function startSync() {
+            if (!username) {
+                console.error("Không tìm thấy username trong localStorage!");
                 const khung_tên = document.getElementById('uName');
-                if (khung_tên) khung_tên.innerText = dữ_liệu.fullName || username;
-
-                // 2. Cập nhật Số dư (Đã fix định dạng và ID)
-                const khung_số_dư = document.getElementById('uBalance');
-                if (khung_số_dư) {
-                    const balanceVal = dữ_liệu.balance || 0;
-                    khung_số_dư.innerText = new Intl.NumberFormat('vi-VN').format(balanceVal) + " ₫";
-                }
-
-                // 3. Cập nhật Ảnh đại diện
-                const khung_ảnh = document.getElementById('uAvatar');
-                if (khung_ảnh) {
-                    const nhân_vật = (dữ_liệu.gender === "Nữ") ? "Aneka" : "Felix";
-                    khung_ảnh.src = `https://api.dicebear.com/7.x/adventurer/svg?seed=${nhân_vật}`;
-                }
-                
-                // Lưu vào bộ nhớ tạm để dùng cho các hàm khác (như mở game)
-                window.currentBal = dữ_liệu.balance || 0;
-
-            } else {
-                console.warn("Tài khoản không tồn tại!");
-                document.getElementById('uName').innerText = "User không tồn tại";
+                if (khung_tên) khung_tên.innerText = "Khách";
+                return;
             }
-        }, (error) => {
-            console.error("Lỗi Firebase:", error);
-        });
-    }
 
-    // Chạy đồng bộ ngay khi load
-    window.onload = startSync;
+            const userRef = cơ_sở_dữ_liệu.ref('users/' + username);
+            userRef.on('value', (snap) => {
+                if (snap.exists()) {
+                    const dữ_liệu = snap.val();
+                    
+                    const khung_tên = document.getElementById('uName');
+                    if (khung_tên) khung_tên.innerText = dữ_liệu.fullName || username;
 
-    /** --- CÁC HÀM TIỆN ÍCH GAME (GIỮ NGUYÊN NHƯNG FIX LỖI BIẾN) --- **/
-    window.mở_trò_chơi = function(link, tên = "Trò chơi") {
-        if (!link || link.includes('URL_XO_SO') || link === '#') {
-            alert("⚠️ Sảnh " + tên + " đang bảo trì!");
-            return;
+                    const khung_số_dư = document.getElementById('uBalance');
+                    if (khung_số_dư) {
+                        const balanceVal = dữ_liệu.balance || 0;
+                        khung_số_dư.innerText = new Intl.NumberFormat('vi-VN').format(balanceVal) + " ₫";
+                    }
+
+                    const khung_ảnh = document.getElementById('uAvatar');
+                    if (khung_ảnh) {
+                        const nhân_vật = (dữ_liệu.gender === "Nữ") ? "Aneka" : "Felix";
+                        khung_ảnh.src = `https://api.dicebear.com/7.x/adventurer/svg?seed=${nhân_vật}`;
+                    }
+                    
+                    window.currentBal = dữ_liệu.balance || 0;
+                } else {
+                    const khung_tên = document.getElementById('uName');
+                    if (khung_tên) khung_tên.innerText = "User không tồn tại";
+                }
+            }, (error) => {
+                console.error("Lỗi Firebase:", error);
+            });
         }
-        window.location.href = link;
-    };
 
-    window.go = (link) => mở_trò_chơi(link, "Nổ Hũ");
-    window.playGame = (link) => mở_trò_chơi(link, "Game Bài");
+        window.onload = startSync;
 
-    // Xử lý chuyển Tab mượt mà
-    document.querySelectorAll('.tab-item').forEach(tab => {
-        tab.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            const targetId = this.getAttribute('href').substring(1);
-            const targetEl = document.getElementById(targetId);
-            if (targetEl) {
-                window.scrollTo({ top: targetEl.offsetTop - 120, behavior: 'smooth' });
+        window.mở_trò_chơi = function(link, tên = "Trò chơi") {
+            if (!link || link.includes('URL_') || link === '#') {
+                alert("⚠️ Sảnh " + tên + " đang bảo trì!");
+                return;
             }
+            window.location.href = link;
+        };
+
+        window.go = (link) => mở_trò_chơi(link, "Nổ Hũ");
+        window.playGame = (link) => mở_trò_chơi(link, "Game Bài");
+
+        document.querySelectorAll('.tab-item').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                const targetId = this.getAttribute('href').substring(1);
+                const targetEl = document.getElementById(targetId);
+                if (targetEl) {
+                    window.scrollTo({ top: targetEl.offsetTop - 120, behavior: 'smooth' });
+                }
+            });
         });
-    });
-</script>
-<script src="config.js"></script>
-<script src="loader.js"></script>
-<script src="music.js"></script>
+    </script>
+    <script src="config.js"></script>
+    <script src="loader.js"></script>
+    <script src="music.js"></script>
 </body>
 </html>
